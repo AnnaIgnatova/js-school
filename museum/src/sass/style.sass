@@ -1,0 +1,677 @@
+$light-bg-color: #fff
+$dark-bg-color: #030303
+$font-gold: #9D8665
+$dark-red: #710707
+$default-video-icon: #B3B3B3
+$hovered-video-icon: #989898
+$light-grey: #C4C4C4
+
+*
+  box-sizing: border-box
+  margin: 0
+html
+  scroll-behavior: smooth
+
+.main-wrapper
+  margin-left: auto
+  margin-right: auto
+
+.container
+  width: 1440px
+  margin-left: auto
+  margin-right: auto
+
+.header
+  background-color: $dark-bg-color
+  width: 100%
+  &-wrapper
+    padding-top: 32px
+    display: flex
+    justify-content: space-between
+  &-nav
+    list-style-type: none
+    display: flex
+    margin-top: 19px
+  &-logo
+    display: flex
+    align-items: center
+    text-decoration: none
+  .nav-item
+    &:not(:last-child)
+      margin-right: 56.5px
+
+.logo
+  &-text
+    font-family: 'Forum', cursive
+    font-size: 28px
+    font-weight: normal
+    line-height: 50px
+    letter-spacing: 5px
+    text-transform: uppercase
+    color: #FFFFFF
+  &-icon
+    width: 50px
+    height: 34px
+    margin-right: 23px
+    margin-bottom: 8px
+
+.nav
+  &-item
+    font-family: 'Roboto', sans-serif
+    font-weight: 200
+    font-size: 22px
+    line-height: 50px
+    letter-spacing: 2px
+    transition-duration: .2s
+    &:first-child
+      margin-left: -19px
+  &-li-link
+    text-decoration: none
+    color: #fff
+    &:hover
+      color: $font-gold
+    &:active
+      color: $font-gold
+// ---------------------------------------- header
+
+.main
+  margin-top: -1px
+
+.welcome
+  color: #FFFFFF
+  background-color: $dark-bg-color
+  height: 842px
+  padding-top: 180px
+  &-bg
+    position: absolute
+    right: 240px
+    top: 150px
+    width: 1000px
+    background-image: linear-gradient(90deg, #000000 0%, #000000 1%, rgba(0, 0, 0, 0.0) 30%), url(../images/welcome.jpg)
+    height: 750px
+    background-repeat: no-repeat
+  &-title
+    position: relative
+    display: block
+    font-family: 'Forum', cursive
+    font-weight: normal
+    font-size: 80px
+    line-height: 90px
+    letter-spacing: 5px
+    text-transform: uppercase
+    margin-bottom: 25px
+    z-index: 100
+  &-subtitle
+    display: block
+    font-family: 'Roboto', sans-serif
+    font-style: normal
+    font-weight: 300
+    font-size: 28px
+    line-height: 33px
+    letter-spacing: 2px
+    margin-bottom: 77px
+  &-button
+    padding: 23px 67px
+    font-family: 'Roboto', sans-serif
+    text-decoration: none
+    color: #FFFFFF
+    width: 360px
+    background-color: $dark-red
+    border-radius: 10px
+    font-weight: 200
+    font-size: 22px
+    line-height: 26px
+    display: flex
+    align-items: center
+    text-align: center
+    letter-spacing: 2px
+    transition-duration: .2s
+    &:hover
+      background-color: $font-gold
+    &:active
+      background-color: $font-gold
+
+// ---------------------------------------- welcome
+
+.visiting
+  padding-top: 75px
+  &-title
+    color: $font-gold
+  &-line
+    height: 3px
+    margin-bottom: 75px
+  &-cards
+    display: flex
+    flex-wrap: wrap
+    justify-content: space-between
+
+.line
+  background-color: $dark-red
+  border: none
+
+.card
+  margin-bottom: 66px
+  &:hover
+    .card-line
+      width: 100%
+    .card-title
+      color: $font-gold
+  &-image
+    margin-bottom: 21px
+  &-title
+    font-size: 32px
+    line-height: 35px
+    font-weight: normal
+    letter-spacing: 5px
+    text-transform: uppercase
+    font-family: 'Forum', cursive
+    margin-bottom: 9px
+  &-line
+    width: 300px
+    height: 2px
+    margin-bottom: 11px
+    transition-duration: .5s
+  &-subtitle
+    display: block
+    font-family: 'Roboto', sans-serif
+    font-style: normal
+    font-weight: 200
+    font-size: 22px
+    line-height: 26px
+    margin-bottom: 10px
+    &-view
+      font-size: 18px
+      line-height: 21px
+
+// ---------------------------------------- visiting
+
+.explore
+  padding-top: 75px
+  margin-top: -3px
+  background-color: $dark-bg-color
+  height: 865px
+  &-title
+    color: #FFFFFF
+  &-line
+    height: 2px
+    width: 660px
+    margin-bottom: 78px
+  &-wrapper
+    display: flex
+  &-content
+    margin-right: 60px
+  &-img
+    display: block
+    margin-top: 15px
+    transition-duration: .4s
+    &:hover
+      transform: scale(1.05)
+  &-info
+    width: 655px
+    font-family: 'Roboto', sans-serif
+    font-style: normal
+    font-weight: 300
+    font-size: 22px
+    line-height: 38px
+    color: #FFFFFF
+  &-text
+    display: block
+    margin-bottom: 26px
+
+.highlight
+  color: #CAAA7D
+
+// ---------------------------------------- explore
+
+  input[type=range]::-webkit-slider-thumb
+    background-color: #fff
+
+  input[type=range]::-moz-range-thumb
+    background-color: #fff
+
+  input[type=range]::-ms-thumb
+    background-color: #fff
+
+.video
+  padding-top: 75px
+  padding-bottom: 75px
+  &-block
+    display: flex
+    justify-content: center
+    align-items: center
+    width: 1440px
+    height: 650px
+    background-image: url(../images/video.jpg)
+    background-size: cover
+    background-position: center
+  &-player
+    display: flex
+    align-items: center
+    background-color: #000
+    width: 1440px
+    height: 86px
+    margin-bottom: 40px
+    padding-left: 25px
+  &-text
+    display: flex
+    margin-bottom: 50px
+  &-subtitle
+    margin-left: 114px
+    margin-top: 8px
+    font-family: 'Roboto', sans-serif
+    display: block
+    font-weight: 300
+    font-size: 22px
+    line-height: 38px
+    width: 720px
+  &-icon
+    fill: $default-video-icon
+    &:hover
+      fill: $hovered-video-icon
+
+.play-btn-big,
+.play-btn,
+.video-volume-btn,
+.screen-btn
+  background: transparent
+  border: none
+  cursor: pointer
+
+.play-btn
+  margin-right: 40px
+
+.video-volume-btn
+  margin-right: 43px
+
+.range-container
+  position: relative
+  width: 935px
+  height: 9px
+  overflow: hidden
+  margin-right: 42px
+
+.volume-container
+  position: relative
+  height: 9px
+  overflow: hidden
+  width: 155px
+  margin-right: 42px
+
+.video-progress[type='range']
+  position: absolute
+  width: 935px
+  height: 9px
+  -webkit-appearance: none
+  background-color: $light-grey
+  top: -2px
+  left: -2px
+
+.volume-progress[type='range']
+  position: absolute
+  width: 155px
+  height: 9px
+  -webkit-appearance: none
+  background-color: $light-grey
+  top: -2px
+  left: -2px
+
+input[type='range']::-webkit-slider-runnable-track
+  height: 8px
+  -webkit-appearance: none
+  margin-top: 1px
+
+.video-progress[type='range']::-webkit-slider-thumb
+  width: 9px
+  height: 9px
+  -webkit-appearance: none
+  border-radius: 50%
+  background-color: $light-bg-color
+  box-shadow: -930px 0 0 925px $dark-red
+
+.volume-progress[type='range']::-webkit-slider-thumb
+  width: 9px
+  height: 9px
+  -webkit-appearance: none
+  border-radius: 50%
+  background-color: $light-bg-color
+  box-shadow: -160px 0 0 150px $dark-red
+
+input[type="range"]::-moz-range-progress
+  background-color: $dark-red
+
+input[type="range"]::-moz-range-track
+  background-color: $light-grey
+
+input[type="range"]::-ms-fill-lower
+  background-color: $dark-red
+
+input[type="range"]::-ms-fill-upper
+  background-color: $light-grey
+
+.small-videos-container
+  display: flex
+  justify-content: space-between
+  margin-bottom: 40px
+
+.pre
+  width: 452px
+  height: 254px
+  cursor: pointer
+
+.small-video-1
+  background-image: url(../images/small-video-1.png)
+
+.small-video-2
+  background-image: url(../images/small-video-2.png)
+
+.small-video-3
+  background-image: url(../images/small-video-3.png)
+
+.round
+  width: 12px
+  height: 12px
+  background-color: #999999
+  border-radius: 50%
+  margin-left: 20px
+  cursor: pointer
+  &:first-child
+    background-color: #333333
+    &::before
+      content: "«"
+      display: block
+      margin-left: -30px
+      margin-top: -8px
+      font-size: 22px
+  &:last-child
+    &::after
+      content: "»"
+      display: block
+      margin-top: -8px
+      margin-left: 30px
+      font-size: 22px
+  &-btns
+    display: flex
+    align-items: center
+    justify-content: center
+    margin-left: -20px
+// ---------------------------------------- video
+
+.gallery
+  background-color: $dark-bg-color
+  padding-top: 75px
+  height: 2200px
+  overflow: hidden
+  box-shadow: inset 0 0 40px
+  &-images
+    display: flex
+    margin-top: 75px
+  & * > img
+    margin-bottom: 22px
+  &-column
+    &:not(:last-child)
+      margin-right: 36px
+    &:nth-child(odd)
+      margin-top: 50px
+
+  &-img
+    display: block
+    width: 456px
+    height: 570px
+    &-2
+      height: 456px
+
+// ---------------------------------------- gallery
+
+.tickets
+  padding-top: 75px
+  padding-bottom: 75px
+  background-color: $light-bg-color
+  &-type-title
+    display: block
+    font-family: 'Roboto', sans-serif
+    margin-bottom: 50px
+    font-weight: bold
+    font-size: 28px
+    line-height: 33px
+    color: #FFFFFF
+  &-wrapper
+    display: flex
+  &-img
+    margin-right: 60px
+    transition-duration: .4s
+    &:hover
+      transform: scale(1.05)
+  &-buy
+    display: flex
+
+.type
+  &s
+    margin-right: 240px
+    width: 270px
+  &-text
+    display: block
+    font-family: 'Roboto', sans-serif
+    font-weight: 300
+    font-size: 22px
+    line-height: 26px
+    color: #FFFFFF
+  &-btn
+    display: block
+    margin-right: 26px
+
+input[type="number"]
+  -moz-appearance: textfield
+  -webkit-appearance: textfield
+  appearance: textfield
+
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button
+  display: none
+
+.basic
+  &-number
+    width: 50px
+    height: 50px
+    background: transparent
+    border: 3px solid #FFFFFF
+    border-left: none
+    border-right: none
+    margin-left: -5px
+    color: #fff
+    font-family: 'Roboto', sans-serif
+    font-weight: 300
+    font-size: 22px
+    line-height: 26px
+    text-align: center
+    outline: none
+  &-wrapper
+    display: flex
+    margin-bottom: 35px
+    &:last-child
+      margin-bottom: 50px
+
+.ticket-type-wrapper
+  margin-bottom: 50px
+  display: flex
+  align-items: center
+
+.amount
+  &-type
+    display: block
+    font-family: 'Roboto', sans-serif
+    font-weight: 300
+    font-size: 22px
+    line-height: 26px
+    color: #FFFFFF
+    margin-bottom: 14px
+  &-title
+    display: block
+    margin-left: 50px
+    margin-bottom: 11px
+  &-total
+    letter-spacing: 1.65px
+  &-buy-btn
+    background-color: #FFFFFF
+    border-radius: 2px
+    width: 175px
+    height: 50px
+    font-family: 'Roboto', sans-serif
+    text-align: center
+    font-weight: 300
+    font-size: 22px
+    line-height: 26px
+    letter-spacing: 2px
+    margin-left: -25px
+    transition-duration: .2s
+    border: none
+    cursor: pointer
+    &:hover
+      background-color: $font-gold
+    &:active
+      background-color: $font-gold
+
+.less-btn,
+.more-btn
+  width: 55px
+  height: 50px
+  background: transparent
+  border: 3px solid #FFFFFF
+  color: #fff
+  font-family: 'Roboto', sans-serif
+  font-weight: normal
+  font-size: 32px
+  line-height: 37px
+  text-align: center
+  cursor: pointer
+
+.more-btn
+  border-left: none
+  margin-left: -5px
+  padding-left: 15px
+
+.less-btn
+  border-right: none
+  padding-right: 15px
+
+.ticket-type-wrapper input[type=radio]
+  display: none
+
+.ticket-type-wrapper label
+  display: inline-block
+  cursor: pointer
+  position: relative
+  padding-left: 25px
+  margin-right: 0
+  line-height: 18px
+  user-select: none
+  margin-top: 7px
+  margin-left: 12px
+
+.ticket-type-wrapper label:before
+  content: ""
+  display: block
+  width: 17px
+  height: 17px
+  position: absolute
+  left: 0
+  bottom: 1px
+  border-radius: 50%
+  border: 2px solid #fff
+  margin-left: -12px
+
+.ticket-type-wrapper input[type=radio]:checked + label:before
+  border: none
+  background: url('../images/checked.svg') 0 0 no-repeat
+
+// ------------------------ tickets
+
+.contacts
+  padding-top: 75px
+  padding-bottom: 75px
+  &-subtitle
+    display: block
+    font-family: 'Roboto', sans-serif
+    font-weight: bold
+    font-size: 28px
+    line-height: 33px
+  &-main-wrapper
+    display: flex
+    justify-content: space-between
+  &-line
+    margin-bottom: 85px
+  &-img
+    margin-top: -10px
+  &-address
+    margin-top: 38px
+
+.address
+  display: block
+  font-style: normal
+  font-family: 'Roboto', sans-serif
+  font-weight: 300
+  font-size: 22px
+  line-height: 26px
+  margin-bottom: 20px
+  &-phone,
+  &-mail
+    color: #000
+    text-decoration: none
+
+// ---------------------------------------- contacts
+
+.footer
+  background-color: $dark-bg-color
+  padding-top: 75px
+  padding-bottom: 75px
+  &-container
+    display: flex
+  &-nav
+    flex-direction: column
+    flex-wrap: wrap
+    height: 150px
+    width: 366px
+    padding: 0
+    margin-top: 1px
+  &-nav-links
+    margin-right: 355px
+  .nav-item:first-child
+    margin-left: 0
+  &-logo
+    margin-right: 145px
+    align-items: flex-start
+    .logo-icon
+      margin-bottom: 0
+      margin-top: 4px
+  &-social-nav
+    display: flex
+    align-items: flex-end
+    list-style-type: none
+    margin-left: 4px
+    margin-bottom: 15px
+
+.space
+  margin-right: 153px
+
+.social
+  &-item
+    display: flex
+    align-items: center
+    justify-content: center
+    width: 48px
+    height: 48px
+    border: 1px solid #666666
+    filter: drop-shadow(0px 0px 0px #666666)
+    border-radius: 50%
+    transition-duration: .2s
+    cursor: pointer
+    &:not(:last-child)
+      margin-right: 24px
+    &:hover
+      border-color: $font-gold
+      filter: drop-shadow(0px 0px 0px $font-gold)
+      .social-icon
+        fill: $font-gold
+  &-icon
+    fill: #fff
+
+// ---------------------------------------- footer
