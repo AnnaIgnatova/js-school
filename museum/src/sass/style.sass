@@ -17,6 +17,7 @@ html
   margin-right: auto
 
 .container
+  position: relative
   width: 1440px
   margin-left: auto
   margin-right: auto
@@ -84,8 +85,8 @@ html
   padding-top: 180px
   &-bg
     position: absolute
-    right: 240px
-    top: 150px
+    right: 0px
+    top: -150px
     width: 1000px
     background-image: linear-gradient(90deg, #000000 0%, #000000 1%, rgba(0, 0, 0, 0.0) 30%), url(../images/welcome.jpg)
     height: 750px
@@ -130,7 +131,61 @@ html
       background-color: $font-gold
     &:active
       background-color: $font-gold
+  &-slider
+    position: absolute
+    width: 600px
+    height: 120px
+    background-color: #000
+    bottom: -275px
+    right: 0
+    display: flex
+    align-items: center
+    padding-left: 72px
 
+.slider
+  &-values
+    font-family: Roboto
+    font-size: 22px
+    line-height: 40px
+    color: #FFFFFF
+    margin-right: 55px
+  &-slides
+    margin-right: 40px
+
+.slide-number
+  &::after
+    content: '|'
+    margin-left: 10px
+    margin-right: 10px
+.input-slide
+  position: absolute
+  opacity: 0
+
+  &+label
+    display: inline-flex
+    align-items: center
+    user-select: none
+
+  &+label::before
+    content: ''
+    display: inline-block
+    width: 16px
+    height: 16px
+    background-color: #fff
+    margin-right: 21px
+
+  &:checked+label::before
+    background-color: $font-gold
+
+.slider-btn
+  background-color: transparent
+  border: none
+  color: #fff
+  font-size: 27px
+  cursor: pointer
+  &:first-child
+    margin-left: -7px
+    margin-right: 7px
 // ---------------------------------------- welcome
 
 .visiting
@@ -182,6 +237,10 @@ html
     &-view
       font-size: 18px
       line-height: 21px
+      color: #000
+      text-decoration: none
+      &:hover
+        color: $font-gold
 
 // ---------------------------------------- visiting
 
@@ -358,15 +417,6 @@ input[type="range"]::-ms-fill-upper
   height: 254px
   cursor: pointer
 
-.small-video-1
-  background-image: url(../images/small-video-1.png)
-
-.small-video-2
-  background-image: url(../images/small-video-2.png)
-
-.small-video-3
-  background-image: url(../images/small-video-3.png)
-
 .round
   width: 12px
   height: 12px
@@ -374,6 +424,8 @@ input[type="range"]::-ms-fill-upper
   border-radius: 50%
   margin-left: 20px
   cursor: pointer
+  &:hover
+    background-color: #333333
   &:first-child
     background-color: #333333
     &::before
@@ -397,28 +449,30 @@ input[type="range"]::-ms-fill-upper
 // ---------------------------------------- video
 
 .gallery
+  position: relative
+  z-index: 100
   background-color: $dark-bg-color
   padding-top: 75px
-  height: 2200px
+  height: 2199px
   overflow: hidden
   box-shadow: inset 0 0 40px
   &-images
-    display: flex
     margin-top: 75px
-  & * > img
-    margin-bottom: 22px
-  &-column
-    &:not(:last-child)
-      margin-right: 36px
-    &:nth-child(odd)
-      margin-top: 50px
-
+  &-img-inner
+    column-count: 3
+    column-gap: 36px
+    background-image: linear-gradient(0deg, #000000 0%, #000000 20%, rgba(0, 0, 0, 0) 35%)
+    z-index: 100
+    height: 2500px
   &-img
-    display: block
+    position: relative
+    z-index: -1
     width: 456px
-    height: 570px
-    &-2
-      height: 456px
+    margin-bottom: 22px
+    &:nth-child(9)
+      margin-top: 50px
+    &:first-child
+      margin-top: 50px
 
 // ---------------------------------------- gallery
 
@@ -429,11 +483,10 @@ input[type="range"]::-ms-fill-upper
   &-type-title
     display: block
     font-family: 'Roboto', sans-serif
-    margin-bottom: 50px
+    margin-bottom: 48px
     font-weight: bold
     font-size: 28px
     line-height: 33px
-    color: #FFFFFF
   &-wrapper
     display: flex
   &-img
@@ -454,7 +507,6 @@ input[type="range"]::-ms-fill-upper
     font-weight: 300
     font-size: 22px
     line-height: 26px
-    color: #FFFFFF
   &-btn
     display: block
     margin-right: 26px
@@ -473,11 +525,10 @@ input[type="number"]::-webkit-inner-spin-button
     width: 50px
     height: 50px
     background: transparent
-    border: 3px solid #FFFFFF
+    border: 3px solid #000
     border-left: none
     border-right: none
     margin-left: -5px
-    color: #fff
     font-family: 'Roboto', sans-serif
     font-weight: 300
     font-size: 22px
@@ -486,12 +537,12 @@ input[type="number"]::-webkit-inner-spin-button
     outline: none
   &-wrapper
     display: flex
-    margin-bottom: 35px
+    margin-bottom: 11px
     &:last-child
       margin-bottom: 50px
 
 .ticket-type-wrapper
-  margin-bottom: 50px
+  margin-bottom: 26px
   display: flex
   align-items: center
 
@@ -502,16 +553,17 @@ input[type="number"]::-webkit-inner-spin-button
     font-weight: 300
     font-size: 22px
     line-height: 26px
-    color: #FFFFFF
     margin-bottom: 14px
   &-title
     display: block
     margin-left: 50px
-    margin-bottom: 11px
+    margin-bottom: 26px
   &-total
     letter-spacing: 1.65px
+    margin-bottom: 60px
   &-buy-btn
-    background-color: #FFFFFF
+    background-color: #000
+    color: #fff
     border-radius: 2px
     width: 175px
     height: 50px
@@ -525,6 +577,11 @@ input[type="number"]::-webkit-inner-spin-button
     transition-duration: .2s
     border: none
     cursor: pointer
+    &:active
+      & .hide
+        display: block
+      & .form
+        animation: form-animate 1s
     &:hover
       background-color: $font-gold
     &:active
@@ -535,8 +592,7 @@ input[type="number"]::-webkit-inner-spin-button
   width: 55px
   height: 50px
   background: transparent
-  border: 3px solid #FFFFFF
-  color: #fff
+  border: 3px solid #000
   font-family: 'Roboto', sans-serif
   font-weight: normal
   font-size: 32px
@@ -565,25 +621,452 @@ input[type="number"]::-webkit-inner-spin-button
   line-height: 18px
   user-select: none
   margin-top: 7px
-  margin-left: 12px
+  margin-left: 13px
 
 .ticket-type-wrapper label:before
   content: ""
   display: block
-  width: 17px
-  height: 17px
+  width: 15px
+  height: 15px
   position: absolute
   left: 0
   bottom: 1px
   border-radius: 50%
-  border: 2px solid #fff
+  border: 2px solid #000
   margin-left: -12px
 
 .ticket-type-wrapper input[type=radio]:checked + label:before
+  position: absolute
   border: none
-  background: url('../images/checked.svg') 0 0 no-repeat
+  width: 20px
+  height: 20px
+  background: url('../images/checked.png') no-repeat
 
 // ------------------------ tickets
+
+.form
+  position: relative
+  font-family: 'Roboto', sans-serif
+  width: 1440px
+  height: 845px
+  background-color: #fff
+  display: flex
+  justify-content: center
+  align-items: center
+  &-wrapper
+    position: fixed
+    top: 0
+    height: 100vh
+    width: 100vw
+    background-color: rgba(0, 0, 0, 0.8)
+    display: flex
+    justify-content: center
+    align-items: center
+    z-index: 1000
+  &-container
+    display: flex
+    justify-content: space-between
+    width: 970px
+    height: 663px
+  &-logo
+    width: 85px
+    height: 41px
+    background-image: url(../images/logo-form.svg)
+  &-title
+    font-family: 'Forum', cursive
+    font-size: 50px
+    line-height: 55px
+    letter-spacing: normal
+    margin-bottom: 15px
+  &-subtitle
+    display: block
+    font-size: 18px
+    line-height: 21px
+    color: #710707
+    font-weight: normal
+    margin-bottom: 10px
+  &-line
+    background: #740C11
+    opacity: 0.9
+    height: 3px
+    border: none
+    width: 100%
+    margin-bottom: 60px
+  &-date
+    opacity: 0
+    position: absolute
+    z-index: 9
+    &-select
+      position: absolute
+      display: block
+      width: 17px
+      height: 17px
+      background-image: url('../images/select.svg')
+      right: 20px
+      margin-left: 15px
+      z-index: 5
+    &-label
+      display: block
+      width: 15px
+      height: 15px
+      background-image: url('../images/date.svg')
+      background-size: cover
+      margin-right: 15px
+      background-position: center
+    &-wrapper
+      position: relative
+      display: flex
+      align-items: center
+      border: 1px solid #030303
+      width: 190px
+      height: 45px
+      padding-left: 15px
+      margin-bottom: 20px
+  &-time
+    &-label
+      background-image: url('../images/time.svg')
+  &-placeholder
+    display: block
+    font-size: 18px
+    line-height: 21px
+    color: #030303
+    font-weight: 400
+  &-name
+    position: absolute
+    background-color: transparent
+    border: none
+    margin-left: 25px
+    width: 350px
+    &-wrapper
+      width: 400px
+      height: 45px
+      border: 1px solid #030303
+    &-label
+      background-image: url('../images/name.svg')
+      height: 18px
+  &-email
+    &-label
+      background-image: url('../images/email.svg')
+      height: 12px
+  &-tel
+    &-label
+      background-image: url('../images/tel.svg')
+      height: 23px
+  &-select
+    opacity: 0
+    position: absolute
+    width: 20px
+    z-index: 9
+    right: 17px
+  &-type
+    &-label
+      background-image: url('../images/type.svg')
+
+.inputs
+  &-container
+    width: 400px
+  &-wrapper
+    display: flex
+    justify-content: space-between
+
+.form-entry-container
+  height: 135px
+  border: 1px solid #030303
+  padding: 10px 15px
+
+.entry
+  &-title
+    font-family: 'Forum', cursive
+    font-size: 18px
+    line-height: 20px
+    text-transform: capitalize
+    color: #9D8665
+    margin-bottom: 5px
+  &-line
+    background: #740C11
+    opacity: 0.9
+    height: 2px
+    border: none
+    margin-bottom: 18px
+  &-type
+    display: flex
+    justify-content: space-between
+    align-items: center
+    margin-bottom: 18px
+  &-type-name
+    font-weight: 400
+    font-size: 18px
+    line-height: 21px
+    color: #030303
+  &-basic-wrapper
+    display: flex
+    align-items: center
+  &-btn
+    width: 35px
+    height: 25px
+    background: #030303
+    color: #fff
+    border: none
+  &-less-btn
+    margin-right: -5px
+  &-more-btn
+    margin-left: -2px
+  &-basic-number
+    width: 35px
+    height: 25px
+    border-top: 1px solid #030303
+    border-bottom: 1px solid #030303
+    text-align: center
+
+.overview
+  &-container
+    position: relative
+    padding-top: 25px
+    width: 530px
+    padding-right: 30px
+    padding-left: 30px
+    border: 1px solid #030303
+  &-title
+    font-weight: 500
+    font-size: 32px
+    line-height: 37px
+    color: #272727
+    margin-bottom: 2px
+  &-subtitle
+    font-weight: 500
+    font-size: 22px
+    margin-bottom: 10px
+    color: #740C11
+  &-info
+    display: flex
+  &-temp-label
+    background-image: url(../images/temporary.svg)
+  &-img
+    position: absolute
+    top: 25px
+    right: 30px
+  &-price
+    margin-top: 22px
+    &-type
+      display: flex
+      align-items: center
+      margin-bottom: 5px
+  &-line
+    height: 2px
+    border: none
+    width: 100%
+    margin-top: 9px
+    margin-bottom: 10px
+    background-color: #740C11
+  &-cards
+    margin-bottom: 26px
+
+.info-text
+  font-weight: 300
+  font-size: 18px
+  line-height: 21px
+  color: #030303
+
+.price
+  &-type
+    &-number
+      display: flex
+      justify-content: center
+      align-items: center
+      background-color: #030303
+      border-radius: 5px
+      width: 32px
+      height: 20px
+      font-size: 18px
+      line-height: 21px
+      color: #A4A4A3
+      margin-right: 10px
+    &-text
+      font-size: 22px
+      line-height: 26px
+      color: #030303
+    &-total
+      position: absolute
+      right: 30px
+      font-size: 22px
+      line-height: 26px
+      color: #030303
+
+.front-card
+  position: relative
+  background-color: #BCBCBC
+  width: 360px
+  height: 211px
+  border-radius: 4px
+  padding-top: 15px
+  padding-left: 20px
+  z-index: 100
+.card
+  &-label
+    display: block
+    font-size: 12px
+    line-height: 14px
+    color: #161615
+    margin-bottom: 5px
+  &-number-input
+    width: 215px
+    height: 35px
+    border: none
+    margin-bottom: 10px
+  &-name-input
+    width: 320px
+    height: 35px
+    border: none
+
+.exp-date-input
+  width: 72px
+  height: 35px
+  border: none
+  padding-left: 10px
+  &::placeholder
+    font-size: 12px
+    line-height: 14px
+    color: #161615
+
+.card-btns
+  display: flex
+  flex-direction: column
+
+.card-btn-input
+  display: flex
+
+.date-btn
+  position: relative
+  width: 28px
+  background-color: #fff
+  border: none
+  height: 17.5px
+  display: flex
+  justify-content: center
+
+.date-up
+  position: absolute
+  bottom: 2px
+.date-down
+  display: block
+  position: absolute
+  top: 2px
+  right: 12px
+
+.card-date-inputs
+  display: flex
+  width: 215px
+  justify-content: space-between
+  margin-bottom: 10px
+
+.mastercard-img
+  width: 53px
+  height: 32px
+  background-image: url(../images/Mastercard.svg)
+
+.visa-img
+  width: 55px
+  height: 16px
+  background-image: url(../images/Visa.svg)
+  margin-bottom: 15px
+
+.card-imgs
+  position: absolute
+  top: 34px
+  right: 20px
+
+.overview-total
+  display: flex
+  font-size: 32px
+  line-height: 37px
+  color: #030303
+  justify-content: space-between
+  margin-bottom: 10px
+
+.total
+  &-price
+    font-weight: 500
+
+.back-card
+  padding-top: 25px
+  margin-top: -180px
+  margin-left: 110px
+  background-color: #939393
+  padding-left: 0
+  z-index: 10
+  &-line
+    height: 45px
+    background-color: #161615
+
+.cv
+  &-text
+    position: absolute
+    right: 35px
+    margin-top: 15px
+  &-input
+    position: absolute
+    right: 20px
+    top: 105px
+    width: 75px
+  &-span
+    display: block
+    position: absolute
+    width: 55px
+    font-size: 10px
+    line-height: 12px
+    color: #161615
+    right: 30px
+    top: 145px
+
+.book-btn
+  position: absolute
+  background: #710707
+  opacity: 0.9
+  font-size: 22px
+  line-height: 26px
+  width: 220px
+  height: 45px
+  color: #FFFFFF
+  border: none
+  right: 30px
+
+.close-btn
+  position: absolute
+  top: 30px
+  right: 30px
+  width: 25px
+  height: 25px
+  background-image: url(../images/close.png)
+  background-size: cover
+  border: none
+  background-color: transparent
+  cursor: pointer
+
+.hide
+  display: none
+
+@keyframes form-animate-from
+  from
+    right: -2000px
+  to
+    right: 0px
+
+@keyframes form-animate-back
+  from
+    right: 0px
+  to
+    right: -2000px
+
+// ------------------------ form
+
+.parallax
+  width: 100%
+  background-size: cover
+  background-attachment: fixed
+  background-image: url(../images/parallax.jpg)
+  height: 400px
+
+// ------------------------ parallax
 
 .contacts
   padding-top: 75px
@@ -598,11 +1081,9 @@ input[type="number"]::-webkit-inner-spin-button
     display: flex
     justify-content: space-between
   &-line
-    margin-bottom: 85px
-  &-img
-    margin-top: -10px
+    margin-bottom: 75px
   &-address
-    margin-top: 38px
+    margin-top: 50px
 
 .address
   display: block
@@ -611,7 +1092,7 @@ input[type="number"]::-webkit-inner-spin-button
   font-weight: 300
   font-size: 22px
   line-height: 26px
-  margin-bottom: 20px
+  margin-bottom: 25px
   &-phone,
   &-mail
     color: #000
@@ -625,6 +1106,7 @@ input[type="number"]::-webkit-inner-spin-button
   padding-bottom: 75px
   &-container
     display: flex
+    padding-bottom: 40px
   &-nav
     flex-direction: column
     flex-wrap: wrap
@@ -646,11 +1128,19 @@ input[type="number"]::-webkit-inner-spin-button
     display: flex
     align-items: flex-end
     list-style-type: none
-    margin-left: 4px
+    margin-left: -5px
     margin-bottom: 15px
+  &-links-about
+    display: flex
+    justify-content: space-between
+    align-items: center
+    padding-top: 50px
+  &-line
+    background-color: #666666
+    width: 100%
 
 .space
-  margin-right: 153px
+  margin-right: 160px
 
 .social
   &-item
@@ -665,7 +1155,7 @@ input[type="number"]::-webkit-inner-spin-button
     transition-duration: .2s
     cursor: pointer
     &:not(:last-child)
-      margin-right: 24px
+      margin-right: 25px
     &:hover
       border-color: $font-gold
       filter: drop-shadow(0px 0px 0px $font-gold)
@@ -673,5 +1163,14 @@ input[type="number"]::-webkit-inner-spin-button
         fill: $font-gold
   &-icon
     fill: #fff
+
+.about
+  font-family: Roboto
+  font-size: 22px
+  line-height: 22px
+  letter-spacing: 2px
+  color: #fff
+  &-space
+    margin-left: 84px
 
 // ---------------------------------------- footer
