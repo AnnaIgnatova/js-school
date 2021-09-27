@@ -216,6 +216,7 @@ html {
 .input-slide {
   position: absolute;
   opacity: 0;
+  cursor: pointer;
 }
 
 .input-slide + label {
@@ -255,6 +256,10 @@ html {
 .slider-btn:first-child {
   margin-left: -7px;
   margin-right: 7px;
+}
+
+.slider-btn:hover {
+  color: #9D8665;
 }
 
 .visiting {
@@ -570,6 +575,7 @@ input[type="range"]::-ms-fill-upper {
   width: 452px;
   height: 254px;
   cursor: pointer;
+  border: none;
 }
 
 .round {
@@ -582,7 +588,7 @@ input[type="range"]::-ms-fill-upper {
 }
 
 .round:hover {
-  background-color: #333333;
+  background-color: #710707;
 }
 
 .round:first-child {
@@ -597,12 +603,20 @@ input[type="range"]::-ms-fill-upper {
   font-size: 22px;
 }
 
+.round:first-child::before:hover {
+  color: #710707;
+}
+
 .round:last-child::after {
   content: "»";
   display: block;
   margin-top: -8px;
   margin-left: 30px;
   font-size: 22px;
+}
+
+.round:last-child::after:hover {
+  color: #710707;
 }
 
 .round-btns {
@@ -802,15 +816,6 @@ input[type="number"]::-webkit-inner-spin-button {
   cursor: pointer;
 }
 
-.amount-buy-btn:active .hide {
-  display: block;
-}
-
-.amount-buy-btn:active .form {
-  -webkit-animation: form-animate 1s;
-          animation: form-animate 1s;
-}
-
 .amount-buy-btn:hover {
   background-color: #9D8665;
 }
@@ -950,7 +955,7 @@ input[type="number"]::-webkit-inner-spin-button {
   line-height: 21px;
   color: #710707;
   font-weight: normal;
-  margin-bottom: 10px;
+  margin-bottom: 12px;
 }
 
 .form-line {
@@ -985,7 +990,7 @@ input[type="number"]::-webkit-inner-spin-button {
   height: 15px;
   background-image: url("../images/date.svg");
   background-size: cover;
-  margin-right: 15px;
+  margin-right: 14px;
   background-position: center;
 }
 
@@ -1053,6 +1058,15 @@ input[type="number"]::-webkit-inner-spin-button {
   right: 17px;
 }
 
+.form-option {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 300;
+  font-size: 18px;
+  line-height: 21px;
+  color: #030303;
+}
+
 .form-type-label {
   background-image: url("../images/type.svg");
 }
@@ -1073,7 +1087,7 @@ input[type="number"]::-webkit-inner-spin-button {
 .form-entry-container {
   height: 135px;
   border: 1px solid #030303;
-  padding: 10px 15px;
+  padding: 9px 15px;
 }
 
 .entry-title {
@@ -1082,7 +1096,7 @@ input[type="number"]::-webkit-inner-spin-button {
   line-height: 20px;
   text-transform: capitalize;
   color: #9D8665;
-  margin-bottom: 5px;
+  margin-bottom: 3px;
 }
 
 .entry-line {
@@ -1090,7 +1104,7 @@ input[type="number"]::-webkit-inner-spin-button {
   opacity: 0.9;
   height: 2px;
   border: none;
-  margin-bottom: 18px;
+  margin-bottom: 16px;
 }
 
 .entry-type {
@@ -1123,7 +1137,7 @@ input[type="number"]::-webkit-inner-spin-button {
 }
 
 .entry-btn {
-  width: 35px;
+  width: 37px;
   height: 25px;
   background: #030303;
   color: #fff;
@@ -1160,13 +1174,14 @@ input[type="number"]::-webkit-inner-spin-button {
   font-size: 32px;
   line-height: 37px;
   color: #272727;
-  margin-bottom: 2px;
+  margin-bottom: 5px;
+  display: block;
 }
 
 .overview-subtitle {
   font-weight: 500;
   font-size: 22px;
-  margin-bottom: 10px;
+  margin-bottom: 14px;
   color: #740C11;
 }
 
@@ -1174,6 +1189,7 @@ input[type="number"]::-webkit-inner-spin-button {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  margin-bottom: 6px;
 }
 
 .overview-temp-label {
@@ -1445,7 +1461,6 @@ input[type="number"]::-webkit-inner-spin-button {
 }
 
 .book-btn {
-  position: absolute;
   background: #710707;
   opacity: 0.9;
   font-size: 22px;
@@ -1455,6 +1470,49 @@ input[type="number"]::-webkit-inner-spin-button {
   color: #FFFFFF;
   border: none;
   right: 30px;
+  padding-top: 5px;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  -webkit-transition: background 0.25s ease-in-out;
+  transition: background 0.25s ease-in-out;
+  left: 250px;
+  z-index: 1000;
+}
+
+.ripple {
+  width: 2px;
+  height: 2px;
+  position: absolute;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.5);
+  -webkit-animation: rippleEffect 0.5s ease-in-out;
+          animation: rippleEffect 0.5s ease-in-out;
+  z-index: 1010;
+}
+
+@-webkit-keyframes rippleEffect {
+  0% {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+  }
+  100% {
+    opacity: 0;
+    -webkit-transform: scale(var(--scale));
+            transform: scale(var(--scale));
+  }
+}
+
+@keyframes rippleEffect {
+  0% {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+  }
+  100% {
+    opacity: 0;
+    -webkit-transform: scale(var(--scale));
+            transform: scale(var(--scale));
+  }
 }
 
 .close-btn {
