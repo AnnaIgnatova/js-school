@@ -1,3 +1,4 @@
+@import url("./fonts.css");
 * {
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
@@ -128,6 +129,12 @@ html {
   width: 54%;
 }
 
+@media screen and (max-width: 1440px) {
+  .header-nav-menu {
+    width: 30%;
+  }
+}
+
 .header-logo {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -178,7 +185,6 @@ header .header-nav {
 
 @media screen and (max-width: 1024px) {
   header .header-nav {
-    display: none;
     position: absolute;
     z-index: 2500;
     left: -20px;
@@ -260,6 +266,12 @@ header .header-nav {
   right: 0;
 }
 
+@media screen and (max-width: 1000px) {
+  .burger-menu {
+    margin-top: -8px;
+  }
+}
+
 .burger-menu-line {
   width: 32px;
   height: 2px;
@@ -277,9 +289,10 @@ header .header-nav {
 .burger-close-btn {
   -webkit-transition: .2s;
   transition: .2s;
-  display: none;
   background-color: transparent;
   border: none;
+  margin-top: -4px;
+  margin-right: -5px;
 }
 
 .nav-li-arrow {
@@ -383,11 +396,11 @@ header .header-nav {
 }
 
 .burger-img:first-child {
-  background-image: url(../images/burger-2.png);
+  background-image: url(../images/burger-2.webp);
 }
 
 .burger-img:nth-child(2) {
-  background-image: url(../images/burger-3.png);
+  background-image: url(../images/burger-3.webp);
 }
 
 .burger-img-container {
@@ -408,7 +421,7 @@ header .header-nav {
 .burger-img-big {
   width: 658px;
   height: 194px;
-  background-image: url(../images/burger-1.png);
+  background-image: url(../images/burger-1.webp);
   background-size: cover;
   background-position: center;
   margin-bottom: 20px;
@@ -462,10 +475,6 @@ header .header-nav {
   .burger-line {
     display: none;
   }
-}
-
-.burger-wrapper {
-  display: none;
 }
 
 .main {
@@ -536,13 +545,17 @@ header .header-nav {
   }
 }
 
+.welcome-wrapper {
+  opacity: 1;
+}
+
 .welcome-bg {
   position: absolute;
   right: 0px;
   top: -150px;
   width: 69%;
-  background-image: -webkit-gradient(linear, left top, right top, from(#000000), color-stop(1%, #000000), color-stop(30%, rgba(0, 0, 0, 0))), url(../images/welcome.jpg);
-  background-image: linear-gradient(90deg, #000000 0%, #000000 1%, rgba(0, 0, 0, 0) 30%), url(../images/welcome.jpg);
+  background-image: -webkit-gradient(linear, left top, right top, from(#000000), color-stop(1%, #000000), color-stop(30%, rgba(0, 0, 0, 0))), url(../images/welcome.webp);
+  background-image: linear-gradient(90deg, #000000 0%, #000000 1%, rgba(0, 0, 0, 0) 30%), url(../images/welcome.webp);
   height: 750px;
   background-repeat: no-repeat;
 }
@@ -572,7 +585,7 @@ header .header-nav {
     height: 546px;
     background-size: cover;
     margin-bottom: 30px;
-    background-image: url(../images/welcome.jpg);
+    background-image: url(../images/welcome.webp);
     top: 0;
     right: 0;
   }
@@ -679,7 +692,7 @@ header .header-nav {
 
 .welcome-button {
   position: relative;
-  padding: 23px 67px;
+  padding: 23px 66px;
   font-family: 'Roboto', sans-serif;
   text-decoration: none;
   color: #FFFFFF;
@@ -708,7 +721,7 @@ header .header-nav {
     height: 60px;
     font-size: 20px;
     line-height: 23px;
-    padding: 20px 46px;
+    padding: 20px 44.8px;
   }
 }
 
@@ -1058,7 +1071,7 @@ header .header-nav {
   .card {
     margin: auto;
     margin-right: 50px;
-    margin-bottom: 33px;
+    margin-bottom: 33.5px;
   }
   .card:nth-child(5) {
     margin-bottom: 33px;
@@ -1219,6 +1232,19 @@ header .header-nav {
   }
 }
 
+@media screen and (max-width: 770px) {
+  .overlay-input {
+    height: 92.5vw;
+    left: 57.5%;
+  }
+}
+
+@media screen and (max-width: 760px) {
+  .overlay-input {
+    height: 50vw;
+  }
+}
+
 @media screen and (max-width: 450px) {
   .overlay-input {
     height: 88vw;
@@ -1244,7 +1270,7 @@ header .header-nav {
 @media screen and (max-width: 1000px) {
   .explore {
     padding-top: 40px;
-    padding-bottom: 37px;
+    padding-bottom: 40px;
   }
 }
 
@@ -1345,7 +1371,7 @@ header .header-nav {
           transition-duration: .4s;
   width: 61.5%;
   height: 36.5vw;
-  background-image: url(../images/explore.jpg);
+  background-image: url(../images/explore.webp);
   background-size: cover;
 }
 
@@ -1353,6 +1379,20 @@ header .header-nav {
   .explore-img {
     width: 61.5%;
     height: 68.2vw;
+  }
+}
+
+@media screen and (max-width: 770px) {
+  .explore-img {
+    width: 60%;
+    height: 91.8vw;
+  }
+}
+
+@media screen and (max-width: 760px) {
+  .explore-img {
+    width: 62%;
+    height: 50vw;
   }
 }
 
@@ -1379,7 +1419,7 @@ header .header-nav {
   height: 36.5vw;
   position: relative;
   margin: auto;
-  background-image: url(../images/explore-overlay.jpg);
+  background-image: url(../images/explore-overlay.webp);
   background-size: cover;
   margin-top: 14px;
 }
@@ -1389,6 +1429,20 @@ header .header-nav {
     width: 70vw;
     height: 68.2vw;
     margin-top: 0;
+  }
+}
+
+@media screen and (max-width: 770px) {
+  .explore-img-overlay {
+    width: 95vw;
+    height: 91.8vw;
+  }
+}
+
+@media screen and (max-width: 760px) {
+  .explore-img-overlay {
+    width: 50vw;
+    height: 50vw;
   }
 }
 
@@ -1503,7 +1557,7 @@ input[type=range]::-ms-thumb {
           align-items: center;
   width: 100%;
   height: 650px;
-  background-image: url(../images/video.jpg);
+  background-image: url(../images/video.webp);
   background-size: cover;
   background-position: center;
 }
@@ -2414,7 +2468,7 @@ input[type=range]::-ms-thumb {
           transition-duration: .4s;
   width: 65%;
   height: 550px;
-  background-image: url(../images/tickets-img.jpg);
+  background-image: url(../images/tickets-img.webp);
   background-position: center;
   background-size: cover;
 }
@@ -3756,7 +3810,7 @@ input[type="number"]::-webkit-inner-spin-button {
   right: 30px;
   width: 25px;
   height: 25px;
-  background-image: url(../images/close.png);
+  background-image: url(../images/close.webp);
   background-size: cover;
   border: none;
   background-color: transparent;
@@ -3843,7 +3897,7 @@ input[type="number"]::-webkit-inner-spin-button {
   width: 100%;
   background-size: contain;
   background-attachment: fixed;
-  background-image: url(../images/parallax.jpg);
+  background-image: url(../images/parallax.webp);
   height: 400px;
   background-position: center;
 }
@@ -4070,6 +4124,12 @@ input[type="number"]::-webkit-inner-spin-button {
   }
 }
 
+@media screen and (max-width: 450px) {
+  .footer {
+    margin-top: 127px;
+  }
+}
+
 .footer-container {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -4246,7 +4306,7 @@ input[type="number"]::-webkit-inner-spin-button {
 
 @media screen and (max-width: 1000px) {
   .footer-links-about {
-    padding-top: 40px;
+    padding-top: 42px;
   }
 }
 
@@ -4374,4 +4434,12 @@ input[type="number"]::-webkit-inner-spin-button {
   .about:first-child {
     margin-left: 5px;
   }
+}
+
+.block {
+  display: block;
+}
+
+.opacity {
+  opacity: 0;
 }
