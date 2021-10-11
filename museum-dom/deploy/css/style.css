@@ -3356,6 +3356,7 @@ input[type="number"]::-webkit-inner-spin-button {
   opacity: 0;
   position: absolute;
   z-index: 9;
+  width: 160px;
 }
 
 .form-date-select {
