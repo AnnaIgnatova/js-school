@@ -3431,6 +3431,7 @@ input[type="number"]::-webkit-inner-spin-button {
   border: none;
   margin-left: 25px;
   width: 350px;
+  outline: none;
 }
 
 .form-name-wrapper {
@@ -3493,6 +3494,14 @@ input[type="number"]::-webkit-inner-spin-button {
 
 .form-type-label {
   background-image: url("../images/type.svg");
+}
+
+.warning {
+  position: absolute;
+  margin-top: 60px;
+  font-size: 12px;
+  margin-left: 20px;
+  color: red;
 }
 
 .inputs-container {
