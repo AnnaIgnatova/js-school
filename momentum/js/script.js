@@ -1,3 +1,4 @@
-import('./_clock.js');
-import('./_calendar.js');
-import('./_greeting.js');
+import('./modules/_localStorage.js');
+import('./modules/_clock.js');
+import('./modules/_calendar.js');
+import('./modules/_greeting.js');
