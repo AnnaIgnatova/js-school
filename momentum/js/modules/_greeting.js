@@ -4,10 +4,10 @@ const getTimeOfDay = () => {
   const date = new Date();
   const hours = date.getHours();
 
-  if (hours > 4 && hours < 12) return 'morning';
+  if (hours > 5 && hours < 12) return 'morning';
   if (hours > 11 && hours < 18) return 'day';
-  if (hours > 17 && hours < 23) return 'evening';
-  if (hours >= 0 && hours < 5) return 'night';
+  if (hours > 17 && hours <= 23) return 'evening';
+  if (hours >= 0 && hours < 6) return 'night';
 
   return;
 };
