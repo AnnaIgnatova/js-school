@@ -5,3 +5,4 @@ import('./modules/_greeting.js');
 import('./modules/_slider.js');
 import('./modules/_weather.js');
 import('./modules/_quotes.js');
+import('./modules/_audioPlayer.js');
