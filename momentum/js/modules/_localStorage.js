@@ -1,7 +1,9 @@
 const userName = document.querySelector('.name');
+const city = document.querySelector('.city');
 
 const setLocaleStorage = () => {
   localStorage.setItem('name', userName.value);
+  localStorage.setItem('city', city.value);
 };
 
 const getLocaleStorage = () => {

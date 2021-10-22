@@ -11,15 +11,41 @@
   <body>
     <header class="header">
       <div class="player">
-        <div class="player-controls">
-          <button class="play-prev player-icon"></button>
-          <button class="play player-icon"></button>
-          <button class="play-next player-icon"></button>
+        <div class="player-wrapper">
+          <div class="player-controls">
+            <button class="play-prev player-icon"></button>
+            <button class="play player-icon"></button>
+            <button class="play-next player-icon"></button>
+          </div>
+          <div class="player-input-container">
+            <span class="audio-author"></span>
+            <div class="audio-controls-container">
+              <input
+                type="range"
+                class="audio-progress"
+                value="0"
+                step="0.1"
+                min="0"
+                max="15"
+              />
+              <span class="audio-time audio-current-time">0:00</span>
+              <span class="audio-time audio-duration">0:15</span>
+            </div>
+          </div>
+          <button class="volume-type sound"></button>
+          <input
+                type="range"
+                class="volume-progress"
+                value="50"
+                min="0"
+                max="100"
+              />
         </div>
+
         <ul class="play-list"></ul>
       </div>
       <div class="weather">
-        <input type="text" class="city" value="Minsk" />
+        <input type="text" class="city" value="" />
         <i class="weather-icon owf"></i>
         <div class="weather-error"></div>
         <div class="description-container">
