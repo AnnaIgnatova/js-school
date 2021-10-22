@@ -1,3 +1,5 @@
+import { lang } from './_translate.js';
+
 const quote = document.querySelector('.quote');
 const author = document.querySelector('.author');
 const changeQuoteBtn = document.querySelector('.change-quote');
@@ -14,8 +16,8 @@ const quotes = await getQuotes();
 
 const setQuote = () => {
   let randomQuoteNum = Math.floor(Math.random() * (10 - 0));
-  quote.textContent = `"${quotes[randomQuoteNum].text}"`;
-  author.textContent = quotes[randomQuoteNum].author;
+  quote.textContent = `"${quotes[lang][randomQuoteNum].text}"`;
+  author.textContent = quotes[lang][randomQuoteNum].author;
 };
 
 setQuote();

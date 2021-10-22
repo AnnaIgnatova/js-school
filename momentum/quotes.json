@@ -1,42 +1,86 @@
-[
-  {
-    "text": "The greatest glory in living lies not in never falling, but in rising every time we fall",
-    "author": "Nelson Mandela"
-  },
-  {
-    "text": "The way to get started is to quit talking and begin doing",
-    "author": "Walt Disney"
-  },
-  {
-    "text": "Spread love everywhere you go. Let no one ever come to you without leaving happier",
-    "author": "Mother Teresa"
-  },
-  {
-    "text": "Always remember that you are absolutely unique. Just like everyone else",
-    "author": "Margaret Mead"
-  },
-  {
-    "text": "The future belongs to those who believe in the beauty of their dreams",
-    "author": "Eleanor Roosevelt"
-  },
-  {
-    "text": "It is during our darkest moments that we must focus to see the light",
-    "author": "Aristotle"
-  },
-  {
-    "text": "The only impossible journey is the one you never begin",
-    "author": "Tony Robbins"
-  },
-  {
-    "text": "Only a life lived for others is a life worthwhile",
-    "author": "Albert Einstein"
-  },
-  {
-    "text": "The purpose of our lives is to be happy",
-    "author": "Dalai Lama"
-  },
-  {
-    "text": "Life is what happens when you're busy making other plans",
-    "author": "John Lennon"
-  }
-]
+{
+  "en": [
+    {
+      "text": "The greatest glory in living lies not in never falling, but in rising every time we fall",
+      "author": "Nelson Mandela"
+    },
+    {
+      "text": "The way to get started is to quit talking and begin doing",
+      "author": "Walt Disney"
+    },
+    {
+      "text": "Spread love everywhere you go. Let no one ever come to you without leaving happier",
+      "author": "Mother Teresa"
+    },
+    {
+      "text": "Always remember that you are absolutely unique. Just like everyone else",
+      "author": "Margaret Mead"
+    },
+    {
+      "text": "The future belongs to those who believe in the beauty of their dreams",
+      "author": "Eleanor Roosevelt"
+    },
+    {
+      "text": "It is during our darkest moments that we must focus to see the light",
+      "author": "Aristotle"
+    },
+    {
+      "text": "The only impossible journey is the one you never begin",
+      "author": "Tony Robbins"
+    },
+    {
+      "text": "Only a life lived for others is a life worthwhile",
+      "author": "Albert Einstein"
+    },
+    {
+      "text": "The purpose of our lives is to be happy",
+      "author": "Dalai Lama"
+    },
+    {
+      "text": "Life is what happens when you're busy making other plans",
+      "author": "John Lennon"
+    }
+  ],
+  "ru": [
+    {
+      "text": "Величайшая слава в жизни заключается не в том, чтобы никогда не падать, а в том, чтобы подниматься каждый раз, когда мы падаем.",
+      "author": "Нельсон Мандела"
+    },
+    {
+      "text": "Чтобы начать, нужно перестать говорить и начать делать",
+      "author": "Уолт Дисней"
+    },
+    {
+      "text": "Распространяйте любовь везде, куда бы вы ни пошли. Пусть никто никогда не придет к тебе, не уйдя счастливее",
+      "author": "Мать Тереза"
+    },
+    {
+      "text": "Всегда помните, что вы абсолютно уникальны. Как и все",
+      "author": "Маргарет Мид"
+    },
+    {
+      "text": "Будущее принадлежит тем, кто верит в красоту своей мечты",
+      "author": "Элеонора Рузвельт"
+    },
+    {
+      "text": "Именно в самые темные моменты мы должны сосредоточиться, чтобы увидеть свет",
+      "author": "Аристотель"
+    },
+    {
+      "text": "Единственное невозможное путешествие - это то, чего вы никогда не начнете",
+      "author": "Тони Роббинс"
+    },
+    {
+      "text": "Только жизнь, прожитая для других, стоит жизни",
+      "author": "Альберт Эйнштейн"
+    },
+    {
+      "text": "Цель нашей жизни - быть счастливыми",
+      "author": "Далай Лама"
+    },
+    {
+      "text": "Жизнь - это то, что происходит, когда вы заняты другими планами",
+      "author": "Джон Леннон"
+    }
+  ]
+}
