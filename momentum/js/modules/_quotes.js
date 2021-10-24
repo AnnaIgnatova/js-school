@@ -23,3 +23,5 @@ const setQuote = () => {
 setQuote();
 
 changeQuoteBtn.addEventListener('click', setQuote);
+
+export { setQuote };

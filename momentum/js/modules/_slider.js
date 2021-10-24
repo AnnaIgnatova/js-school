@@ -3,12 +3,14 @@ const slidePrev = document.querySelector('.slide-prev');
 const slideNext = document.querySelector('.slide-next');
 
 let randomNum;
+let imgURLSelectFrom = 'github';
+let tags;
 
-const getRandomNum = () => {
-  randomNum = Math.floor(Math.random() * (21 - 1) + 1);
+const getRandomNum = (max, min) => {
+  randomNum = Math.floor(Math.random() * (max - min) + min);
 };
 
-getRandomNum();
+getRandomNum(21, 1);
 
 const getTimeOfDay = () => {
   const date = new Date();
@@ -24,26 +26,76 @@ const getTimeOfDay = () => {
 
 const getSlideNext = () => {
   randomNum = randomNum === 20 ? 1 : randomNum + 1;
-  setBg();
+  getImage();
 };
 const getSlidePrev = () => {
   randomNum = randomNum === 1 ? 20 : randomNum - 1;
-  setBg();
+  getImage();
 };
 
-const setBg = () => {
-  const timeOfDay = getTimeOfDay();
-  const bgNum = String(randomNum).padStart(2, '0');
-  const imgUrl = `https://raw.githubusercontent.com/annaignatova/stage1-tasks/assets/images/${timeOfDay}/${bgNum}.webp`;
+const setBg = (url) => {
   const img = new Image();
+  img.src = url;
 
-  img.src = imgUrl;
   img.onload = () => {
-    body.style.backgroundImage = `url('${imgUrl}')`;
+    body.style.backgroundImage = `url(${url})`;
   };
 };
 
-setBg();
+async function getLinkfromUnsplash() {
+  const url = `https://api.unsplash.com/photos/random?orientation=landscape&query=${tags}&client_id=toPVUTUIetbhaEsQwuwlSYr6ZmGoiSaJnDNzIGQqTTg`;
+  console.log(url);
+  const res = await fetch(url);
+  const data = await res.json();
+  setBg(data.urls.regular);
+}
+
+async function getLinkfromFlickr() {
+  getRandomNum(99, 0);
+  const url = `https://www.flickr.com/services/rest/?method=flickr.photos.search&api_key=203e996ee020066a79a11bdfaee6f867&tags=${tags}&extras=url_l&format=json&nojsoncallback=1`;
+  console.log(url);
+  const res = await fetch(url);
+  const data = await res.json();
+  setBg(data.photos.photo[randomNum].url_l);
+}
+
+const getURLfromGitHub = () => {
+  getRandomNum(21, 1);
+  const timeOfDay = getTimeOfDay();
+  const bgNum = String(randomNum).padStart(2, '0');
+  const url = `https://raw.githubusercontent.com/annaignatova/stage1-tasks/assets/images/${timeOfDay}/${bgNum}.webp`;
+  setBg(url);
+};
+
+function getImage() {
+  switch (imgURLSelectFrom) {
+    case 'unsplash': {
+      getLinkfromUnsplash();
+      break;
+    }
+    case 'github': {
+      getURLfromGitHub();
+      break;
+    }
+    case 'flickr': {
+      getLinkfromFlickr();
+      break;
+    }
+    default:
+      break;
+  }
+}
+
+getImage(getTimeOfDay());
+
+let changeImgURL = (imgURL, tag = getTimeOfDay()) => {
+  console.log(tags);
+  tags = tag === '' ? getTimeOfDay() : tag;
+  imgURLSelectFrom = imgURL;
+  getImage();
+};
 
 slidePrev.addEventListener('click', getSlidePrev);
 slideNext.addEventListener('click', getSlideNext);
+
+export { changeImgURL };

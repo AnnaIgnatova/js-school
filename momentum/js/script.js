@@ -6,3 +6,4 @@ import('./modules/_slider.js');
 import('./modules/_weather.js');
 import('./modules/_quotes.js');
 import('./modules/_audioPlayer.js');
+import('./modules/_settings.js')
