@@ -9,7 +9,7 @@ import './modules/audioPlayer.js';
 import './modules/settings.js';
 import './modules/links.js';
 
-console.log(`Ваша оценка - 160 баллов 
+console.log(`Оценка - 160 баллов 
 Отзыв по пунктам ТЗ:
 Выполненные пункты:
 1) время выводится в 24-часовом формате, например: 21:01:00 
