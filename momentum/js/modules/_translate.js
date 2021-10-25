@@ -8,6 +8,16 @@ let Translation = {
     settingsNav: ['Settings', 'Language', 'Image source', 'Hide/show blocks'],
     settingsLang: ['Choose language', 'English', 'Russian'],
     settingsImg: ['Choose images source', 'tags'],
+    settingsBlocks: [
+      'Choose blocks',
+      'Time block',
+      'Date block',
+      'Greeting block',
+      'Music block',
+      'Weather block',
+      'Quote block',
+      'Links block',
+    ],
   },
   ru: {
     greeting: ['Доброе утро', 'Добрый день', 'Добрый вечер', 'Доброй ночи'],
@@ -23,6 +33,16 @@ let Translation = {
     ],
     settingsLang: ['Выберите язык', 'Английский', 'Русский'],
     settingsImg: ['Выберите источник картинок', 'теги'],
+    settingsBlocks: [
+      'Выберите блоки',
+      'Время',
+      'Дата',
+      'Приветствие',
+      'Музыка',
+      'Погода',
+      'Цитаты',
+      'Ссылки',
+    ],
   },
 };
 

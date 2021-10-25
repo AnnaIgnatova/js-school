@@ -3,7 +3,7 @@ const slidePrev = document.querySelector('.slide-prev');
 const slideNext = document.querySelector('.slide-next');
 
 let randomNum;
-let imgURLSelectFrom = 'github';
+let imgURLSelectFrom;
 let tags;
 
 const getRandomNum = (max, min) => {
@@ -86,10 +86,7 @@ function getImage() {
   }
 }
 
-getImage(getTimeOfDay());
-
 let changeImgURL = (imgURL, tag = getTimeOfDay()) => {
-  console.log(tags);
   tags = tag === '' ? getTimeOfDay() : tag;
   imgURLSelectFrom = imgURL;
   getImage();

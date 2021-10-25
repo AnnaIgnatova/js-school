@@ -19,6 +19,7 @@ body {
   background: center/cover, rgba(0, 0, 0, 0.5);
   background-blend-mode: multiply;
   transition: background-image 1s ease-in-out;
+  overflow-y: hidden;
 }
 
 li {
@@ -129,6 +130,8 @@ li {
   width: 180px;
   min-height: 180px;
   text-align: left;
+  position: absolute;
+  right: 10px;
 }
 
 .weather-error {
@@ -442,10 +445,29 @@ input[type='range']::-webkit-slider-thumb {
 .img-source-select > input[type='text'] {
   padding-left: 10px;
   height: 30px;
-  width: 190px;
+  width: 50%;
+  margin-right: 50px;
+  margin-left: 50px;
 }
 .img-source-label {
   margin-bottom: 20px;
+}
+.settings-hide-blocks {
+  display: flex;
+  flex-direction: column;
+  align-items: self-start;
+}
+.select-blocks {
+  margin-bottom: 15px;
+  font-size: 18px;
+}
+.select-blocks > input[name='blocks'] {
+  margin-right: 10px;
+}
+.links-wrapper {
+  position: absolute;
+  bottom: 20px;
+  right: 30px;
 }
 .active-route {
   font-weight: bold;
@@ -458,6 +480,16 @@ input[type='range']::-webkit-slider-thumb {
   to {
     opacity: 1;
     margin-bottom: 20px;
+  }
+}
+@keyframes hideSettings {
+  from {
+    opacity: 1;
+    margin-bottom: 20px;
+  }
+  to {
+    opacity: 0;
+    margin-bottom: -50px;
   }
 }
 @media (max-width: 768px) {

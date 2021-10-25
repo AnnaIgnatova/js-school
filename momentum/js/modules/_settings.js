@@ -8,13 +8,88 @@ import { changeImgURL } from './_slider.js';
 
 const settingsImg = document.querySelector('.settings-img');
 const settings = document.querySelector('.settings');
-let langItem;
-let langBlock;
+const links = document.querySelector('.links-wrapper');
+const player = document.querySelector('.player');
+const weather = document.querySelector('.weather');
+const time = document.querySelector('.time');
+const date = document.querySelector('.date');
+const greeting = document.querySelector('.greeting-container');
+const quote = document.querySelector('.footer');
+
 let langInputs;
-let imgItem;
-let imgBlock;
 let imgInputs;
 let imgTagsInputs;
+let blocksInputs;
+let blocksArr = [time, date, greeting, player, weather, quote, links];
+const imgTypes = ['github', 'unsplash', 'flickr'];
+let inputImgId;
+let inputImgType;
+
+let inputLangId = 0;
+
+const initSettingsBlock = () => {
+  let settingsBlocksArr;
+  if (JSON.parse(localStorage.getItem('settings-blocks'))) {
+    settingsBlocksArr = JSON.parse(localStorage.getItem('settings-blocks'));
+
+    settingsBlocksArr.forEach((block, index) => {
+      if (block) {
+        blocksArr[index].classList.remove('hide');
+      } else {
+        blocksArr[index].classList.add('hide');
+      }
+    });
+  } else {
+    settingsBlocksArr = [true, true, true, true, true, true, true];
+  }
+  return settingsBlocksArr;
+};
+
+const initImagesBlock = () => {
+  let settingsImagesBlock;
+  let settingsTags;
+
+  if (localStorage.getItem('settings-images-tags')) {
+    settingsTags = localStorage.getItem('settings-images-tags');
+  } else {
+    localStorage.setItem('settings-images-tags', '');
+  }
+
+  if (JSON.parse(localStorage.getItem('settings-images'))) {
+    settingsImagesBlock = JSON.parse(localStorage.getItem('settings-images'));
+    settingsImagesBlock.forEach((block, index) => {
+      if (block === true && index !== inputImgId) {
+        inputImgId = index;
+        inputImgType = imgTypes[index];
+        changeImgURL(inputImgType, settingsTags);
+      }
+    });
+  } else {
+    localStorage.setItem(
+      'settings-images',
+      JSON.stringify([true, false, false])
+    );
+  }
+};
+
+const initLangBlock = () => {
+  let settingsLangBlock;
+  if (localStorage.getItem('settings-lang')) {
+    settingsLangBlock = localStorage.getItem('settings-lang');
+    changeLang(settingsLangBlock);
+    inputLangId = settingsLangBlock === 'en' ? 0 : 1;
+    showGreeting();
+    showDate();
+    setQuote();
+    getWeatherInfo();
+  } else {
+    localStorage.setItem('settings-lang', 'en');
+  }
+};
+
+initSettingsBlock();
+initImagesBlock();
+initLangBlock();
 
 const createSettingsNav = () => {
   return ` 
@@ -22,7 +97,7 @@ const createSettingsNav = () => {
     <ul>
       <li class="settings-item lang-item">${Translation[lang].settingsNav[1]}</li>
       <li class="settings-item img-item">${Translation[lang].settingsNav[2]}</li>
-      <li>${Translation[lang].settingsNav[3]}</li>
+      <li class="settings-item blocks-item">${Translation[lang].settingsNav[3]}</li>
     </ul>
   `;
 };
@@ -90,9 +165,42 @@ const createSettingsImgBlock = () => {
   `;
 };
 
-let inputLangId = 0;
-let inputImgId = 0;
-let inputImgType;
+const createSettingsHideBlocks = () => {
+  return `
+  <div class="nav-title">${Translation[lang].settingsBlocks[0]}</div>
+  <div class="settings-hide-blocks">
+    <div class="select-blocks">
+      <input type="checkbox" name="blocks" id="time"/>
+      <label for="time">${Translation[lang].settingsBlocks[1]}</label>
+    </div>
+    <div class="select-blocks">
+      <input type="checkbox" name="blocks" id="date"/>
+      <label for="date">${Translation[lang].settingsBlocks[2]}</label>
+    </div>
+    <div class="select-blocks">
+      <input type="checkbox" name="blocks" id="greeting"/>
+      <label for="greeting">${Translation[lang].settingsBlocks[3]}</label>
+    </div>
+    <div class="select-blocks">
+      <input type="checkbox" name="blocks" id="music"/>
+      <label for="music">${Translation[lang].settingsBlocks[4]}</label>
+    </div>
+    <div class="select-blocks">
+      <input type="checkbox" name="blocks" id="weather"/>
+      <label for="weather">${Translation[lang].settingsBlocks[5]}</label>
+    </div>
+    <div class="select-blocks">
+      <input type="checkbox" name="blocks" id="quote"/>
+      <label for="quote">${Translation[lang].settingsBlocks[6]}</label>
+    </div>
+    <div class="select-blocks">
+      <input type="checkbox" name="blocks" id="links"/>
+      <label for="links">${Translation[lang].settingsBlocks[7]}</label>
+    </div>
+  </div>
+  `;
+};
+
 let currentRoute = 0;
 
 const clearInputs = (inputs) => {
@@ -105,6 +213,7 @@ const addNewEventsOnLang = () => {
   langInputs.forEach((input, index) => {
     input.addEventListener('input', () => {
       inputLangId = index;
+      localStorage.setItem('settings-lang', input.value);
       changeLang(input.value);
       showGreeting();
       showDate();
@@ -116,17 +225,81 @@ const addNewEventsOnLang = () => {
 };
 
 const addEventsOnImages = () => {
+  let settingsImagesBlock = JSON.parse(localStorage.getItem('settings-images'));
+  let settingsTags = localStorage.getItem('settings-images-tags');
+
   imgInputs.forEach((input, index) => {
     input.addEventListener('input', () => {
-      inputImgId = index;
-      inputImgType = input.id;
-      clearInputs(imgTagsInputs);
-      changeImgURL(inputImgType);
+      if (index !== inputImgId) {
+        inputImgId = index;
+        inputImgType = input.id;
+        clearInputs(imgTagsInputs);
+        settingsTags = '';
+        changeImgURL(inputImgType, settingsTags);
+        localStorage.setItem('settings-images-tags', settingsTags);
+      }
+
+      [...settingsImagesBlock].forEach((item, index) => {
+        if (index === inputImgId) {
+          settingsImagesBlock[index] = true;
+        } else {
+          settingsImagesBlock[index] = false;
+        }
+      });
+      localStorage.setItem(
+        'settings-images',
+        JSON.stringify(settingsImagesBlock)
+      );
     });
   });
-  imgTagsInputs.forEach((input) => {
+
+  imgTagsInputs.forEach((input, index) => {
+    if (index + 1 === inputImgId) input.value = settingsTags;
+  });
+
+  imgTagsInputs.forEach((input, index) => {
     input.addEventListener('change', () => {
+      settingsTags = input.value;
+      console.log(settingsTags);
       changeImgURL(inputImgType, input.value);
+      localStorage.setItem('settings-images-tags', settingsTags);
+    });
+  });
+};
+
+const addEventsOnBlocks = () => {
+  let settingsBlocksArr = initSettingsBlock();
+
+  blocksInputs.forEach((input, index) => {
+    if (settingsBlocksArr[index]) {
+      input.checked = true;
+      blocksArr[index].classList.remove('hide');
+    } else {
+      input.checked = false;
+      blocksArr[index].classList.add('hide');
+    }
+  });
+
+  blocksInputs.forEach((input, index) => {
+    input.checked = settingsBlocksArr[index];
+    input.addEventListener('input', () => {
+      if (input.checked === true) {
+        blocksArr[index].style.animation = 'showSettings 0.5s';
+        settingsBlocksArr[index] = true;
+        setTimeout(() => {
+          blocksArr[index].classList.remove('hide');
+        }, 500);
+      } else {
+        blocksArr[index].style.animation = 'hideSettings 0.5s';
+        settingsBlocksArr[index] = false;
+        setTimeout(() => {
+          blocksArr[index].classList.add('hide');
+        }, 500);
+      }
+      localStorage.setItem(
+        'settings-blocks',
+        JSON.stringify(settingsBlocksArr)
+      );
     });
   });
 };
@@ -167,9 +340,8 @@ function chooseRoute(route = currentRoute) {
   switch (route) {
     case 0: {
       createSettingsBlock(createSettingsLangBlock());
-      langItem = document.querySelector('.lang-item');
-      langBlock = document.querySelector('.settings-lang');
       langInputs = document.querySelectorAll('input[name="lang"]');
+
       langInputs[inputLangId].checked = true;
 
       addNewEventsOnLang();
@@ -178,13 +350,16 @@ function chooseRoute(route = currentRoute) {
     }
     case 1: {
       createSettingsBlock(createSettingsImgBlock());
-      imgItem = document.querySelector('.img-item');
-      imgBlock = document.querySelector('.settings-img-source');
       imgInputs = document.querySelectorAll('input[name="images"]');
       imgTagsInputs = document.querySelectorAll('input[name="tags"]');
       imgInputs[inputImgId].checked = true;
-
       addEventsOnImages();
+      break;
+    }
+    case 2: {
+      createSettingsBlock(createSettingsHideBlocks());
+      blocksInputs = document.querySelectorAll('input[name="blocks"]');
+      addEventsOnBlocks();
       break;
     }
     default:
@@ -193,7 +368,11 @@ function chooseRoute(route = currentRoute) {
 }
 
 chooseRoute();
-
 settingsImg.addEventListener('click', () => {
   settings.classList.toggle('hide');
 });
+
+window.addEventListener('beforeunload', () => {
+  localStorage.setItem('settings-blocks', JSON.stringify(settingsBlocksArr));
+});
+
