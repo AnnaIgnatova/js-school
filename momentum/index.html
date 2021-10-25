@@ -110,8 +110,35 @@
         </g>
       </svg>
     </div>
-    <div class="links-wrapper">Links</div>
+    <div class="links-wrapper">
+      <div class="links-container hide">
+        <div class="all-links animate-back-all-links">
+          <ul class="all-links-nav"></ul>
+          <button class="new-link">New Link</button>
+        </div>
+        <div class="new-link-container animate-back-new-link">
+          <button class="links-back">←</button>
+          <label for="name-link">Name</label>
+          <input
+            type="text"
+            name="add-link"
+            id="name-link"
+            class="name-link-input"
+          />
+          <label for="name-link">Link</label>
+          <input
+            type="text"
+            name="add-link"
+            id="source-link"
+            class="souce-link-input"
+          />
+          <button class="create-link">Create</button>
+          <button class="edit-link-btn hide">Edit</button>
+        </div>
+      </div>
+      <span class="links-title">Links</span>
+    </div>
 
-    <script type="module" src="js/script.js"></script>
+    <script src="js/script.js"></script>
   </body>
 </html>
