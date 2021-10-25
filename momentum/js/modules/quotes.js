@@ -5,7 +5,7 @@ const author = document.querySelector('.author');
 const changeQuoteBtn = document.querySelector('.change-quote');
 
 async function getQuotes() {
-  const quotes = '../../quotes.json';
+  const quotes = 'quotes.json';
   const res = await fetch(quotes);
   const data = await res.json();
 
