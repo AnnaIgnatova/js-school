@@ -1,4 +1,4 @@
-import { lang } from './_translate.js';
+import { lang } from './translate.js';
 
 const dateItem = document.querySelector('.date');
 

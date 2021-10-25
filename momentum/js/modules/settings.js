@@ -1,10 +1,10 @@
-import { showDate } from './_calendar.js';
-import { showGreeting } from './_greeting.js';
-import { setQuote } from './_quotes.js';
-import { changeLang, lang } from './_translate.js';
-import { getWeatherInfo } from './_weather.js';
-import { Translation } from './_translate.js';
-import { changeImgURL } from './_slider.js';
+import { showDate } from './calendar.js';
+import { showGreeting } from './greeting.js';
+import { setQuote } from './quotes.js';
+import { changeLang, lang } from './translate.js';
+import { getWeatherInfo } from './weather.js';
+import { Translation } from './translate.js';
+import { changeImgURL } from './slider.js';
 
 const settingsImg = document.querySelector('.settings-img');
 const settings = document.querySelector('.settings');

@@ -1,4 +1,4 @@
-import { Translation, lang } from './_translate.js';
+import { Translation, lang } from './translate.js';
 
 const greetingItem = document.querySelector('.greeting');
 const name = document.querySelector('.name');

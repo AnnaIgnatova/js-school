@@ -1,4 +1,4 @@
-import { showDate } from './_calendar.js';
+import { showDate } from './calendar.js';
 
 const timeItem = document.querySelector('.time');
 

@@ -1,4 +1,4 @@
-import { lang } from './_translate.js';
+import { lang } from './translate.js';
 
 const quote = document.querySelector('.quote');
 const author = document.querySelector('.author');

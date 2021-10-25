@@ -1,4 +1,4 @@
-import { Translation, lang } from './_translate.js';
+import { Translation, lang } from './translate.js';
 
 const weatherIcon = document.querySelector('.weather-icon');
 const temperature = document.querySelector('.temperature');
