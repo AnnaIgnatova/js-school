@@ -468,9 +468,189 @@ input[type='range']::-webkit-slider-thumb {
   position: absolute;
   bottom: 20px;
   right: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: self-end;
+}
+.links-container {
+  width: 220px;
+  height: 100%;
+  background-color: #fff;
+  margin-bottom: 20px;
+  padding: 20px;
+  display: flex;
+  overflow-x: hidden;
+  border-radius: 4px;
+  animation: showSettings 0.5s;
+}
+.all-links {
+  width: 100px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.links-container > .all-links > ul > li {
+  width: 400px;
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+}
+.links-container > .all-links > ul > li > a {
+  text-decoration: none;
+  color: rgb(138, 138, 138);
+  text-align: left;
+  width: 135px;
+  transition: 0.2s;
+}
+.links-container > .all-links > ul > li > a:hover {
+  color: rgb(12, 12, 12);
+}
+.new-link {
+  width: 180px;
+  background-color: rgb(160, 159, 159);
+  border: none;
+  cursor: pointer;
+  padding: 5px;
+  font-size: 16px;
+  color: #fff;
+  border-radius: 4px;
+  transition: 0.2s;
+}
+.new-link:hover {
+  background-color: rgb(68, 68, 68);
+}
+.link-icon {
+  width: 15px;
+  height: 15px;
+  background-size: contain;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+.edit-link {
+  background-image: url(../assets/svg/edit.svg);
+}
+.delete-link {
+  margin-left: 10px;
+  background-image: url(../assets/svg/delete.svg);
+}
+.new-link-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.new-link-container > label {
+  color: rgb(83, 83, 83);
+  align-self: flex-start;
+  display: flex;
+  margin-bottom: 5px;
+}
+.new-link-container > input {
+  margin-bottom: 10px;
+  height: 25px;
+  border: none;
+  border-bottom: 2px solid rgb(150, 150, 150);
+}
+.all-links-nav {
+  margin-bottom: 20px;
+}
+.links-back {
+  display: flex;
+  align-self: start;
+  margin-bottom: 20px;
+  background-color: transparent;
+  font-size: 20px;
+  border: none;
+  cursor: pointer;
+}
+.create-link,
+.edit-link-btn {
+  background-color: hsla(192, 33%, 31%, 0.95);
+  padding: 7px;
+  width: 100px;
+  border-radius: 15px;
+  border: none;
+  color: #fff;
+  font-size: 14px;
+  margin: 10px;
+  cursor: pointer;
+  transition: 0.2s;
+  letter-spacing: 1.1px;
+}
+
+.create-link:hover,
+.edit-link-btn:hover {
+  background-color: hsla(192, 25%, 25%, 0.95);
 }
 .active-route {
   font-weight: bold;
+}
+.animate-new-link {
+  transform: translateX(-100px);
+}
+.animate-back-new-link {
+  transform: translateX(200px);
+}
+.animate-all-links {
+  transform: translate(-200px);
+}
+.animate-back-all-links {
+  transform: translate(0px);
+}
+.links-title {
+  cursor: pointer;
+  font-size: 20px;
+  margin-right: 20px;
+  transition: 0.2s;
+}
+.links-title:hover {
+  color: rgb(172, 172, 172);
+}
+
+.new-links-animation {
+  animation: newLinksAnimate 1s;
+}
+.all-links-animation {
+  animation: allLinksAnimate 1s;
+}
+.new-links-back-animation {
+  animation: newLinksAnimateBack 1s;
+}
+.all-links-back-animation {
+  animation: allLinksAnimateBack 1s;
+}
+
+@keyframes newLinksAnimate {
+  from {
+    transform: translateX(200px);
+  }
+  to {
+    transform: translateX(-100px);
+  }
+}
+@keyframes allLinksAnimate {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translate(-200px);
+  }
+}
+@keyframes newLinksAnimateBack {
+  from {
+    transform: translateX(-100px);
+  }
+  to {
+    transform: translateX(200px);
+  }
+}
+@keyframes allLinksAnimateBack {
+  from {
+    transform: translate(-200px);
+  }
+  to {
+    transform: translateX(0);
+  }
 }
 @keyframes showSettings {
   from {

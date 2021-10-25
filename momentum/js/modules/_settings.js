@@ -69,6 +69,8 @@ const initImagesBlock = () => {
       'settings-images',
       JSON.stringify([true, false, false])
     );
+    changeImgURL('github');
+
   }
 };
 
@@ -133,7 +135,7 @@ const createSettingsImgBlock = () => {
   <div class="settings-img-source">
       <span class="nav-title">${Translation[lang].settingsImg[0]}</span>
       <div class="img-source-select">
-        <input type="radio" name="images" id="github"/>
+        <input type="radio" name="images" id="github" checked/>
         <label for="github"
           ><img
             class="source-img"
@@ -372,7 +374,4 @@ settingsImg.addEventListener('click', () => {
   settings.classList.toggle('hide');
 });
 
-window.addEventListener('beforeunload', () => {
-  localStorage.setItem('settings-blocks', JSON.stringify(settingsBlocksArr));
-});
 
