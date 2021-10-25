@@ -60,7 +60,8 @@ async function getLinkfromFlickr() {
 }
 
 const getURLfromGitHub = () => {
-  getRandomNum(21, 1);
+  if (randomNum > 20) getRandomNum(21, 1);
+
   const timeOfDay = getTimeOfDay();
   const bgNum = String(randomNum).padStart(2, '0');
   const url = `https://raw.githubusercontent.com/annaignatova/stage1-tasks/assets/images/${timeOfDay}/${bgNum}.webp`;
