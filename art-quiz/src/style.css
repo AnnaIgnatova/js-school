@@ -2,3 +2,10 @@
 @import url(./css/welcome.css);
 @import url(./css/footer.css);
 @import url(./css/settings.css);
+@import url(./css/categories.css);
+@import url(./css/pic-question.css);
+@import url(./css/animation.css);
+
+.hidden {
+  display: none;
+}
