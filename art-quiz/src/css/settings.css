@@ -1,0 +1,89 @@
+.settings {
+  padding: 2% 7%;
+}
+.header-settings {
+  display: flex;
+  justify-content: space-between;
+}
+.settings-back {
+  display: flex;
+  align-items: center;
+  width: 100px;
+  cursor: pointer;
+}
+.back-text {
+  color: #fff;
+  font-family: 'Gilroy-Regular';
+  font-size: 1.25rem;
+  margin-left: 1%;
+}
+.back-icon {
+  width: 11px;
+  height: 20px;
+  margin-right: 10%;
+}
+.close-icon {
+  width: 18px;
+  height: 18px;
+  cursor: pointer;
+}
+.settings-info {
+  margin-top: 10%;
+}
+.settings-info-text {
+  font-family: 'Gilroy-Bold';
+  font-size: 34px;
+  line-height: 28px;
+  letter-spacing: -0.9px;
+  color: #ffffff;
+  margin-bottom: 50px;
+  display: block;
+}
+.volume-input {
+  width: 492px;
+  margin-bottom: 20px;
+  display: block;
+}
+.volume-icons {
+  width: 492px;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 80px;
+}
+.settings-time-to-answer {
+  display: flex;
+  align-items: center;
+}
+.time-to-answer-btn {
+  background-color: #fff;
+  width: 33px;
+  height: 33px;
+  border-radius: 50%;
+  font-family: 'Gilroy-Bold';
+  font-size: 24px;
+  border: none;
+  cursor: pointer;
+  transition: 0.2s;
+}
+.time-to-answer-btn:hover {
+  background-color: #ffbca2;
+}
+.time-to-answer-input {
+  width: 70px;
+  color: #fff;
+  border: none;
+  font-family: 'Gilroy-Regular';
+  font-size: 24px;
+  background-color: transparent;
+  text-align: center;
+}
+.time-to-answer-input::-webkit-inner-spin-button,
+.time-to-answer-input::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+.settings-btns {
+  margin-top: 6%;
+  right: 7%;
+  margin-right: 0;
+}

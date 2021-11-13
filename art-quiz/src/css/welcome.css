@@ -1,0 +1,89 @@
+* {
+  margin: 0;
+  box-sizing: border-box;
+}
+.app {
+  height: 100vh;
+  background-color: #010101;
+}
+
+.welcome {
+  background-image: url(./../images/welcome.jpg);
+  height: 100vh;
+  background-position: left top 30%;
+  background-size: 81%;
+  display: flex;
+  justify-content: flex-end;
+  padding-right: 15%;
+  padding-top: 14%;
+}
+.welcome-settings {
+  position: absolute;
+  top: 6%;
+  right: 5%;
+  width: 36px;
+  height: 36px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+.welcome-settings:hover {
+  transform: rotateZ(45deg);
+}
+.welcome-title {
+  display: flex;
+  justify-content: center;
+}
+.welcome-title > h1 {
+  font-family: 'Gilroy-Bold';
+  color: #ffffff;
+  font-size: 112px;
+  line-height: 159px;
+  letter-spacing: -2.42341px;
+}
+.title-circle {
+  position: absolute;
+  width: 10rem;
+  height: 10rem;
+  border-radius: 50%;
+  background-color: transparent;
+  border: 2px solid #fff;
+}
+.title-circle:first-child {
+  margin-right: 17%;
+}
+.title-circle:nth-child(2) {
+  margin-right: 8%;
+}
+.welcome-btns {
+  position: absolute;
+  display: flex;
+  margin-top: 14%;
+  margin-right: -5%;
+}
+.welcome-btns > a {
+  text-decoration: none;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 1.25rem 0;
+  border: 1.5px solid #ffffff;
+  box-sizing: border-box;
+  border-radius: 60px;
+  font-family: 'Gilroy-Regular';
+  color: #fff;
+  font-size: 1.25rem;
+  transition: 0.2s;
+  width: 287px;
+}
+.welcome-btns > a:first-child {
+  margin-right: 40px;
+}
+.welcome-btns > a:hover {
+  background-color: #fff;
+  color: black;
+}
+.welcome-btns > a:active {
+  background-color: #ffbca2;
+  color: black;
+}
