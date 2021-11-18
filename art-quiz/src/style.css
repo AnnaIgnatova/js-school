@@ -4,7 +4,9 @@
 @import url(./css/settings.css);
 @import url(./css/categories.css);
 @import url(./css/pic-question.css);
+@import url(./css/artist-question.css);
 @import url(./css/animation.css);
+@import url(./css/modal.css);
 
 .hidden {
   display: none;

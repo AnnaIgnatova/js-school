@@ -1,5 +1,6 @@
 .categories {
   padding: 2% 7%;
+  height: 100vh;
 }
 .categories > header {
   display: flex;
@@ -58,6 +59,7 @@
 }
 .category-card {
   margin-bottom: 50px;
+  cursor: pointer;
 }
 .card-info {
   width: 195px;
@@ -99,11 +101,13 @@
   font-family: 'Gilroy-Regular';
   display: flex;
   align-items: center;
+  justify-content: center;
   transition: 0.4s;
-  transform: translateY(10px);
   visibility: hidden;
   opacity: 0.1;
   cursor: pointer;
+  user-select: none;
+  transition: 0.2s;
 }
 .category-card:hover .card-play-info {
   visibility: inherit;
@@ -113,24 +117,7 @@
 .card-img-1 {
   background-image: url(../images/img/109.jpg);
 }
-.card-play-info span {
-  width: 50%;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: 0.2s;
-}
-.card-play-info span:first-child {
-  border-right: 1px solid #c2c2c2;
-  border-radius: 0px 0px 0px 20px;
-}
-.card-play-info span:nth-child(2) {
-  border-radius: 0px 0px 20px 0px;
-}
-.card-play-info span:first-child:hover {
-  background-color: #ffbca2;
-}
-.card-play-info span:nth-child(2):hover {
+
+.card-play-info:hover {
   background-color: #ffbca2;
 }
