@@ -7,6 +7,7 @@
 @import url(./css/artist-question.css);
 @import url(./css/animation.css);
 @import url(./css/modal.css);
+@import url(./css/score.css);
 
 .hidden {
   display: none;

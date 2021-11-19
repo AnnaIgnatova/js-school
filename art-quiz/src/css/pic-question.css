@@ -1,5 +1,5 @@
 .pic-question {
-  padding: 5% 7%;
+  padding: 2% 7%;
   height: 100vh;
 }
 .progress-line {
@@ -26,7 +26,7 @@
 .question-progress {
   margin: auto;
   width: 70%;
-  margin-bottom: 60px;
+  margin-bottom: 30px;
   display: flex;
   align-items: center;
 }
@@ -48,29 +48,29 @@
   margin: auto;
   width: 70%;
   display: block;
-  margin-bottom: 3%;
+  margin-bottom: 1%;
 }
 .pic-question-pics {
   width: 70%;
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
+  justify-content: center;
   margin: auto;
 }
 .pic-question-pic {
   background-size: cover;
   background-position: center;
-  width: 48%;
-  height: 250px;
+  width: 40%;
+  height: 240px;
   border-radius: 20px;
   background-image: url(./../images/full/0full.jpg);
   margin-bottom: 3%;
   cursor: pointer;
   transition: 0.2s;
+  margin: 2%;
 }
 .pic-question-pic:hover {
   transform: scale(1.03);
-  box-shadow: white;
   -webkit-box-shadow: 0px 0px 20px 5px rgba(255, 255, 255, 0.3);
   -moz-box-shadow: 0px 0px 20px 5px rgba(255, 255, 255, 0.3);
   box-shadow: 0px 0px 20px 5px rgba(255, 255, 255, 0.3);

@@ -1,5 +1,5 @@
 .artist-question {
-  padding: 5% 7%;
+  padding: 2% 7%;
   height: 100vh;
 }
 .progress-line {
@@ -26,7 +26,7 @@
 .question-progress {
   margin: auto;
   width: 70%;
-  margin-bottom: 60px;
+  margin-bottom: 30px;
   display: flex;
   align-items: center;
 }
@@ -47,7 +47,7 @@
   margin: auto;
   width: 70%;
   display: block;
-  margin-bottom: 3%;
+  margin-bottom: 1%;
 }
 .artist-question-pic {
   width: 60%;

@@ -1,41 +1,64 @@
-.categories {
+.categories,
+.score {
   padding: 2% 7%;
   height: 100vh;
 }
-.categories > header {
+.categories > header,
+.score > header,
+.pic-question > header {
   display: flex;
   align-items: center;
   margin-bottom: 100px;
 }
-.categories .title-circle {
+.pic-question > header {
+  margin-bottom: 50px;
+}
+.categories .title-circle,
+.score .title-circle,
+.pic-question .title-circle {
   width: 62px;
   height: 62px;
   border: 1px solid rgba(255, 255, 255, 0.5);
 }
-.categories .title-circle:first-child {
+.categories .title-circle:first-child,
+.score .title-circle:first-child,
+.pic-question .title-circle:first-child {
   margin-left: -0.7%;
 }
-.categories .title-circle:nth-child(2) {
+.categories .title-circle:nth-child(2),
+.score .title-circle:nth-child(2),
+.pic-question .title-circle:nth-child(2) {
   margin-left: 0.9%;
 }
-.categories .welcome-title {
+.categories .welcome-title,
+.score .welcome-title,
+.pic-question .welcome-title {
   justify-content: flex-start;
   margin-right: 120px;
 }
-.categories .welcome-title > h1 {
+.categories .welcome-title > h1,
+.score .welcome-title > h1,
+.pic-question .welcome-title > h1 {
   font-size: 42px;
   line-height: 60px;
   letter-spacing: -0.914286px;
 }
 
-.categories .welcome-title > h1 span {
+.categories .welcome-title > h1 span,
+.score .welcome-title > h1 span,
+.pic-question .welcome-title > h1 span {
   color: #ffbca2;
 }
-.categories > header > ul {
+.categories > header > ul,
+.score > header > ul,
+.pic-question > header > ul {
   display: flex;
   align-items: center;
+  list-style-type: none;
 }
-.categories > header > ul > li > a {
+.categories > header > ul > li > a,
+.score > header > ul > li > a,
+.pic-question > header > ul > li > a {
   text-decoration: none;
   font-size: 22px;
   font-family: 'Gilroy-Regular';
@@ -43,11 +66,17 @@
   letter-spacing: -0.5px;
   color: #fff;
 }
-.categories > header > ul > li:nth-child(2) > a {
+.categories > header > ul > li:nth-child(2) > a,
+.score > header > ul > li:nth-child(3) > a,
+.pic-question > header > ul > li:nth-child(2) > a {
   color: #ffbca2;
   font-family: 'Gilroy-Bold';
 }
-.categories > header > ul > li:first-child {
+
+.categories > header > ul > li:first-child,
+.score > header > ul > li:first-child,
+.score > header > ul > li:nth-child(2),
+.pic-question > header > ul > li:first-child {
   margin-right: 90px;
 }
 .categories-cards {
