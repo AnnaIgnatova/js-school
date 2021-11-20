@@ -55,6 +55,7 @@ const wrongIcon = document.querySelector('.wrong');
 const score = document.querySelector('.score');
 const scoreCards = document.querySelector('.score-cards');
 const scoreNav = document.querySelector('.score-header');
+const nextQuizBtn = document.querySelector('.modal-next-quiz');
 
 const PIC_CATEGORY = [
   'Portrait',
@@ -237,6 +238,8 @@ const renderCard = (category, index) => {
   `;
 
   let cardImage = card.querySelector('.card-img');
+  let cardScore = card.querySelector('.card-play-info');
+
   cardImage.dataset.start = categoryIndex;
   cardImage.dataset.end = categoryIndex + 9;
   cardImage.dataset.index = index;
@@ -245,8 +248,10 @@ const renderCard = (category, index) => {
 
   if (!rightAnswers) {
     cardImage.style.filter = 'grayscale(100%)';
+    cardScore.classList.add('hidden');
   } else {
     cardImage.style.filter = 'grayscale(0%)';
+    cardScore.classList.remove('hidden');
   }
 
   cardImage.addEventListener('click', (e) => {
@@ -256,8 +261,6 @@ const renderCard = (category, index) => {
       startGame(e.target.dataset.start, e.target.dataset.end, cardImage);
     }
   });
-
-  let cardScore = card.querySelector('.card-play-info');
 
   cardScore.addEventListener('click', (e) => {
     console.log(e.target);
@@ -469,4 +472,11 @@ scoreNav.addEventListener('click', (e) => {
     currentBlock = categories;
     transitionHideBlocks(score, categories);
   }
+});
+
+nextQuizBtn.addEventListener('click', () => {
+  addAnimationHide(modalEndGame);
+  renderCategories();
+  transitionHideBlocks(picQuestion, categories);
+  currentBlock = categories;
 });

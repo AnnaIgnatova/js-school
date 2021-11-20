@@ -118,9 +118,9 @@
   margin: 0;
 }
 .settings-btns {
-  margin-top: -2%;
-  right: 7%;
-  margin-right: 0;
+  margin-top: 2%;
+  display: flex;
+  justify-content: flex-end;
 }
 .switch {
   position: relative;
@@ -195,4 +195,42 @@ input:checked + .slider:before {
 
 .slider.round:before {
   border-radius: 50%;
+}
+@media (max-width: 768px) {
+  .settings {
+    padding: 7% 7%;
+  }
+  .settings-btns {
+    align-items: flex-end;
+  }
+  .settings-btns > a:first-child {
+    margin-right: 0;
+  }
+  .settings-btns > a {
+    margin-bottom: 10px;
+  }
+}
+
+@media (max-width: 550px) {
+  .settings-info-text {
+    font-size: 24px !important;
+  }
+  .settings-btns {
+    margin-top: 7%;
+  }
+  .settings-btns > a {
+    width: 150px;
+  }
+  .volume-icons {
+    width: 100%;
+  }
+  .volume-input {
+    width: 100%;
+  }
+}
+@media (max-width: 420px) {
+  .settings-btns {
+    flex-direction: column;
+    align-items: flex-end;
+  }
 }

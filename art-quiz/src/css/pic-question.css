@@ -59,11 +59,10 @@
 }
 .pic-question-pic {
   background-size: cover;
-  background-position: center;
+  background-position: top;
   width: 40%;
   height: 240px;
   border-radius: 20px;
-  background-image: url(./../images/full/0full.jpg);
   margin-bottom: 3%;
   cursor: pointer;
   transition: 0.2s;
