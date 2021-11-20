@@ -386,7 +386,6 @@ function addAnimationHide(block) {
 
 function openWelcomePage(currentBlock) {
   transitionHideBlocks(currentBlock, welcome);
-  currentBlock = welcome;
 }
 
 modalHomeLink.addEventListener('click', () => {
@@ -398,6 +397,7 @@ modalHomeLink.addEventListener('click', () => {
 homeLink.forEach((link) => {
   link.addEventListener('click', () => {
     openWelcomePage(currentBlock);
+    currentBlock = welcome;
   });
 });
 
