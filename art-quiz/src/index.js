@@ -184,7 +184,7 @@ function renderPicQuestion(index, end, cardIndex) {
   });
 
   shuffledArr.forEach((img) => imagesBlock.append(img));
-  picQuestion.append(imagesBlock);
+  // picQuestion.append(imagesBlock);
 }
 
 function endGame(rightAnswers) {
@@ -210,9 +210,6 @@ function renderArtistQuestion(index) {
     pic.className = 'pic-question-pic';
     pic.style.backgroundImage = `url(${url})`;
     return pic;
-  });
-  picElementsArr[0].addEventListener('click', () => {
-    alert(1);
   });
   shuffle(picElementsArr).forEach((img) => imagesBlock.append(img));
   picQuestion.append(imagesBlock);

@@ -14,7 +14,7 @@
 }
 .back-text {
   color: #fff;
-  font-family: 'Gilroy-Regular';
+  font-family: "Gilroy-Regular";
   font-size: 1.25rem;
   margin-left: 1%;
 }
@@ -33,7 +33,7 @@
   margin-top: 8%;
 }
 .settings-info-text {
-  font-family: 'Gilroy-Bold';
+  font-family: "Gilroy-Bold";
   font-size: 34px;
   line-height: 28px;
   letter-spacing: -0.9px;
@@ -94,7 +94,7 @@
   width: 33px;
   height: 33px;
   border-radius: 50%;
-  font-family: 'Gilroy-Bold';
+  font-family: "Gilroy-Bold";
   font-size: 24px;
   border: none;
   cursor: pointer;
@@ -107,7 +107,7 @@
   width: 70px;
   color: #fff;
   border: none;
-  font-family: 'Gilroy-Regular';
+  font-family: "Gilroy-Regular";
   font-size: 24px;
   background-color: transparent;
   text-align: center;
@@ -140,7 +140,7 @@
   line-height: 28px;
   letter-spacing: -0.5px;
   color: #ffffff;
-  font-family: 'Gilroy-Regular';
+  font-family: "Gilroy-Regular";
   margin-right: 20px;
 }
 .switch input {
@@ -164,7 +164,7 @@
 
 .slider:before {
   position: absolute;
-  content: '';
+  content: "";
   height: 24px;
   width: 24px;
   left: 4px;
@@ -196,15 +196,18 @@ input:checked + .slider:before {
 .slider.round:before {
   border-radius: 50%;
 }
+.settings footer {
+  padding: 2%;
+  width: 90%;
+}
 @media (max-width: 768px) {
   .settings {
     padding: 7% 7%;
   }
   .settings-btns {
     align-items: flex-end;
-  }
-  .settings-btns > a:first-child {
-    margin-right: 0;
+    flex-direction: row;
+    margin-top: 5%;
   }
   .settings-btns > a {
     margin-bottom: 10px;
@@ -212,6 +215,9 @@ input:checked + .slider:before {
 }
 
 @media (max-width: 550px) {
+  .settings-btns {
+    flex-direction: row;
+  }
   .settings-info-text {
     font-size: 24px !important;
   }
@@ -227,10 +233,19 @@ input:checked + .slider:before {
   .volume-input {
     width: 100%;
   }
+  .settings .volume-icons {
+    margin-bottom: 30px;
+  }
+  .settings .settings-time-block {
+    margin-bottom: 30px;
+  }
 }
+
 @media (max-width: 420px) {
   .settings-btns {
-    flex-direction: column;
     align-items: flex-end;
+  }
+  .settings-btns > a:first-child {
+    margin-right: 10px;
   }
 }
