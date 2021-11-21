@@ -1,6 +1,8 @@
 .pic-question {
   padding: 2% 7%;
-  height: 100vh;
+}
+.pic-question .welcome-title {
+  margin-bottom: 0;
 }
 .progress-line {
   background: -webkit-gradient(
@@ -33,7 +35,7 @@
 .progress-time {
   font-size: 28px;
   line-height: 28px;
-  font-family: 'Gilroy-Bold';
+  font-family: "Gilroy-Bold";
   letter-spacing: -0.5px;
   color: #ffffff;
   margin-left: 20px;
@@ -44,11 +46,11 @@
   line-height: 28px;
   letter-spacing: -0.5px;
   color: #ffffff;
-  font-family: 'Gilroy-Bold';
+  font-family: "Gilroy-Bold";
   margin: auto;
   width: 70%;
   display: block;
-  margin-bottom: 1%;
+  margin-bottom: 2%;
 }
 .pic-question-pics {
   width: 70%;
@@ -79,4 +81,34 @@
   height: 25px;
   margin-right: 15px;
   cursor: pointer;
+}
+.pic-question footer {
+  position: relative;
+  padding: 2% 0;
+}
+@media (max-width: 868px) {
+  .pic-question .welcome-title {
+    margin-right: 30px;
+  }
+  .pic-question-pic {
+    height: 200px;
+    width: 47%;
+    margin: 1%;
+  }
+}
+@media (max-width: 768px) {
+  .pic-question > header {
+    margin-bottom: 30px;
+  }
+  .question-progress,
+  .pic-question-text,
+  .pic-question-pics {
+    width: 90% !important;
+  }
+  .pic-question {
+    padding-bottom: 17%;
+  }
+  .pic-question footer {
+    display: none;
+  }
 }
