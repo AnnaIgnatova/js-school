@@ -1,0 +1,130 @@
+.score-cards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  width: 70%;
+  margin: auto;
+  margin-bottom: 5.5%;
+}
+.score-card {
+  width: 195px;
+  height: 206px;
+  position: relative;
+  margin-bottom: 50px;
+  overflow-y: hidden;
+  border-radius: 20px;
+  transition: 0.2s;
+}
+.score-card:hover {
+  transform: scale(1.03);
+  -webkit-box-shadow: 0px 0px 20px 5px rgba(255, 255, 255, 0.3);
+  -moz-box-shadow: 0px 0px 20px 5px rgba(255, 255, 255, 0.3);
+  box-shadow: 0px 0px 20px 5px rgba(255, 255, 255, 0.3);
+}
+.score-card-img {
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+
+  position: relative;
+  cursor: pointer;
+}
+.score-card-info {
+  position: absolute;
+  display: block;
+  width: 100%;
+  height: 100%;
+  background-color: #ffbca2;
+
+  z-index: 100;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-end;
+  transform: translateY(250px);
+  cursor: pointer;
+}
+.score-card-info > span:first-child {
+  display: block;
+  font-size: 20px;
+  line-height: 22px;
+  font-family: 'Gilroy-Bold';
+  margin-bottom: 10px;
+}
+.score-card-info > span:nth-child(2) {
+  display: block;
+  font-size: 14px;
+  line-height: 18px;
+  font-family: 'Gilroy-Regular';
+  font-style: italic;
+}
+.score-home-link,
+.score-category-link {
+  transition: 0.2s;
+}
+.score-home-link:hover,
+.score-category-link:hover {
+  color: #ffbca2;
+}
+.score .welcome-title {
+  margin-bottom: 0;
+}
+.score footer {
+  position: relative;
+  padding: 2% 0;
+}
+
+@keyframes showCardInfoFrom {
+  from {
+    transform: translateY(100px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+@keyframes showCardInfoBack {
+  from {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  to {
+    transform: translateY(100px);
+    opacity: 0;
+  }
+}
+@media (max-width: 900px) {
+  .score .welcome-title {
+    margin-right: 20px;
+  }
+  .score-cards {
+    justify-content: center;
+    width: 100%;
+  }
+  .score-card {
+    margin: 3%;
+  }
+  .score .welcome-settings {
+    top: 2%;
+  }
+}
+@media (max-width: 768px) {
+  .score > header > ul,
+  .pic-question > header > ul,
+  .artist-question > header > ul {
+    justify-content: space-around;
+  }
+  .score > header > ul > li,
+  .pic-question > header > ul > li,
+  .artist-question > header > ul > li {
+    margin-right: 0 !important;
+  }
+}
+@media (max-width: 400px) {
+  .score {
+    padding-bottom: 25%;
+  }
+}
