@@ -4,6 +4,7 @@
   justify-content: space-between;
   width: 70%;
   margin: auto;
+  margin-bottom: 5.5%;
 }
 .score-card {
   width: 195px;
@@ -67,6 +68,13 @@
 .score-category-link:hover {
   color: #ffbca2;
 }
+.score .welcome-title {
+  margin-bottom: 0;
+}
+.score footer {
+  position: relative;
+  padding: 2% 0;
+}
 
 @keyframes showCardInfoFrom {
   from {
@@ -86,5 +94,37 @@
   to {
     transform: translateY(100px);
     opacity: 0;
+  }
+}
+@media (max-width: 900px) {
+  .score .welcome-title {
+    margin-right: 20px;
+  }
+  .score-cards {
+    justify-content: center;
+    width: 100%;
+  }
+  .score-card {
+    margin: 3%;
+  }
+  .score .welcome-settings {
+    top: 2%;
+  }
+}
+@media (max-width: 768px) {
+  .score > header > ul,
+  .pic-question > header > ul,
+  .artist-question > header > ul {
+    justify-content: space-around;
+  }
+  .score > header > ul > li,
+  .pic-question > header > ul > li,
+  .artist-question > header > ul > li {
+    margin-right: 0 !important;
+  }
+}
+@media (max-width: 400px) {
+  .score {
+    padding-bottom: 25%;
   }
 }

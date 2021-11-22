@@ -1,7 +1,9 @@
 .pic-question {
   padding: 2% 7%;
+  height: 100vh;
 }
-.pic-question .welcome-title {
+.pic-question .welcome-title,
+.artist-question .welcome-title {
   margin-bottom: 0;
 }
 .progress-line {
@@ -35,7 +37,7 @@
 .progress-time {
   font-size: 28px;
   line-height: 28px;
-  font-family: "Gilroy-Bold";
+  font-family: 'Gilroy-Bold';
   letter-spacing: -0.5px;
   color: #ffffff;
   margin-left: 20px;
@@ -46,7 +48,7 @@
   line-height: 28px;
   letter-spacing: -0.5px;
   color: #ffffff;
-  font-family: "Gilroy-Bold";
+  font-family: 'Gilroy-Bold';
   margin: auto;
   width: 70%;
   display: block;
@@ -82,12 +84,14 @@
   margin-right: 15px;
   cursor: pointer;
 }
-.pic-question footer {
+.pic-question footer,
+.artist-question footer {
   position: relative;
   padding: 2% 0;
 }
 @media (max-width: 868px) {
-  .pic-question .welcome-title {
+  .pic-question .welcome-title,
+  .artist-question .welcome-title {
     margin-right: 30px;
   }
   .pic-question-pic {
@@ -97,18 +101,43 @@
   }
 }
 @media (max-width: 768px) {
-  .pic-question > header {
-    margin-bottom: 30px;
+  .pic-question > header,
+  .artist-question > header {
+    margin-bottom: 80px;
   }
   .question-progress,
   .pic-question-text,
-  .pic-question-pics {
+  .pic-question-pics,
+  .artist-question-text,
+  .artist-question-pic {
     width: 90% !important;
   }
-  .pic-question {
+  .pic-question,
+  .artist-question {
     padding-bottom: 17%;
   }
-  .pic-question footer {
+  .pic-question footer,
+  .artist-question footer {
     display: none;
+  }
+}
+@media (max-width: 500px) {
+  .pic-question,
+  .artist-question {
+    height: 100vh;
+  }
+  .pic-question > header,
+  .artist-question > header {
+    margin-bottom: 50px !important;
+  }
+  .progress-time,
+  .pic-question-text {
+    font-size: 20px !important;
+  }
+  .pic-question-pic {
+    height: 150px !important;
+  }
+  .pic-question-text {
+    margin-bottom: 5% !important;
   }
 }
