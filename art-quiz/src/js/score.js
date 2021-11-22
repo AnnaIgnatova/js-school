@@ -1,3 +1,4 @@
+import { setImage } from './base-functions.js';
 import {
   gameInfo,
   getCurrentCategory,
@@ -22,7 +23,7 @@ function renderScoreCard(author, name, year, imageNum, index, cardIndex) {
     `;
 
   let cardImage = card.querySelector('.score-card-img');
-  cardImage.style.backgroundImage = `url(./images/img/${imageNum}.jpg)`;
+  setImage(`./images/img/${imageNum}.jpg`, cardImage);
 
   if (!gameInfo[currentCategory][index - 1][cardIndex]) {
     cardImage.style.filter = 'grayscale(100%)';

@@ -31,18 +31,33 @@ function transitionHideBlocks(blockHide, blockShow) {
 
 function addAnimationShow(block) {
   block.classList.remove('hidden');
-  block.style.animation = 'show 0.3s';
+  block.style.animation = 'showModal 0.3s';
 
   setTimeout(() => {
     block.style.animation = '';
   }, 200);
 }
 function addAnimationHide(block) {
-  block.style.animation = 'hide 0.3s';
+  block.style.animation = 'hideModal 0.3s';
   setTimeout(() => {
     block.classList.add('hidden');
     block.style.animation = '';
   }, 200);
 }
 
-export { shuffle, transitionHideBlocks, addAnimationShow, addAnimationHide };
+const setImage = (url, block) => {
+  const img = new Image();
+  img.src = url;
+
+  img.onload = () => {
+    block.style.backgroundImage = `url(${url})`;
+  };
+};
+
+export {
+  shuffle,
+  transitionHideBlocks,
+  addAnimationShow,
+  addAnimationHide,
+  setImage,
+};

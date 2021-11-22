@@ -7,7 +7,7 @@ import {
   getAnswers,
   changeAnswers,
 } from './localStorage.js';
-import { shuffle, addAnimationShow } from './base-functions.js';
+import { shuffle, addAnimationShow, setImage } from './base-functions.js';
 import { modalAnswer, renderAnswerModal } from './modal-window.js';
 
 const rightIcon = document.querySelector('.right');
@@ -24,7 +24,7 @@ function renderPicQuestion(index, end, cardIndex) {
   for (let i = 1; i < 4; i++) {
     let num = Math.floor(Math.random() * (241 - 0) + 0);
     let url = `./images/full/${num}full.jpg`;
-    while (+num === +index && imgArr.indexOf({ num, url }) !== -1) {
+    while (+num === +index && imgArr.indexOf(url) !== -1) {
       num = Math.floor(Math.random() * (241 - 0) + 0);
       url = `./images/full/${num}full.jpg`;
     }
@@ -39,7 +39,7 @@ function renderPicQuestion(index, end, cardIndex) {
     pic.dataset.name = images[num].name;
     pic.dataset.year = images[num].year;
     pic.className = 'pic-question-pic';
-    pic.style.backgroundImage = `url(${url})`;
+    setImage(url, pic);
     return pic;
   });
 
@@ -64,7 +64,7 @@ function renderPicQuestion(index, end, cardIndex) {
       }
 
       addAnimationShow(modalAnswer);
-      renderAnswerModal(element);
+      renderAnswerModal(num);
       answers++;
       changeAnswers(answers);
     });
