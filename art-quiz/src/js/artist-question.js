@@ -7,7 +7,7 @@ import {
   getRightAnswers,
   changeRightAnswers,
 } from './localStorage.js';
-import { shuffle, addAnimationShow } from './base-functions.js';
+import { shuffle, addAnimationShow, setImage } from './base-functions.js';
 import { renderAnswerModal, modalAnswer } from './modal-window.js';
 
 const artistQuestionBtns = document.querySelector('.artist-question-btns');
@@ -20,8 +20,8 @@ function renderArtistQuestion(index, end, cardIndex) {
   let num = index;
 
   let url = `./images/full/${index}full.jpg`;
+  setImage(url, artistQuestionPic);
 
-  artistQuestionPic.style.backgroundImage = `url(${url})`;
   let artist = images[num].author;
   artArr.push({ artist, num });
 
@@ -69,7 +69,7 @@ function renderArtistQuestion(index, end, cardIndex) {
       }
 
       addAnimationShow(modalAnswer);
-      renderAnswerModal(btn);
+      renderAnswerModal(num);
       answers++;
       changeAnswers(answers);
     });
