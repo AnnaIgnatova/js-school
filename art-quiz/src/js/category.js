@@ -7,9 +7,14 @@ import {
   gameInfo,
   changeCurrentBlock,
 } from './localStorage.js';
-import { picQuestion, score, categories, artistQuestion } from './main-blocks.js';
+import {
+  picQuestion,
+  score,
+  categories,
+  artistQuestion,
+} from './main-blocks.js';
 import { startGame } from './game.js';
-import { transitionHideBlocks } from './base-functions.js';
+import { setImage, transitionHideBlocks } from './base-functions.js';
 import { renderScore } from './score.js';
 
 const PIC_CATEGORY = [
@@ -60,7 +65,8 @@ const renderCard = (category, index) => {
   cardImage.dataset.index = index;
   categoryIndex += 10;
   changeCategoryIndex(categoryIndex);
-  cardImage.style.backgroundImage = `url('./images/${currentCategory}/${index}.jpg')`;
+  setImage(`./images/${currentCategory}/${index}.jpg`, cardImage);
+  // cardImage.style.backgroundImage = `url('./images/${currentCategory}/${index}.jpg')`;
 
   if (!rightAnswers) {
     cardImage.style.filter = 'grayscale(100%)';

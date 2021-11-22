@@ -1,19 +1,27 @@
-import { getCurrentCategory, changeCurrentBlock, getCurrentBlock } from "./localStorage.js";
-import { transitionHideBlocks, addAnimationHide } from "./base-functions.js";
-import { picQuestion, artistQuestion } from "./main-blocks.js";
+import {
+  getCurrentCategory,
+  changeCurrentBlock,
+  getCurrentBlock,
+  images,
+} from './localStorage.js';
+import { transitionHideBlocks, addAnimationHide } from './base-functions.js';
+import { picQuestion, artistQuestion } from './main-blocks.js';
 
 const modalAnswer = document.querySelector('.modal-wrapper-answer');
 const quitModal = document.querySelector('.modal-wrapper-quit');
 
-function renderAnswerModal(element) {
+function renderAnswerModal(num) {
+  let name = images[num].name;
+  let author = images[num].author;
+  let year = images[num].year;
+
   modalAnswer.querySelector(
     '.answer-img'
-  ).style.backgroundImage = `url(./images/img/${element.dataset.index}.jpg)`;
-  modalAnswer.querySelector('.pic-name-answer').textContent =
-    element.dataset.name;
+  ).style.backgroundImage = `url(./images/img/${num}.jpg)`;
+  modalAnswer.querySelector('.pic-name-answer').textContent = name;
   modalAnswer.querySelector(
     '.artist-answer'
-  ).textContent = `${element.dataset.author}, ${element.dataset.year}`;
+  ).textContent = `${author}, ${year}`;
 }
 
 quitModal.addEventListener('click', (event) => {
