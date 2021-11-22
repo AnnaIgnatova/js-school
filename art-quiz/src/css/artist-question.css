@@ -51,9 +51,8 @@
 }
 .artist-question-pic {
   width: 60%;
-  height: 400px;
+  height: 370px;
   margin: auto;
-  background-image: url(../images/full/100full.jpg);
   border-radius: 20px;
   margin-bottom: 45px;
 }
@@ -76,6 +75,8 @@
   font-size: 22px;
   line-height: 22px;
   font-family: 'Gilroy-Regular';
+  transition: .2s;
+  cursor: pointer;
 }
 .question-btn:hover {
   background-color: #ffbca2;
@@ -87,4 +88,35 @@
   height: 25px;
   margin-right: 15px;
   cursor: pointer;
+}
+@media (max-width: 1000px) {
+  .question-btn {
+    font-size: 16px;
+  }
+}
+@media (max-width: 768px) {
+  .artist-question-btns {
+    width: 90%;
+  }
+  .artist-question > header {
+    margin-bottom: 50px !important;
+  }
+}
+@media (max-width: 500px) {
+  .artist-question-pic {
+    height: 250px;
+  }
+  .artist-question-btns {
+    flex-direction: column;
+  }
+  .question-btn {
+    width: 100%;
+  }
+  .artist-question-text {
+    font-size: 22px !important;
+  }
+  .artist-question {
+    padding-bottom: 25% !important;
+    height: 100% !important;
+  }
 }

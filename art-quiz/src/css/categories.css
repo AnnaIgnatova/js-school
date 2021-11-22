@@ -5,7 +5,8 @@
 }
 .categories > header,
 .score > header,
-.pic-question > header {
+.pic-question > header,
+.artist-question > header {
   display: flex;
   align-items: center;
   margin-bottom: 100px;
@@ -13,35 +14,41 @@
 .categories .welcome-title {
   margin-bottom: 0;
 }
-.pic-question > header {
+.pic-question > header,
+.artist-question > header {
   margin-bottom: 50px;
 }
 .categories .title-circle,
 .score .title-circle,
-.pic-question .title-circle {
+.pic-question .title-circle,
+.artist-question .title-circle {
   width: 62px;
   height: 62px;
   border: 1px solid rgba(255, 255, 255, 0.5);
 }
 .categories .title-circle:first-child,
 .score .title-circle:first-child,
-.pic-question .title-circle:first-child {
+.pic-question .title-circle:first-child,
+.artist-question .title-circle:first-child {
   margin-left: -0.7%;
 }
 .categories .title-circle:nth-child(2),
 .score .title-circle:nth-child(2),
-.pic-question .title-circle:nth-child(2) {
+.pic-question .title-circle:nth-child(2),
+.artist-question .title-circle:nth-child(2) {
   margin-left: 0.9%;
 }
 .categories .welcome-title,
 .score .welcome-title,
-.pic-question .welcome-title {
+.pic-question .welcome-title,
+.artist-question .welcome-title {
   justify-content: flex-start;
   margin-right: 120px;
 }
 .categories .welcome-title > h1,
 .score .welcome-title > h1,
-.pic-question .welcome-title > h1 {
+.pic-question .welcome-title > h1,
+.artist-question .welcome-title > h1 {
   font-size: 42px;
   line-height: 60px;
   letter-spacing: -0.914286px;
@@ -49,37 +56,42 @@
 
 .categories .welcome-title > h1 span,
 .score .welcome-title > h1 span,
-.pic-question .welcome-title > h1 span {
+.pic-question .welcome-title > h1 span,
+.artist-question .welcome-title > h1 span {
   color: #ffbca2;
 }
 .categories > header > ul,
 .score > header > ul,
-.pic-question > header > ul {
+.pic-question > header > ul,
+.artist-question > header > ul {
   display: flex;
   align-items: center;
   list-style-type: none;
 }
 .categories > header > ul > li > a,
 .score > header > ul > li > a,
-.pic-question > header > ul > li > a {
+.pic-question > header > ul > li > a,
+.artist-question > header > ul > li > a {
   text-decoration: none;
   font-size: 22px;
-  font-family: "Gilroy-Regular";
+  font-family: 'Gilroy-Regular';
   line-height: 18px;
   letter-spacing: -0.5px;
   color: #fff;
 }
 .categories > header > ul > li:nth-child(2) > a,
 .score > header > ul > li:nth-child(3) > a,
-.pic-question > header > ul > li:nth-child(3) > a {
+.pic-question > header > ul > li:nth-child(3) > a,
+.artist-question > header > ul > li:nth-child(3) > a {
   color: #ffbca2;
-  font-family: "Gilroy-Bold";
+  font-family: 'Gilroy-Bold';
 }
 
 .categories > header > ul > li:first-child,
 .score > header > ul > li:first-child,
 .score > header > ul > li:nth-child(2),
-.pic-question > header > ul > li:not(:last-child) {
+.pic-question > header > ul > li:not(:last-child),
+.artist-question > header > ul > li:not(:last-child) {
   margin-right: 90px;
 }
 .categories-cards {
@@ -104,7 +116,7 @@
   font-size: 20px;
   line-height: 20px;
   letter-spacing: -0.62766px;
-  font-family: "Gilroy-Regular";
+  font-family: 'Gilroy-Regular';
 }
 .card-points {
   color: #ffbca2;
@@ -132,7 +144,7 @@
   line-height: 23px;
   letter-spacing: -0.62766px;
   color: #010101;
-  font-family: "Gilroy-Regular";
+  font-family: 'Gilroy-Regular';
   display: flex;
   align-items: center;
   justify-content: center;
@@ -157,24 +169,48 @@
 }
 .nav-icon {
   display: none;
+  width: 22px;
+  height: 22px;
+}
+.categories footer {
+  margin-top: 1.9%;
+  position: relative;
 }
 @media (max-width: 1440px) {
   .categories .title-circle,
-  .pic-question .title-circle {
+  .pic-question .title-circle,
+  .score .title-circle,
+  .artist-question .title-circle {
     margin-top: 0;
   }
   .categories .welcome-settings,
-  .pic-question .welcome-settings {
+  .pic-question .welcome-settings,
+  .score .welcome-settings,
+  .artist-question .welcome-settings {
     top: 3%;
   }
 }
 @media (max-width: 768px) {
-  .categories > header > ul > li > a {
+  .categories,
+  .score {
+    height: 100%;
+  }
+  .categories footer,
+  .score footer {
+    display: none;
+  }
+  .categories > header > ul > li > a,
+  .pic-question > header > ul > li > a,
+  .score > header > ul > li > a,
+  .artist-question > header > ul > li > a {
     display: flex;
     align-items: center;
     flex-direction: column;
   }
-  .categories > header > ul > li > a > span {
+  .categories > header > ul > li > a > span,
+  .pic-question > header > ul > li > a > span,
+  .score > header > ul > li > a > span,
+  .artist-question > header > ul > li > a > span {
     margin-top: 10px;
   }
   .nav-icon {
@@ -182,15 +218,17 @@
   }
   .categories > header > ul,
   .score > header > ul,
-  .pic-question > header > ul {
-    z-index: 1;
+  .pic-question > header > ul,
+  .artist-question > header > ul {
+    padding: 0;
+    z-index: 200;
     position: fixed;
     bottom: 0;
     background-color: #000;
     height: 100px;
     width: 100%;
     margin-left: -7%;
-    justify-content: space-around;
+    justify-content: center;
     border-radius: 20px 20px 0px 0px;
     border: 1px solid #ffffff;
   }
@@ -200,7 +238,8 @@
   }
   .categories .title-circle:nth-child(2),
   .score .title-circle:nth-child(2),
-  .pic-question .title-circle:nth-child(2) {
+  .pic-question .title-circle:nth-child(2),
+  .artist-question .title-circle:nth-child(2) {
     margin-left: 2%;
   }
 }
@@ -210,17 +249,25 @@
   }
   .categories > header,
   .score > header,
-  .pic-question > header {
+  .pic-question > header,
+  .artist-question > header {
     margin-bottom: 50px;
   }
   .categories > header > ul > li > a,
   .score > header > ul > li > a,
-  .pic-question > header > ul > li > a {
+  .artist-question > header > ul > li > a {
     font-size: 16px;
   }
   .categories > header > ul,
   .score > header > ul,
-  .pic-question > header > ul {
+  .pic-question > header > ul,
+  .artist-question > header > ul {
     height: 80px;
+  }
+  .categories .title-circle:nth-child(2),
+  .score .title-circle:nth-child(2),
+  .pic-question .title-circle:nth-child(2),
+  .artist-question .title-circle:nth-child(2) {
+    margin-left: 4%;
   }
 }

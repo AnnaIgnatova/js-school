@@ -54,8 +54,10 @@ const rightIcon = document.querySelector('.right');
 const wrongIcon = document.querySelector('.wrong');
 const score = document.querySelector('.score');
 const scoreCards = document.querySelector('.score-cards');
-const scoreNav = document.querySelector('.score-header');
+const headerNav = document.querySelectorAll('.score-header');
 const nextQuizBtn = document.querySelector('.modal-next-quiz');
+const artistQuestionBtns = document.querySelector('.artist-question-btns');
+const artistQuestionPic = document.querySelector('.artist-question-pic');
 
 const PIC_CATEGORY = [
   'Portrait',
@@ -96,7 +98,8 @@ function shuffle(array) {
 }
 
 function startGame(start, end, card) {
-  currentBlock = picQuestion;
+  if (currentCategory === 'pic-category') currentBlock = picQuestion;
+  else currentBlock = artistQuestion;
   let questionText = '';
   let currentQuestion = start;
   rightAnswers = 0;
@@ -107,7 +110,7 @@ function startGame(start, end, card) {
     renderPicQuestion(currentQuestion, end, card.dataset.index);
   } else {
     transitionHideBlocks(categories, artistQuestion);
-    // renderArtistQuestion(start);
+    renderArtistQuestion(currentQuestion, end, card.dataset.index);
   }
 
   nextPictureBtn.addEventListener('click', () => {
@@ -116,8 +119,12 @@ function startGame(start, end, card) {
       endGame(rightAnswers);
     } else {
       currentQuestion++;
-      questionText.textContent = `What is ${images[currentQuestion].author} picture`;
-      renderPicQuestion(currentQuestion, end, card.dataset.index);
+      if (currentCategory === 'pic-category') {
+        questionText.textContent = `What is ${images[currentQuestion].author} picture`;
+        renderPicQuestion(currentQuestion, end, card.dataset.index);
+      } else {
+        renderArtistQuestion(currentQuestion, end, card.dataset.index);
+      }
     }
   });
 }
@@ -142,7 +149,7 @@ function renderPicQuestion(index, end, cardIndex) {
 
   for (let i = 1; i < 4; i++) {
     let num = Math.floor(Math.random() * (241 - 0) + 0);
-    while (num == index) {
+    while (num == index && imgArr.indexOf({ num, url }) !== -1) {
       num = Math.floor(Math.random() * (241 - 0) + 0);
     }
 
@@ -184,7 +191,6 @@ function renderPicQuestion(index, end, cardIndex) {
   });
 
   shuffledArr.forEach((img) => imagesBlock.append(img));
-  // picQuestion.append(imagesBlock);
 }
 
 function endGame(rightAnswers) {
@@ -192,27 +198,61 @@ function endGame(rightAnswers) {
   modalEndGame.querySelector('.points').textContent = `${rightAnswers}/10`;
 }
 
-function renderArtistQuestion(index) {
-  let img = `./images/full/${index}full.jpg`;
-  imgArr.push(img);
+function renderArtistQuestion(index, end, cardIndex) {
+  let artArr = [];
+  let num = index;
+
+  let url = `./images/full/${index}full.jpg`;
+
+  artistQuestionPic.style.backgroundImage = `url(${url})`;
+  let artist = images[num].author;
+  artArr.push({ artist, num });
 
   for (let i = 1; i < 4; i++) {
     let num = Math.floor(Math.random() * (241 - 0) + 0);
-
-    // проверка на художника
-    let img = `./images/full/${num}full.jpg`;
-    imgArr.push(img);
+    let artist = images[num].author;
+    while (num == index && artArr.indexOf({ artist, num }) !== -1) {
+      artist = images[num].author;
+      num = Math.floor(Math.random() * (241 - 0) + 0);
+    }
+    artArr.push({ artist, num });
   }
-  imagesBlock.innerHTML = '';
 
-  let picElementsArr = imgArr.map((url) => {
-    let pic = document.createElement('div');
-    pic.className = 'pic-question-pic';
-    pic.style.backgroundImage = `url(${url})`;
-    return pic;
+  artistQuestionBtns.innerHTML = '';
+
+  let btnsArr = artArr.map(({ artist, num }) => {
+    let btn = document.createElement('button');
+    btn.className = 'question-btn';
+    btn.dataset.index = num;
+    btn.dataset.author = images[num].author;
+    btn.dataset.name = images[num].name;
+    btn.dataset.year = images[num].year;
+    btn.textContent = artist;
+    return btn;
   });
-  shuffle(picElementsArr).forEach((img) => imagesBlock.append(img));
-  picQuestion.append(imagesBlock);
+
+  let shuffledArr = shuffle(btnsArr);
+
+  shuffledArr.forEach((btn) => {
+    btn.addEventListener('click', () => {
+      if (btn.dataset.index == num) {
+        rightIcon.classList.remove('hidden');
+        wrongIcon.classList.add('hidden');
+        rightAnswers++;
+        gameInfo[currentCategory][cardIndex - 1].push(true);
+      } else {
+        rightIcon.classList.add('hidden');
+        wrongIcon.classList.remove('hidden');
+        gameInfo[currentCategory][cardIndex - 1].push(false);
+      }
+
+      addAnimationShow(modalAnswer);
+      renderAnswerModal(btn);
+      answers++;
+    });
+  });
+
+  shuffledArr.forEach((btn) => artistQuestionBtns.append(btn));
 }
 
 const renderCard = (category, index) => {
@@ -253,6 +293,8 @@ const renderCard = (category, index) => {
 
   cardImage.addEventListener('click', (e) => {
     if (!e.target.classList.contains('card-play-info')) {
+      if (currentCategory === 'pic-category') currentBlock = picQuestion;
+      else currentBlock = artistQuestion;
       if (gameInfo[currentCategory][index - 1].length !== 0)
         gameInfo[currentCategory][index - 1] = [];
       startGame(e.target.dataset.start, e.target.dataset.end, cardImage);
@@ -387,7 +429,7 @@ function openWelcomePage(currentBlock) {
 
 modalHomeLink.addEventListener('click', () => {
   addAnimationHide(modalEndGame);
-  transitionHideBlocks(picQuestion, welcome);
+  transitionHideBlocks(currentBlock, welcome);
   currentBlock = welcome;
 });
 
@@ -450,30 +492,55 @@ quitModal.addEventListener('click', (event) => {
     target.classList.contains('modal-wrapper-quit')
   ) {
     addAnimationHide(quitModal);
+    if (currentCategory === 'pic-category') currentBlock = picQuestion;
+    else currentBlock = artistQuestion;
   }
   if (target.tagName === 'BUTTON' && target.textContent === 'Yes') {
     addAnimationHide(quitModal);
     if (currentCategory === 'pic-category')
-      transitionHideBlocks(picQuestion, categories);
-    else transitionHideBlocks(artistQuestion, categories);
+      transitionHideBlocks(picQuestion, currentBlock);
+    else transitionHideBlocks(artistQuestion, currentBlock);
   }
 });
 
-scoreNav.addEventListener('click', (e) => {
+function headerRoute(e) {
   const { target } = e;
-  if (target.classList.contains('score-home-link')) {
-    currentBlock = welcome;
-    transitionHideBlocks(score, welcome);
+  console.log(target);
+  if (
+    target.classList.contains('score-home-link') ||
+    target.parentNode.classList.contains('score-home-link')
+  ) {
+    if (currentBlock === picQuestion || currentBlock === artistQuestion) {
+      currentBlock = welcome;
+      addAnimationShow(quitModal);
+    } else {
+      transitionHideBlocks(currentBlock, welcome);
+      currentBlock = welcome;
+    }
   }
-  if (target.classList.contains('score-category-link')) {
-    currentBlock = categories;
-    transitionHideBlocks(score, categories);
+  if (
+    target.classList.contains('score-category-link') ||
+    target.parentNode.classList.contains('score-category-link')
+  ) {
+    renderCategories();
+    if (currentBlock === picQuestion || currentBlock === artistQuestion) {
+      currentBlock = categories;
+      addAnimationShow(quitModal);
+    } else {
+      transitionHideBlocks(currentBlock, categories);
+      currentBlock = categories;
+    }
   }
+}
+
+headerNav.forEach((nav) => {
+  nav.addEventListener('click', headerRoute);
 });
 
 nextQuizBtn.addEventListener('click', () => {
   addAnimationHide(modalEndGame);
   renderCategories();
-  transitionHideBlocks(picQuestion, categories);
+  console.log(currentBlock);
+  transitionHideBlocks(currentBlock, categories);
   currentBlock = categories;
 });
