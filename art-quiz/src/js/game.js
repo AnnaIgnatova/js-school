@@ -32,7 +32,6 @@ const modalHomeLink = document.querySelector('.modal-home-link');
 
 function startGame(start, end, card) {
   let time = +getTime();
-  console.log(time);
 
   setTimeout(() => {
     if (getCurrentBlock() === picQuestion || getCurrentBlock() === artistQuestion) {
