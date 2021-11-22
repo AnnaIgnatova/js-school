@@ -1,0 +1,122 @@
+.artist-question {
+  padding: 2% 7%;
+  height: 100vh;
+}
+.progress-line {
+  background: -webkit-gradient(
+    linear,
+    left top,
+    right top,
+    from(#ffbca2),
+    color-stop(50%, #ffbca2),
+    color-stop(50%, #a4a4a4),
+    to(#fff)
+  );
+  background: linear-gradient(
+    to right,
+    #ffbca2 0%,
+    #ffbca2 50%,
+    #a4a4a4 50%,
+    #a4a4a4 100%
+  );
+  outline: none;
+  width: 90%;
+  height: 4px;
+}
+.question-progress {
+  margin: auto;
+  width: 70%;
+  margin-bottom: 30px;
+  display: flex;
+  align-items: center;
+}
+.progress-time {
+  font-size: 28px;
+  line-height: 28px;
+  font-family: 'Gilroy-Bold';
+  letter-spacing: -0.5px;
+  color: #ffffff;
+  margin-left: 20px;
+}
+.pic-question-text {
+  font-size: 28px;
+  line-height: 28px;
+  letter-spacing: -0.5px;
+  color: #ffffff;
+  font-family: 'Gilroy-Bold';
+  margin: auto;
+  width: 70%;
+  display: block;
+  margin-bottom: 1%;
+}
+.artist-question-pic {
+  width: 60%;
+  height: 370px;
+  margin: auto;
+  border-radius: 20px;
+  margin-bottom: 45px;
+}
+.artist-question-btns {
+  width: 60%;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  margin: auto;
+}
+.question-btn {
+  width: 45%;
+  height: 60px;
+  border: 1.5px solid #ffffff;
+  border-radius: 60px;
+  background-color: transparent;
+  color: #fff;
+  margin-bottom: 15px;
+  font-size: 22px;
+  line-height: 22px;
+  font-family: 'Gilroy-Regular';
+  transition: .2s;
+  cursor: pointer;
+}
+.question-btn:hover {
+  background-color: #ffbca2;
+  border: 1.5px solid #ffbca2;
+  color: black;
+}
+.close-question {
+  width: 25px;
+  height: 25px;
+  margin-right: 15px;
+  cursor: pointer;
+}
+@media (max-width: 1000px) {
+  .question-btn {
+    font-size: 16px;
+  }
+}
+@media (max-width: 768px) {
+  .artist-question-btns {
+    width: 90%;
+  }
+  .artist-question > header {
+    margin-bottom: 50px !important;
+  }
+}
+@media (max-width: 500px) {
+  .artist-question-pic {
+    height: 250px;
+  }
+  .artist-question-btns {
+    flex-direction: column;
+  }
+  .question-btn {
+    width: 100%;
+  }
+  .artist-question-text {
+    font-size: 22px !important;
+  }
+  .artist-question {
+    padding-bottom: 25% !important;
+    height: 100% !important;
+  }
+}

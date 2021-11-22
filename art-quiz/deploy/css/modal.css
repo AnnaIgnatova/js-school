@@ -1,0 +1,164 @@
+.modal-wrapper-quit,
+.modal-wrapper-answer,
+.modal-wrapper-end-game {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(1, 1, 1, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+  padding: 30px;
+  top: 0;
+}
+.modal-quit-question {
+  position: relative;
+  width: 580px;
+  height: 340px;
+  background-color: #fff;
+  border-radius: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: column;
+  font-family: 'Gilroy-Regular';
+  font-size: 32px;
+  letter-spacing: -0.5px;
+  padding: 80px 30px;
+  text-align: center;
+}
+.quit-question-btns > button {
+  width: 251px;
+  height: 62px;
+  border: 1.5px solid #010101;
+  border-radius: 60px;
+  background-color: transparent;
+  transition: 0.2s;
+  font-size: 22px;
+  line-height: 22px;
+  font-family: 'Gilroy-Regular';
+  cursor: pointer;
+}
+.quit-question-btns > button:hover {
+  background-color: #ffbca2;
+  border: 1.5px solid #ffbca2;
+}
+.close-modal {
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  cursor: pointer;
+}
+
+.modal-answer {
+  position: relative;
+  width: 30%;
+  height: 640px;
+  background-color: #fff;
+  border-radius: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  font-family: 'Gilroy-Regular';
+  font-size: 32px;
+  letter-spacing: -0.5px;
+  padding: 1.5%;
+  text-align: center;
+}
+.answer-img {
+  position: relative;
+  background-image: url(./../images/img/109.jpg);
+  width: 100%;
+  height: 350px;
+  background-size: cover;
+  background-position: center;
+  border-radius: 20px;
+  margin-bottom: 40px;
+}
+.check-answer {
+  position: absolute;
+  bottom: 4%;
+  left: 4%;
+}
+.pic-name-answer {
+  font-family: 'Gilroy-Bold';
+  margin-bottom: 10px;
+}
+.artist-answer {
+  font-style: italic;
+  font-weight: normal;
+  font-size: 22px;
+  line-height: 26px;
+  margin-bottom: 40px;
+}
+.next-picture {
+  font-family: 'Gilroy-Bold';
+  background-color: #010101;
+  width: 100%;
+  height: 62px;
+  font-size: 22px;
+  line-height: 22px;
+  letter-spacing: -1.14766px;
+  color: #fff;
+  border-radius: 60px;
+  border: 1.5px solid #010101;
+  transition: 0.2s;
+  cursor: pointer;
+}
+.next-picture:hover {
+  background-color: #ffbca2;
+  border: 1.5px solid #ffbca2;
+  color: #000;
+}
+.modal-end-game {
+  position: relative;
+  width: 30%;
+  height: 640px;
+  background-color: #fff;
+  border-radius: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  font-family: 'Gilroy-Regular';
+  font-size: 32px;
+  letter-spacing: -0.5px;
+  padding: 1.5%;
+  text-align: center;
+}
+.congratulate {
+  font-weight: 600;
+  font-size: 42px;
+  line-height: 51px;
+  margin-top: 30px;
+  margin-bottom: 35px;
+}
+.points {
+  font-size: 82px;
+  line-height: 102px;
+  font-family: 'Gilroy-Bold';
+  margin-bottom: 60px;
+}
+.modal-end-game-btns {
+  width: 100%;
+}
+.modal-end-game-btns > button {
+  width: 40%;
+  height: 62px;
+  font-size: 22px;
+  line-height: 22px;
+  font-family: 'Gilroy-Bold';
+  border: 1.5px solid #010101;
+  background-color: transparent;
+  border-radius: 60px;
+  transition: .2s;
+  cursor: pointer;
+}
+.modal-end-game-btns > button:hover {
+  border: 1.5px solid #ffbca2;
+  background-color: #ffbca2;
+}
