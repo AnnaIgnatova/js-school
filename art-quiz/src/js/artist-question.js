@@ -9,6 +9,7 @@ import {
 } from './localStorage.js';
 import { shuffle, addAnimationShow, setImage } from './base-functions.js';
 import { renderAnswerModal, modalAnswer } from './modal-window.js';
+import { winGameSound, loseGameSound } from './audio.js';
 
 const artistQuestionBtns = document.querySelector('.artist-question-btns');
 const artistQuestionPic = document.querySelector('.artist-question-pic');
@@ -57,12 +58,14 @@ function renderArtistQuestion(index, end, cardIndex) {
       let rightAnswers = getRightAnswers();
 
       if (btn.dataset.index == num) {
+        winGameSound();
         rightIcon.classList.remove('hidden');
         wrongIcon.classList.add('hidden');
         rightAnswers++;
         changeRightAnswers(rightAnswers);
         gameInfo[currentCategory][cardIndex - 1].push(true);
       } else {
+        loseGameSound();
         rightIcon.classList.add('hidden');
         wrongIcon.classList.remove('hidden');
         gameInfo[currentCategory][cardIndex - 1].push(false);

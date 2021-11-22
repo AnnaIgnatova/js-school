@@ -8,6 +8,7 @@
 @import url(./css/animation.css);
 @import url(./css/modal.css);
 @import url(./css/score.css);
+@import url(./css/audio.css);
 
 .hidden {
   display: none;

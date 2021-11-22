@@ -22,6 +22,8 @@ import {
 import { renderPicQuestion } from './pic-question.js';
 import { renderCategories } from './category.js';
 import { renderArtistQuestion } from './artist-question.js';
+import { endGameSound } from './audio.js';
+import { getTime } from './settings.js';
 
 const nextPictureBtn = document.querySelector('.next-picture');
 const nextQuizBtn = document.querySelector('.modal-next-quiz');
@@ -29,6 +31,17 @@ const modalEndGame = document.querySelector('.modal-wrapper-end-game');
 const modalHomeLink = document.querySelector('.modal-home-link');
 
 function startGame(start, end, card) {
+  let time = +getTime();
+  console.log(time);
+
+  setTimeout(() => {
+    if (getCurrentBlock() === picQuestion || getCurrentBlock() === artistQuestion) {
+      endGame(getRightAnswers());
+      endGameSound();
+      addAnimationHide(modalAnswer);
+    }
+  }, time * 1000);
+
   let currentCategory = getCurrentCategory();
 
   if (currentCategory === 'pic-category') changeCurrentBlock(picQuestion);
@@ -57,6 +70,7 @@ function startGame(start, end, card) {
 
     if (answers === 10) {
       endGame(rightAnswers);
+      endGameSound();
     } else {
       currentQuestion++;
       if (currentCategory === 'pic-category') {

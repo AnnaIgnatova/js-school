@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Art Quiz</title>
-    <link rel="shortcut icon" href="./images/icon.png" type="image/png">
+    <link rel="shortcut icon" href="./images/icon.png" type="image/png" />
     <link rel="stylesheet" href="style.css" />
     <script defer type="module" src="./index.js"></script>
   </head>
@@ -80,6 +80,7 @@
           <input type="range" class="volume-input" value="50" />
           <div class="volume-icons">
             <svg
+              class="mute-sound"
               width="30"
               height="22"
               viewBox="0 0 30 22"
@@ -93,6 +94,7 @@
               />
             </svg>
             <svg
+              class="max-sound"
               width="21"
               height="22"
               viewBox="0 0 21 22"
@@ -110,27 +112,27 @@
           <div class="settings-time-block">
             <span class="switch-text">On</span>
             <label class="switch">
-              <input type="checkbox" />
+              <input type="checkbox" class="switch-time" />
               <span class="slider round"></span>
             </label>
           </div>
 
           <span class="settings-info-text">Time to answer</span>
           <div class="settings-time-to-answer">
-            <button class="time-to-answer-btn">-</button>
+            <button class="time-to-answer-btn less-btn">-</button>
             <input
               type="number"
               class="time-to-answer-input"
               value="20"
-              step="5"
               controls="none"
+              readonly
             />
-            <button class="time-to-answer-btn">+</button>
+            <button class="time-to-answer-btn more-btn">+</button>
           </div>
         </div>
         <div class="welcome-btns settings-btns">
-          <a href="#">Default</a>
-          <a href="#">Save</a>
+          <a href="#" class="settings-default-btn">Default</a>
+          <a href="#" class="setting-save-btn">Save</a>
         </div>
         <footer>
           <img src="./images/rs-icon.svg" alt="rs-icon" class="footer-logo" />
