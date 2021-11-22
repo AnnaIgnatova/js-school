@@ -24,19 +24,19 @@ function renderPicQuestion(index, end, cardIndex) {
   let time = +getTime();
   let totalTime = +getTime();
 
-  let timer = setInterval(() => {
-    progressTime.textContent = `0:${String(time--).padStart(2, '0')}`;
-    if (time == 0) time = 0;
-    // if (
-    //   getCurrentBlock() !== picQuestion &&
-    //   getCurrentBlock() !== artistQuestion
-    // )
-    //   clearInterval(timer);
-  }, 1000);
+  // let timer = setInterval(() => {
+  //   progressTime.textContent = `0:${String(time--).padStart(2, '0')}`;
+  //   if (time == 0) time = 0;
+  //   if (
+  //     getCurrentBlock() !== picQuestion &&
+  //     getCurrentBlock() !== artistQuestion
+  //   )
+  //     clearInterval(timer);
+  // }, 1000);
 
-  setTimeout(() => {
-    clearInterval(timer);
-  }, totalTime * 1000);
+  // setTimeout(() => {
+  //   clearInterval(timer);
+  // }, totalTime * 1000);
 
   let imgArr = [];
   let num = index;
