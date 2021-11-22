@@ -1,0 +1,14 @@
+@import url(./css/fonts.css);
+@import url(./css/welcome.css);
+@import url(./css/footer.css);
+@import url(./css/settings.css);
+@import url(./css/categories.css);
+@import url(./css/artist-question.css);
+@import url(./css/pic-question.css);
+@import url(./css/animation.css);
+@import url(./css/modal.css);
+@import url(./css/score.css);
+
+.hidden {
+  display: none;
+}
