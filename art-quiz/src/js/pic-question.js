@@ -2,7 +2,6 @@ import {
   images,
   gameInfo,
   getCurrentCategory,
-  getCurrentBlock,
   getRightAnswers,
   changeRightAnswers,
   getAnswers,
@@ -11,33 +10,12 @@ import {
 import { shuffle, addAnimationShow, setImage } from './base-functions.js';
 import { modalAnswer, renderAnswerModal } from './modal-window.js';
 import { winGameSound, loseGameSound } from './audio.js';
-import { getTime } from './settings.js';
-import { picQuestion, artistQuestion } from './main-blocks.js';
 
 const rightIcon = document.querySelector('.right');
 const wrongIcon = document.querySelector('.wrong');
 const imagesBlock = document.querySelector('.pic-question-pics');
-const progressTime = document.querySelector('.progress-time');
 
 function renderPicQuestion(index, end, cardIndex) {
-  progressTime.textContent = `0:${String(getTime()).padStart(2, '0')}`;
-  let time = +getTime();
-  let totalTime = +getTime();
-
-  // let timer = setInterval(() => {
-  //   progressTime.textContent = `0:${String(time--).padStart(2, '0')}`;
-  //   if (time == 0) time = 0;
-  //   if (
-  //     getCurrentBlock() !== picQuestion &&
-  //     getCurrentBlock() !== artistQuestion
-  //   )
-  //     clearInterval(timer);
-  // }, 1000);
-
-  // setTimeout(() => {
-  //   clearInterval(timer);
-  // }, totalTime * 1000);
-
   let imgArr = [];
   let num = index;
 

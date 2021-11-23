@@ -23,23 +23,69 @@ import { renderPicQuestion } from './pic-question.js';
 import { renderCategories } from './category.js';
 import { renderArtistQuestion } from './artist-question.js';
 import { endGameSound } from './audio.js';
-import { getTime } from './settings.js';
+import { getSwitcher, getTime } from './settings.js';
 
 const nextPictureBtn = document.querySelector('.next-picture');
 const nextQuizBtn = document.querySelector('.modal-next-quiz');
 const modalEndGame = document.querySelector('.modal-wrapper-end-game');
 const modalHomeLink = document.querySelector('.modal-home-link');
 
-function startGame(start, end, card) {
-  let time = +getTime();
+let progressTime;
+let progressLine;
+let progressBlock;
 
-  setTimeout(() => {
-    if (getCurrentBlock() === picQuestion || getCurrentBlock() === artistQuestion) {
-      endGame(getRightAnswers());
-      endGameSound();
-      addAnimationHide(modalAnswer);
-    }
-  }, time * 1000);
+function startGame(start, end, card) {
+  if (getCurrentCategory() === 'pic-category') {
+    progressTime = picQuestion.querySelector('.progress-time');
+    progressLine = picQuestion.querySelector('.progress-line');
+    progressBlock = picQuestion.querySelector('.question-progress');
+  } else {
+    progressTime = artistQuestion.querySelector('.progress-time');
+    progressLine = artistQuestion.querySelector('.progress-line');
+    progressBlock = artistQuestion.querySelector('.question-progress');
+  }
+  if (getSwitcher()) {
+    progressBlock.classList.remove('hidden');
+    let time = +getTime();
+    let gameEnd = false;
+    let percent = 100 / time;
+    let totalPercent = 100;
+
+    progressTime.textContent = `0:${String(time).padStart(2, '0')}`;
+    progressLine.style.background = `linear-gradient(to right, #ffbca2 0%, #ffbca2 100%, #a4a4a4 100%, #a4a4a4 100%)`;
+
+    let timer = setInterval(() => {
+      time--;
+      totalPercent -= percent;
+
+      progressTime.textContent = `0:${String(time).padStart(2, '0')}`;
+      progressLine.style.background = `linear-gradient(to right, #ffbca2 0%, #ffbca2 ${totalPercent}%, #a4a4a4 ${totalPercent}%, #a4a4a4 100%)`;
+
+      if (
+        getCurrentBlock() !== picQuestion &&
+        getCurrentBlock() !== artistQuestion
+      ) {
+        gameEnd = true;
+        clearInterval(timer);
+      }
+    }, 1000);
+
+    setTimeout(() => {
+      if (
+        (getCurrentBlock() === picQuestion ||
+          getCurrentBlock() === artistQuestion) &&
+        !gameEnd
+      ) {
+        endGame(getRightAnswers());
+        endGameSound();
+        addAnimationHide(modalAnswer);
+        gameEnd = false;
+      }
+      clearInterval(timer);
+    }, time * 1000);
+  } else {
+    progressBlock.classList.add('hidden');
+  }
 
   let currentCategory = getCurrentCategory();
 
@@ -53,7 +99,7 @@ function startGame(start, end, card) {
   if (currentCategory === 'pic-category') {
     transitionHideBlocks(categories, picQuestion);
     questionText = document.querySelector('.pic-question-text');
-    console.log(start);
+
     questionText.textContent = `What is ${images[start].author} picture`;
     renderPicQuestion(currentQuestion, end, card.dataset.index);
   } else {
