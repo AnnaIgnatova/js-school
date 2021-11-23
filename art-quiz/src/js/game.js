@@ -29,11 +29,21 @@ const nextPictureBtn = document.querySelector('.next-picture');
 const nextQuizBtn = document.querySelector('.modal-next-quiz');
 const modalEndGame = document.querySelector('.modal-wrapper-end-game');
 const modalHomeLink = document.querySelector('.modal-home-link');
-const progressTime = document.querySelector('.progress-time');
-const progressLine = document.querySelector('.progress-line');
-const progressBlock = document.querySelector('.question-progress');
+
+let progressTime;
+let progressLine;
+let progressBlock;
 
 function startGame(start, end, card) {
+  if (getCurrentCategory() === 'pic-category') {
+    progressTime = picQuestion.querySelector('.progress-time');
+    progressLine = picQuestion.querySelector('.progress-line');
+    progressBlock = picQuestion.querySelector('.question-progress');
+  } else {
+    progressTime = artistQuestion.querySelector('.progress-time');
+    progressLine = artistQuestion.querySelector('.progress-line');
+    progressBlock = artistQuestion.querySelector('.question-progress');
+  }
   if (getSwitcher()) {
     progressBlock.classList.remove('hidden');
     let time = +getTime();
@@ -50,7 +60,7 @@ function startGame(start, end, card) {
 
       progressTime.textContent = `0:${String(time).padStart(2, '0')}`;
       progressLine.style.background = `linear-gradient(to right, #ffbca2 0%, #ffbca2 ${totalPercent}%, #a4a4a4 ${totalPercent}%, #a4a4a4 100%)`;
-      console.log(getCurrentBlock());
+
       if (
         getCurrentBlock() !== picQuestion &&
         getCurrentBlock() !== artistQuestion
@@ -89,7 +99,7 @@ function startGame(start, end, card) {
   if (currentCategory === 'pic-category') {
     transitionHideBlocks(categories, picQuestion);
     questionText = document.querySelector('.pic-question-text');
-    console.log(start);
+
     questionText.textContent = `What is ${images[start].author} picture`;
     renderPicQuestion(currentQuestion, end, card.dataset.index);
   } else {
