@@ -87,4 +87,8 @@ function getTime() {
   return timeBlock.querySelector('.time-to-answer-input').value;
 }
 
-export { getTime };
+function getSwitcher() {
+  return switchTime.checked;
+}
+
+export { getTime, getSwitcher };

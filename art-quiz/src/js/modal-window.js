@@ -5,10 +5,17 @@ import {
   images,
 } from './localStorage.js';
 import { transitionHideBlocks, addAnimationHide } from './base-functions.js';
-import { picQuestion, artistQuestion } from './main-blocks.js';
+import {
+  picQuestion,
+  artistQuestion,
+  categories,
+  welcome,
+} from './main-blocks.js';
 
 const modalAnswer = document.querySelector('.modal-wrapper-answer');
 const quitModal = document.querySelector('.modal-wrapper-quit');
+
+let headerBlock = '';
 
 function renderAnswerModal(num) {
   let name = images[num].name;
@@ -27,7 +34,7 @@ function renderAnswerModal(num) {
 quitModal.addEventListener('click', (event) => {
   let target = event.target;
   let currentCategory = getCurrentCategory();
-  let currentBlock = getCurrentBlock();
+
   if (
     (target.tagName === 'BUTTON' && target.textContent === 'Cancel') ||
     target.classList.contains('close-modal') ||
@@ -40,10 +47,20 @@ quitModal.addEventListener('click', (event) => {
   }
   if (target.tagName === 'BUTTON' && target.textContent === 'Yes') {
     addAnimationHide(quitModal);
-    if (currentCategory === 'pic-category')
-      transitionHideBlocks(picQuestion, currentBlock);
-    else transitionHideBlocks(artistQuestion, currentBlock);
+    changeCurrentBlock(categories);
+    if (headerBlock === 'welcome') changeCurrentBlock(welcome);
+    else changeCurrentBlock(categories);
+
+    if (currentCategory === 'pic-category') {
+      transitionHideBlocks(picQuestion, getCurrentBlock());
+    } else {
+      transitionHideBlocks(artistQuestion, getCurrentBlock());
+    }
   }
 });
 
-export { modalAnswer, renderAnswerModal, quitModal };
+function chooseHeaderBlock(value) {
+  headerBlock = value;
+}
+
+export { modalAnswer, renderAnswerModal, quitModal, chooseHeaderBlock };

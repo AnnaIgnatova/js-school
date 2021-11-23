@@ -1,7 +1,12 @@
 import { renderCategories } from './category.js';
 import { getCurrentBlock, changeCurrentBlock } from './localStorage.js';
-import { welcome, categories, picQuestion, artistQuestion } from './main-blocks.js';
-import { quitModal } from './modal-window.js';
+import {
+  welcome,
+  categories,
+  picQuestion,
+  artistQuestion,
+} from './main-blocks.js';
+import { quitModal, chooseHeaderBlock } from './modal-window.js';
 import { addAnimationShow, transitionHideBlocks } from './base-functions.js';
 
 const headerNav = document.querySelectorAll('.score-header');
@@ -15,8 +20,8 @@ function headerRoute(e) {
     target.parentNode.classList.contains('score-home-link')
   ) {
     if (currentBlock === picQuestion || currentBlock === artistQuestion) {
-      changeCurrentBlock(welcome);
       addAnimationShow(quitModal);
+      chooseHeaderBlock('welcome');
     } else {
       transitionHideBlocks(currentBlock, welcome);
       changeCurrentBlock(welcome);
@@ -28,8 +33,8 @@ function headerRoute(e) {
   ) {
     renderCategories();
     if (currentBlock === picQuestion || currentBlock === artistQuestion) {
-      changeCurrentBlock(categories);
       addAnimationShow(quitModal);
+      chooseHeaderBlock('category');
     } else {
       transitionHideBlocks(currentBlock, categories);
       changeCurrentBlock(categories);
@@ -45,6 +50,6 @@ homeLink.forEach((link) => {
   link.addEventListener('click', () => {
     let currentBlock = getCurrentBlock();
     transitionHideBlocks(currentBlock, welcome);
-    changeCurrentBlock(welcome)
+    changeCurrentBlock(welcome);
   });
 });
