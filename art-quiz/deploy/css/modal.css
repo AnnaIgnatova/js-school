@@ -155,10 +155,98 @@
   border: 1.5px solid #010101;
   background-color: transparent;
   border-radius: 60px;
-  transition: .2s;
+  transition: 0.2s;
   cursor: pointer;
 }
 .modal-end-game-btns > button:hover {
   border: 1.5px solid #ffbca2;
   background-color: #ffbca2;
+}
+@media (max-width: 1200px) {
+  .modal-end-game {
+    width: 50%;
+  }
+}
+@media (max-width: 1000px) {
+  .modal-answer {
+    width: 50%;
+  }
+}
+@media (max-width: 768px) {
+  .modal-answer {
+    height: 400px;
+  }
+  .answer-img {
+    height: 250px;
+  }
+  .pic-name-answer {
+    font-size: 20px;
+  }
+  .artist-answer {
+    font-size: 16px;
+  }
+  .check-answer {
+    width: 40px;
+  }
+  .congratulate {
+    font-size: 22px;
+    margin: 0;
+  }
+  .end-game-icon {
+    width: 100px;
+  }
+  .points {
+    font-size: 60px;
+    margin-bottom: 20px;
+  }
+  .modal-end-game {
+    height: 450px;
+  }
+  .modal-end-game-btns > button {
+    height: 52px;
+    font-size: 16px;
+  }
+  .modal-quit-question {
+    width: 70%;
+    font-size: 26px;
+    padding-top: 50px;
+  }
+  .quit-question-btns {
+    margin-top: 20px;
+    width: 100%;
+  }
+  .quit-question-btns > button {
+    margin: 1%;
+    font-size: 20px;
+    width: 90%;
+  }
+}
+@media (max-width: 550px) {
+  .modal-answer {
+    width: 70%;
+  }
+  .modal-end-game-btns {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .modal-end-game-btns > button {
+    width: 100%;
+    margin: 1%;
+  }
+  .points {
+    margin-bottom: 0;
+  }
+}
+@media (max-width: 420px) {
+  .modal-end-game {
+    width: 90%;
+  }
+  .modal-quit-question {
+    height: 240px;
+    font-size: 20px;
+  }
+  .quit-question-btns > button {
+    height: 40px;
+  }
 }

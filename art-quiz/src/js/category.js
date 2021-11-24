@@ -14,7 +14,7 @@ import {
   artistQuestion,
 } from './main-blocks.js';
 import { startGame } from './game.js';
-import { setImage, transitionHideBlocks } from './base-functions.js';
+import { setImage, transitionHideBlocks, showCard } from './base-functions.js';
 import { renderScore } from './score.js';
 
 const PIC_CATEGORY = [
@@ -97,6 +97,8 @@ const renderCard = (category, index) => {
     renderScore(start, end, index);
   });
 
+  card.style.opacity = 0;
+
   return card;
 };
 
@@ -118,8 +120,11 @@ const renderCategories = () => {
   PIC_CATEGORY.map((category, index) => {
     const card = renderCard(category, index + 1);
     cardsBlock.append(card);
-    return cardsBlock;
+    setTimeout(() => {
+      showCard(card);
+    }, 200 * (index + 1))
   });
+
 };
 
 export { resetCategories, renderCategories };

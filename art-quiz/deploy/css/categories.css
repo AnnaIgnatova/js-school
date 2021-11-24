@@ -244,6 +244,13 @@
   }
 }
 @media (max-width: 568px) {
+  .categories .welcome-settings,
+  .pic-question .welcome-settings,
+  .score .welcome-settings,
+  .artist-question .welcome-settings {
+    top: 1%;
+  }
+
   .categories-cards {
     justify-content: center;
   }

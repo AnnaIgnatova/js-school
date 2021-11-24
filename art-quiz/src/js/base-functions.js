@@ -29,6 +29,15 @@ function transitionHideBlocks(blockHide, blockShow) {
   }, 200);
 }
 
+function showCard(block) {
+  block.style.animation = 'showCard 0.5s';
+
+  setTimeout(() => {
+    block.style.opacity = 1;
+    block.style.animation = '';
+  }, 500);
+}
+
 function addAnimationShow(block) {
   block.classList.remove('hidden');
   block.style.animation = 'showModal 0.3s';
@@ -60,4 +69,5 @@ export {
   addAnimationShow,
   addAnimationHide,
   setImage,
+  showCard,
 };

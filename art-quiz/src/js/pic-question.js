@@ -7,7 +7,12 @@ import {
   getAnswers,
   changeAnswers,
 } from './localStorage.js';
-import { shuffle, addAnimationShow, setImage } from './base-functions.js';
+import {
+  shuffle,
+  addAnimationShow,
+  setImage,
+  showCard,
+} from './base-functions.js';
 import { modalAnswer, renderAnswerModal } from './modal-window.js';
 import { winGameSound, loseGameSound } from './audio.js';
 
@@ -39,7 +44,8 @@ function renderPicQuestion(index, end, cardIndex) {
     pic.dataset.author = images[num].author;
     pic.dataset.name = images[num].name;
     pic.dataset.year = images[num].year;
-    pic.className = 'pic-question-pic';
+    pic.style.opacity = 0;
+    pic.classList.add('pic-question-pic');
     setImage(url, pic);
     return pic;
   });
@@ -73,7 +79,15 @@ function renderPicQuestion(index, end, cardIndex) {
     });
   });
 
-  shuffledArr.forEach((img) => imagesBlock.append(img));
+  shuffledArr.map((img, index) => {
+    imagesBlock.append(img);
+    setTimeout(() => {
+      showCard(img);
+    }, 300 * (index + 1))
+    
+  });
+
+
 }
 
 export { renderPicQuestion };
