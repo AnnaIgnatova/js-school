@@ -1,3 +1,5 @@
+import { welcome } from './main-blocks.js';
+
 function shuffle(array) {
   const arr = [...array];
   let currentIndex = array.length;
@@ -38,6 +40,15 @@ function showCard(block) {
   }, 500);
 }
 
+function showWelcome(block) {
+  block.style.animation = 'show 0.5s';
+
+  setTimeout(() => {
+    block.style.opacity = 1;
+    block.style.animation = '';
+  }, 500);
+}
+
 function addAnimationShow(block) {
   block.classList.remove('hidden');
   block.style.animation = 'showModal 0.3s';
@@ -55,6 +66,7 @@ function addAnimationHide(block) {
 }
 
 const setImage = (url, block) => {
+  if (block === welcome) welcome.style.opacity = 0;
   const img = new Image();
   img.src = url;
 
@@ -70,4 +82,5 @@ export {
   addAnimationHide,
   setImage,
   showCard,
+  showWelcome,
 };
