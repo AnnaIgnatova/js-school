@@ -7,7 +7,12 @@ import {
   getRightAnswers,
   changeRightAnswers,
 } from './localStorage.js';
-import { shuffle, addAnimationShow, setImage } from './base-functions.js';
+import {
+  shuffle,
+  addAnimationShow,
+  setImage,
+  showCard,
+} from './base-functions.js';
 import { renderAnswerModal, modalAnswer } from './modal-window.js';
 import { winGameSound, loseGameSound } from './audio.js';
 
@@ -22,6 +27,11 @@ function renderArtistQuestion(index, end, cardIndex) {
 
   let url = `./images/full/${index}full.jpg`;
   setImage(url, artistQuestionPic);
+  artistQuestionPic.style.opacity = 0;
+
+  setTimeout(() => {
+    showCard(artistQuestionPic);
+  }, 300);
 
   let artist = images[num].author;
   artArr.push({ artist, num });
