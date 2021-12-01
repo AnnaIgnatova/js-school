@@ -41,4 +41,9 @@ function changeVolume(value) {
 
 changeVolume(0.5);
 
-export { endGameSound, winGameSound, loseGameSound, changeVolume };
+export {
+  endGameSound,
+  winGameSound,
+  loseGameSound,
+  changeVolume,
+};

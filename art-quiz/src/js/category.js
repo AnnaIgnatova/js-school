@@ -12,9 +12,10 @@ import {
   score,
   categories,
   artistQuestion,
+  welcome,
 } from './main-blocks.js';
 import { startGame } from './game.js';
-import { setImage, transitionHideBlocks, showCard } from './base-functions.js';
+import { setImage, transitionHideBlocks, showCard, addAnimationHide} from './base-functions.js';
 import { renderScore } from './score.js';
 
 const PIC_CATEGORY = [
@@ -33,11 +34,14 @@ const PIC_CATEGORY = [
 ];
 
 const cardsBlock = document.querySelector('.categories-cards');
+const nextQuizBtn = document.querySelector('.modal-next-quiz');
+const modalHomeLink = document.querySelector('.modal-home-link');
+const modalEndGame = document.querySelector('.modal-wrapper-end-game');
 
 const renderCard = (category, index) => {
   let categoryIndex = getCategoryIndex();
-  let currentCategory = getCurrentCategory();
-  let card = document.createElement('div');
+  const currentCategory = getCurrentCategory();
+  const card = document.createElement('div');
 
   card.className = 'category-card';
 
@@ -45,6 +49,7 @@ const renderCard = (category, index) => {
 
   gameInfo[currentCategory][index - 1].map((item) => {
     if (item) rightAnswers++;
+    return rightAnswers;
   });
 
   card.innerHTML = `
@@ -57,8 +62,8 @@ const renderCard = (category, index) => {
       </div>
     `;
 
-  let cardImage = card.querySelector('.card-img');
-  let cardScore = card.querySelector('.card-play-info');
+  const cardImage = card.querySelector('.card-img');
+  const cardScore = card.querySelector('.card-play-info');
 
   cardImage.dataset.start = categoryIndex;
   cardImage.dataset.end = categoryIndex + 9;
@@ -66,7 +71,6 @@ const renderCard = (category, index) => {
   categoryIndex += 10;
   changeCategoryIndex(categoryIndex);
   setImage(`./images/${currentCategory}/${index}.jpg`, cardImage);
-  // cardImage.style.backgroundImage = `url('./images/${currentCategory}/${index}.jpg')`;
 
   if (!rightAnswers) {
     cardImage.style.filter = 'grayscale(100%)';
@@ -77,24 +81,25 @@ const renderCard = (category, index) => {
   }
 
   cardImage.addEventListener('click', (e) => {
-    let currentCategory = getCurrentCategory();
+    const curCategory = getCurrentCategory();
 
     if (!e.target.classList.contains('card-play-info')) {
-      if (currentCategory === 'pic-category') changeCurrentBlock(picQuestion);
+      if (curCategory === 'pic-category') changeCurrentBlock(picQuestion);
       else changeCurrentBlock(artistQuestion);
-      if (gameInfo[currentCategory][index - 1].length !== 0)
-        gameInfo[currentCategory][index - 1] = [];
+      if (gameInfo[curCategory][index - 1].length !== 0) {
+        gameInfo[curCategory][index - 1] = [];
+      }
       startGame(e.target.dataset.start, e.target.dataset.end, cardImage);
     }
   });
 
   cardScore.addEventListener('click', (e) => {
     changeCurrentBlock(score);
-    let start = +e.target.parentNode.dataset.start;
-    let end = +e.target.parentNode.dataset.end;
-    let index = +e.target.parentNode.dataset.index;
+    const start = +e.target.parentNode.dataset.start;
+    const end = +e.target.parentNode.dataset.end;
+    const i = +e.target.parentNode.dataset.index;
     transitionHideBlocks(categories, score);
-    renderScore(start, end, index);
+    renderScore(start, end, i);
   });
 
   card.style.opacity = 0;
@@ -103,7 +108,7 @@ const renderCard = (category, index) => {
 };
 
 function resetCategories() {
-  let currentCategory = getCurrentCategory();
+  const currentCategory = getCurrentCategory();
   if (currentCategory === 'pic-category') {
     changeCategoryIndex(120);
   } else {
@@ -122,9 +127,25 @@ const renderCategories = () => {
     cardsBlock.append(card);
     setTimeout(() => {
       showCard(card);
-    }, 200 * (index + 1))
+    }, 200 * (index + 1));
+    return card;
   });
-
 };
+
+nextQuizBtn.addEventListener('click', () => {
+  const currentBlock = getCurrentBlock();
+  addAnimationHide(modalEndGame);
+  renderCategories();
+
+  transitionHideBlocks(currentBlock, categories);
+  changeCurrentBlock(categories);
+});
+
+modalHomeLink.addEventListener('click', () => {
+  const currentBlock = getCurrentBlock();
+  addAnimationHide(modalEndGame);
+  transitionHideBlocks(currentBlock, welcome);
+  changeCurrentBlock(welcome);
+});
 
 export { resetCategories, renderCategories };

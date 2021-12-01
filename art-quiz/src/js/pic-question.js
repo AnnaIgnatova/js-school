@@ -21,10 +21,10 @@ const wrongIcon = document.querySelector('.wrong');
 const imagesBlock = document.querySelector('.pic-question-pics');
 
 function renderPicQuestion(index, end, cardIndex) {
-  let imgArr = [];
-  let num = index;
+  const imgArr = [];
+  const num = index;
 
-  let url = `./images/full/${index}full.jpg`;
+  const url = `./images/full/${index}full.jpg`;
   imgArr.push({ num, url });
 
   for (let i = 1; i < 4; i++) {
@@ -38,8 +38,8 @@ function renderPicQuestion(index, end, cardIndex) {
   }
   imagesBlock.innerHTML = '';
 
-  let picElementsArr = imgArr.map(({ num, url }) => {
-    let pic = document.createElement('div');
+  const picElementsArr = imgArr.map(({ num, url }) => {
+    const pic = document.createElement('div');
     pic.dataset.index = num;
     pic.dataset.author = images[num].author;
     pic.dataset.name = images[num].name;
@@ -50,15 +50,15 @@ function renderPicQuestion(index, end, cardIndex) {
     return pic;
   });
 
-  let shuffledArr = shuffle(picElementsArr);
+  const shuffledArr = shuffle(picElementsArr);
 
   shuffledArr.forEach((element) => {
-    element.addEventListener('click', (e) => {
-      let currentCategory = getCurrentCategory();
+    element.addEventListener('click', () => {
+      const currentCategory = getCurrentCategory();
       let rightAnswers = getRightAnswers();
       let answers = getAnswers();
 
-      if (element.dataset.index == num) {
+      if (+element.dataset.index === +num) {
         winGameSound();
         rightIcon.classList.remove('hidden');
         wrongIcon.classList.add('hidden');
@@ -79,15 +79,13 @@ function renderPicQuestion(index, end, cardIndex) {
     });
   });
 
-  shuffledArr.map((img, index) => {
+  shuffledArr.map((img, i) => {
     imagesBlock.append(img);
     setTimeout(() => {
       showCard(img);
-    }, 300 * (index + 1))
-    
+    }, 300 * (i + 1));
+    return img;
   });
-
-
 }
 
 export { renderPicQuestion };

@@ -24,8 +24,8 @@ function changeCategoryIndex(index) {
   categoryIndex = index;
 }
 
-function changeRightAnswers(answers) {
-  rightAnswers = answers;
+function changeRightAnswers(answ) {
+  rightAnswers = answ;
 }
 
 function getCurrentCategory() {

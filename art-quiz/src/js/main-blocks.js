@@ -5,4 +5,11 @@ const picQuestion = document.querySelector('.pic-question');
 const artistQuestion = document.querySelector('.artist-question');
 const settings = document.querySelector('.settings');
 
-export { welcome, score, picQuestion, artistQuestion, settings, categories };
+export {
+  welcome,
+  score,
+  picQuestion,
+  artistQuestion,
+  settings,
+  categories,
+};

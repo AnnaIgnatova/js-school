@@ -11,7 +11,6 @@ import { modalAnswer } from './modal-window.js';
 import {
   picQuestion,
   categories,
-  welcome,
   artistQuestion,
 } from './main-blocks.js';
 import {
@@ -20,19 +19,21 @@ import {
   addAnimationShow,
 } from './base-functions.js';
 import { renderPicQuestion } from './pic-question.js';
-import { renderCategories } from './category.js';
 import { renderArtistQuestion } from './artist-question.js';
 import { endGameSound } from './audio.js';
 import { getSwitcher, getTime } from './settings.js';
 
 const nextPictureBtn = document.querySelector('.next-picture');
-const nextQuizBtn = document.querySelector('.modal-next-quiz');
 const modalEndGame = document.querySelector('.modal-wrapper-end-game');
-const modalHomeLink = document.querySelector('.modal-home-link');
 
 let progressTime;
 let progressLine;
 let progressBlock;
+
+function endGame(rightAnswers) {
+  addAnimationShow(modalEndGame);
+  modalEndGame.querySelector('.points').textContent = `${rightAnswers}/10`;
+}
 
 function startGame(start, end, card) {
   if (getCurrentCategory() === 'pic-category') {
@@ -48,13 +49,13 @@ function startGame(start, end, card) {
     progressBlock.classList.remove('hidden');
     let time = +getTime();
     let gameEnd = false;
-    let percent = 100 / time;
+    const percent = 100 / time;
     let totalPercent = 100;
 
     progressTime.textContent = `0:${String(time).padStart(2, '0')}`;
-    progressLine.style.background = `linear-gradient(to right, #ffbca2 0%, #ffbca2 100%, #a4a4a4 100%, #a4a4a4 100%)`;
+    progressLine.style.background = 'linear-gradient(to right, #ffbca2 0%, #ffbca2 100%, #a4a4a4 100%, #a4a4a4 100%)';
 
-    let timer = setInterval(() => {
+    const timer = setInterval(() => {
       time--;
       totalPercent -= percent;
 
@@ -62,8 +63,8 @@ function startGame(start, end, card) {
       progressLine.style.background = `linear-gradient(to right, #ffbca2 0%, #ffbca2 ${totalPercent}%, #a4a4a4 ${totalPercent}%, #a4a4a4 100%)`;
 
       if (
-        getCurrentBlock() !== picQuestion &&
-        getCurrentBlock() !== artistQuestion
+        getCurrentBlock() !== picQuestion
+        && getCurrentBlock() !== artistQuestion
       ) {
         gameEnd = true;
         clearInterval(timer);
@@ -72,9 +73,9 @@ function startGame(start, end, card) {
 
     setTimeout(() => {
       if (
-        (getCurrentBlock() === picQuestion ||
-          getCurrentBlock() === artistQuestion) &&
-        !gameEnd
+        (getCurrentBlock() === picQuestion
+         || getCurrentBlock() === artistQuestion)
+         && !gameEnd
       ) {
         endGame(getRightAnswers());
         endGameSound();
@@ -87,7 +88,7 @@ function startGame(start, end, card) {
     progressBlock.classList.add('hidden');
   }
 
-  let currentCategory = getCurrentCategory();
+  const currentCategory = getCurrentCategory();
 
   if (currentCategory === 'pic-category') changeCurrentBlock(picQuestion);
   else changeCurrentBlock(artistQuestion);
@@ -109,9 +110,9 @@ function startGame(start, end, card) {
 
   nextPictureBtn.addEventListener('click', () => {
     addAnimationHide(modalAnswer);
-    let answers = getAnswers();
-    let rightAnswers = getRightAnswers();
-    let currentCategory = getCurrentCategory();
+    const answers = getAnswers();
+    const rightAnswers = getRightAnswers();
+    const currentCategory = getCurrentCategory();
 
     if (answers === 10) {
       endGame(rightAnswers);
@@ -127,26 +128,5 @@ function startGame(start, end, card) {
     }
   });
 }
-
-function endGame(rightAnswers) {
-  addAnimationShow(modalEndGame);
-  modalEndGame.querySelector('.points').textContent = `${rightAnswers}/10`;
-}
-
-nextQuizBtn.addEventListener('click', () => {
-  let currentBlock = getCurrentBlock();
-  addAnimationHide(modalEndGame);
-  renderCategories();
-
-  transitionHideBlocks(currentBlock, categories);
-  changeCurrentBlock(categories);
-});
-
-modalHomeLink.addEventListener('click', () => {
-  let currentBlock = getCurrentBlock();
-  addAnimationHide(modalEndGame);
-  transitionHideBlocks(currentBlock, welcome);
-  changeCurrentBlock(welcome);
-});
 
 export { startGame };

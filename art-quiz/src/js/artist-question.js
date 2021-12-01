@@ -22,10 +22,10 @@ const rightIcon = document.querySelector('.right');
 const wrongIcon = document.querySelector('.wrong');
 
 function renderArtistQuestion(index, end, cardIndex) {
-  let artArr = [];
-  let num = index;
+  const artArr = [];
+  const questionNumber = index;
 
-  let url = `./images/full/${index}full.jpg`;
+  const url = `./images/full/${index}full.jpg`;
   setImage(url, artistQuestionPic);
   artistQuestionPic.style.opacity = 0;
 
@@ -33,23 +33,26 @@ function renderArtistQuestion(index, end, cardIndex) {
     showCard(artistQuestionPic);
   }, 300);
 
-  let artist = images[num].author;
-  artArr.push({ artist, num });
+  const questionAuthor = images[questionNumber].author;
+  artArr.push({ questionAuthor, questionNumber });
 
   for (let i = 1; i < 4; i++) {
-    let num = Math.floor(Math.random() * (241 - 0) + 0);
-    let artist = images[num].author;
-    while (num == index && artArr.indexOf({ artist, num }) !== -1) {
-      artist = images[num].author;
-      num = Math.floor(Math.random() * (241 - 0) + 0);
+    let randomNum = Math.floor(Math.random() * (241 - 0) + 0);
+    let { author } = images[randomNum];
+    while (
+      +randomNum === +index
+      && artArr.indexOf({ author, randomNum }) !== -1
+    ) {
+      author = images[randomNum].author;
+      randomNum = Math.floor(Math.random() * (241 - 0) + 0);
     }
-    artArr.push({ artist, num });
+    artArr.push({ author, randomNum });
   }
 
   artistQuestionBtns.innerHTML = '';
 
-  let btnsArr = artArr.map(({ artist, num }) => {
-    let btn = document.createElement('button');
+  const btnsArr = artArr.map(({ artist, num }) => {
+    const btn = document.createElement('button');
     btn.className = 'question-btn';
     btn.dataset.index = num;
     btn.dataset.author = images[num].author;
@@ -59,15 +62,15 @@ function renderArtistQuestion(index, end, cardIndex) {
     return btn;
   });
 
-  let shuffledArr = shuffle(btnsArr);
+  const shuffledArr = shuffle(btnsArr);
 
   shuffledArr.forEach((btn) => {
     btn.addEventListener('click', () => {
-      let currentCategory = getCurrentCategory();
+      const currentCategory = getCurrentCategory();
       let answers = getAnswers();
       let rightAnswers = getRightAnswers();
 
-      if (btn.dataset.index == num) {
+      if (+btn.dataset.index === +questionNumber) {
         winGameSound();
         rightIcon.classList.remove('hidden');
         wrongIcon.classList.add('hidden');
@@ -82,7 +85,7 @@ function renderArtistQuestion(index, end, cardIndex) {
       }
 
       addAnimationShow(modalAnswer);
-      renderAnswerModal(num);
+      renderAnswerModal(questionNumber);
       answers++;
       changeAnswers(answers);
     });
