@@ -19,59 +19,67 @@ function shuffle(array) {
 }
 
 function transitionHideBlocks(blockHide, blockShow) {
-  blockHide.style.animation = 'hide 0.3s';
+  const notHiddenBlock = blockHide;
+  const hiddenBlock = blockShow;
+  notHiddenBlock.style.animation = 'hide 0.3s';
   setTimeout(() => {
-    blockShow.style.animation = 'show 0.3s';
-    blockHide.style.animation = '';
+    hiddenBlock.style.animation = 'show 0.3s';
+    notHiddenBlock.style.animation = '';
     blockShow.classList.remove('hidden');
     blockHide.classList.add('hidden');
     setTimeout(() => {
-      blockShow.style.animation = '';
+      hiddenBlock.style.animation = '';
     }, 200);
   }, 200);
 }
 
 function showCard(block) {
-  block.style.animation = 'showCard 0.5s';
+  const card = block;
+  card.style.animation = 'showCard 0.5s';
 
   setTimeout(() => {
-    block.style.opacity = 1;
-    block.style.animation = '';
+    card.style.opacity = 1;
+    card.style.animation = '';
   }, 500);
 }
 
 function showWelcome(block) {
-  block.style.animation = 'show 0.5s';
+  const card = block;
+  card.style.animation = 'show 0.5s';
 
   setTimeout(() => {
-    block.style.opacity = 1;
-    block.style.animation = '';
+    card.style.opacity = 1;
+    card.style.animation = '';
   }, 500);
 }
 
 function addAnimationShow(block) {
-  block.classList.remove('hidden');
-  block.style.animation = 'showModal 0.3s';
+  const currentBlock = block;
+  currentBlock.classList.remove('hidden');
+  currentBlock.style.animation = 'showModal 0.3s';
 
   setTimeout(() => {
-    block.style.animation = '';
+    currentBlock.style.animation = '';
   }, 200);
 }
+
 function addAnimationHide(block) {
-  block.style.animation = 'hideModal 0.3s';
+  const currentBlock = block;
+  currentBlock.style.animation = 'hideModal 0.3s';
   setTimeout(() => {
-    block.classList.add('hidden');
-    block.style.animation = '';
+    currentBlock.classList.add('hidden');
+    currentBlock.style.animation = '';
   }, 200);
 }
 
 const setImage = (url, block) => {
-  if (block === welcome) welcome.style.opacity = 0;
+  const currentBlock = block;
+  if (currentBlock === welcome) welcome.style.opacity = 0;
   const img = new Image();
   img.src = url;
 
   img.onload = () => {
-    block.style.backgroundImage = `url(${url})`;
+    currentBlock.style.backgroundImage = `url(${url})`;
   };
 };
 

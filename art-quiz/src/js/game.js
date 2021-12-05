@@ -18,8 +18,8 @@ import {
   addAnimationHide,
   addAnimationShow,
 } from './base-functions.js';
-import { renderPicQuestion } from './pic-question.js';
-import { renderArtistQuestion } from './artist-question.js';
+import renderPicQuestion from './pic-question.js';
+import renderArtistQuestion from './artist-question.js';
 import { endGameSound } from './audio.js';
 import { getSwitcher, getTime } from './settings.js';
 
@@ -112,14 +112,14 @@ function startGame(start, end, card) {
     addAnimationHide(modalAnswer);
     const answers = getAnswers();
     const rightAnswers = getRightAnswers();
-    const currentCategory = getCurrentCategory();
+    const curCategory = getCurrentCategory();
 
     if (answers === 10) {
       endGame(rightAnswers);
       endGameSound();
     } else {
       currentQuestion++;
-      if (currentCategory === 'pic-category') {
+      if (curCategory === 'pic-category') {
         questionText.textContent = `What is ${images[currentQuestion].author} picture`;
         renderPicQuestion(currentQuestion, end, card.dataset.index);
       } else {
@@ -129,4 +129,4 @@ function startGame(start, end, card) {
   });
 }
 
-export { startGame };
+export default startGame;

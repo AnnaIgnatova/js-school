@@ -22,31 +22,32 @@ const imagesBlock = document.querySelector('.pic-question-pics');
 
 function renderPicQuestion(index, end, cardIndex) {
   const imgArr = [];
-  const num = index;
+  const picIndex = index;
 
-  const url = `./images/full/${index}full.jpg`;
-  imgArr.push({ num, url });
+  let imageNum = picIndex;
+  let imageURL = `./images/full/${picIndex}full.jpg`;
+  imgArr.push({ imageNum, imageURL });
 
-  for (let i = 1; i < 4; i++) {
-    let num = Math.floor(Math.random() * (241 - 0) + 0);
-    let url = `./images/full/${num}full.jpg`;
-    while (+num === +index && imgArr.indexOf(url) !== -1) {
-      num = Math.floor(Math.random() * (241 - 0) + 0);
-      url = `./images/full/${num}full.jpg`;
+  for (let i = 0; i < 4; i++) {
+    imageNum = Math.floor(Math.random() * (241 - 0) + 0);
+    imageURL = `./images/full/${imageNum}full.jpg`;
+    while (+imageNum === +index && imgArr.indexOf(imageURL) !== -1) {
+      imageNum = Math.floor(Math.random() * (241 - 0) + 0);
+      imageURL = `./images/full/${imageNum}full.jpg`;
     }
-    imgArr.push({ num, url });
+    imgArr.push({ imageNum, imageURL });
   }
   imagesBlock.innerHTML = '';
 
-  const picElementsArr = imgArr.map(({ num, url }) => {
+  const picElementsArr = imgArr.map((img) => {
     const pic = document.createElement('div');
-    pic.dataset.index = num;
-    pic.dataset.author = images[num].author;
-    pic.dataset.name = images[num].name;
-    pic.dataset.year = images[num].year;
+    pic.dataset.index = img.imageNum;
+    pic.dataset.author = images[img.imageNum].author;
+    pic.dataset.name = images[img.imageNum].name;
+    pic.dataset.year = images[img.imageNum].year;
     pic.style.opacity = 0;
     pic.classList.add('pic-question-pic');
-    setImage(url, pic);
+    setImage(img.imageURL, pic);
     return pic;
   });
 
@@ -58,7 +59,7 @@ function renderPicQuestion(index, end, cardIndex) {
       let rightAnswers = getRightAnswers();
       let answers = getAnswers();
 
-      if (+element.dataset.index === +num) {
+      if (+element.dataset.index === +picIndex) {
         winGameSound();
         rightIcon.classList.remove('hidden');
         wrongIcon.classList.add('hidden');
@@ -73,7 +74,7 @@ function renderPicQuestion(index, end, cardIndex) {
       }
 
       addAnimationShow(modalAnswer);
-      renderAnswerModal(num);
+      renderAnswerModal(picIndex);
       answers++;
       changeAnswers(answers);
     });
@@ -88,4 +89,4 @@ function renderPicQuestion(index, end, cardIndex) {
   });
 }
 
-export { renderPicQuestion };
+export default renderPicQuestion;

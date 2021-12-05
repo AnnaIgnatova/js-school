@@ -23,9 +23,10 @@ const wrongIcon = document.querySelector('.wrong');
 
 function renderArtistQuestion(index, end, cardIndex) {
   const artArr = [];
-  const questionNumber = index;
+  const questionNumber = +index;
+  let artistNum = +index;
 
-  const url = `./images/full/${index}full.jpg`;
+  const url = `./images/full/${artistNum}full.jpg`;
   setImage(url, artistQuestionPic);
   artistQuestionPic.style.opacity = 0;
 
@@ -33,32 +34,31 @@ function renderArtistQuestion(index, end, cardIndex) {
     showCard(artistQuestionPic);
   }, 300);
 
-  const questionAuthor = images[questionNumber].author;
-  artArr.push({ questionAuthor, questionNumber });
+  let artist = images[artistNum].author;
+  artArr.push({ artist, artistNum });
 
   for (let i = 1; i < 4; i++) {
-    let randomNum = Math.floor(Math.random() * (241 - 0) + 0);
-    let { author } = images[randomNum];
+    artistNum = Math.floor(Math.random() * (241 - 0) + 0);
+    artist = images[artistNum].author;
     while (
-      +randomNum === +index
-      && artArr.indexOf({ author, randomNum }) !== -1
+      +artistNum === +index
+      && artArr.indexOf({ artist, artistNum }) !== -1
     ) {
-      author = images[randomNum].author;
-      randomNum = Math.floor(Math.random() * (241 - 0) + 0);
+      artist = images[artistNum].author;
+      artistNum = Math.floor(Math.random() * (241 - 0) + 0);
     }
-    artArr.push({ author, randomNum });
+    artArr.push({ artist, artistNum });
   }
 
   artistQuestionBtns.innerHTML = '';
-
-  const btnsArr = artArr.map(({ artist, num }) => {
+  const btnsArr = artArr.map((art) => {
     const btn = document.createElement('button');
     btn.className = 'question-btn';
-    btn.dataset.index = num;
-    btn.dataset.author = images[num].author;
-    btn.dataset.name = images[num].name;
-    btn.dataset.year = images[num].year;
-    btn.textContent = artist;
+    btn.dataset.index = art.artistNum;
+    btn.dataset.author = images[art.artistNum].author;
+    btn.dataset.name = images[art.artistNum].name;
+    btn.dataset.year = images[art.artistNum].year;
+    btn.textContent = btn.dataset.author;
     return btn;
   });
 
@@ -94,4 +94,4 @@ function renderArtistQuestion(index, end, cardIndex) {
   shuffledArr.forEach((btn) => artistQuestionBtns.append(btn));
 }
 
-export { renderArtistQuestion };
+export default renderArtistQuestion;

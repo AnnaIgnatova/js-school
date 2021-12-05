@@ -15,9 +15,14 @@ import {
   artistQuestion,
   welcome,
 } from './main-blocks.js';
-import { startGame } from './game.js';
-import { setImage, transitionHideBlocks, showCard, addAnimationHide} from './base-functions.js';
-import { renderScore } from './score.js';
+import startGame from './game.js';
+import {
+  setImage,
+  transitionHideBlocks,
+  showCard,
+  addAnimationHide,
+} from './base-functions.js';
+import renderScore from './score.js';
 
 const PIC_CATEGORY = [
   'Portrait',

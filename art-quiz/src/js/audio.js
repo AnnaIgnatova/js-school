@@ -35,7 +35,8 @@ function loseGameSound() {
 
 function changeVolume(value) {
   [audioWin, audioLose, audioEnd].forEach((audio) => {
-    audio.volume = value;
+    const audioRange = audio;
+    audioRange.volume = value;
   });
 }
 

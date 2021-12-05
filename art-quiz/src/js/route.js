@@ -13,11 +13,11 @@ const headerNav = document.querySelectorAll('.score-header');
 const homeLink = document.querySelectorAll('.home-link');
 
 function headerRoute(e) {
-  let currentBlock = getCurrentBlock();
+  const currentBlock = getCurrentBlock();
   const { target } = e;
   if (
-    target.classList.contains('score-home-link') ||
-    target.parentNode.classList.contains('score-home-link')
+    target.classList.contains('score-home-link')
+    || target.parentNode.classList.contains('score-home-link')
   ) {
     if (currentBlock === picQuestion || currentBlock === artistQuestion) {
       addAnimationShow(quitModal);
@@ -28,8 +28,8 @@ function headerRoute(e) {
     }
   }
   if (
-    target.classList.contains('score-category-link') ||
-    target.parentNode.classList.contains('score-category-link')
+    target.classList.contains('score-category-link')
+    || target.parentNode.classList.contains('score-category-link')
   ) {
     renderCategories();
     if (currentBlock === picQuestion || currentBlock === artistQuestion) {
@@ -48,7 +48,7 @@ headerNav.forEach((nav) => {
 
 homeLink.forEach((link) => {
   link.addEventListener('click', () => {
-    let currentBlock = getCurrentBlock();
+    const currentBlock = getCurrentBlock();
     transitionHideBlocks(currentBlock, welcome);
     changeCurrentBlock(welcome);
   });
