@@ -12,7 +12,6 @@ import './js/modal-window.js';
 import './js/settings.js';
 import './js/audio.js';
 
-
 console.log(`
 Ваша оценка - 220 баллов 
 Отзыв по пунктам ТЗ:
@@ -68,4 +67,4 @@ console.log(`
     - Появление информации при клике на карточку в блоке score 
     - Появление блока score при наведении на карточку
 
-`)
+`);

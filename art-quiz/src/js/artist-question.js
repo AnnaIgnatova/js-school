@@ -41,8 +41,8 @@ function renderArtistQuestion(index, end, cardIndex) {
     artistNum = Math.floor(Math.random() * (241 - 0) + 0);
     artist = images[artistNum].author;
     while (
-      +artistNum === +index
-      && artArr.indexOf({ artist, artistNum }) !== -1
+      +artistNum === +index &&
+      artArr.indexOf({ artist, artistNum }) !== -1
     ) {
       artist = images[artistNum].author;
       artistNum = Math.floor(Math.random() * (241 - 0) + 0);
@@ -74,6 +74,7 @@ function renderArtistQuestion(index, end, cardIndex) {
         winGameSound();
         rightIcon.classList.remove('hidden');
         wrongIcon.classList.add('hidden');
+
         rightAnswers++;
         changeRightAnswers(rightAnswers);
         gameInfo[currentCategory][cardIndex - 1].push(true);

@@ -8,11 +8,7 @@ import {
   getCurrentBlock,
 } from './localStorage.js';
 import { modalAnswer } from './modal-window.js';
-import {
-  picQuestion,
-  categories,
-  artistQuestion,
-} from './main-blocks.js';
+import { picQuestion, categories, artistQuestion } from './main-blocks.js';
 import {
   transitionHideBlocks,
   addAnimationHide,
@@ -53,7 +49,8 @@ function startGame(start, end, card) {
     let totalPercent = 100;
 
     progressTime.textContent = `0:${String(time).padStart(2, '0')}`;
-    progressLine.style.background = 'linear-gradient(to right, #ffbca2 0%, #ffbca2 100%, #a4a4a4 100%, #a4a4a4 100%)';
+    progressLine.style.background =
+      'linear-gradient(to right, #ffbca2 0%, #ffbca2 100%, #a4a4a4 100%, #a4a4a4 100%)';
 
     const timer = setInterval(() => {
       time--;
@@ -63,8 +60,8 @@ function startGame(start, end, card) {
       progressLine.style.background = `linear-gradient(to right, #ffbca2 0%, #ffbca2 ${totalPercent}%, #a4a4a4 ${totalPercent}%, #a4a4a4 100%)`;
 
       if (
-        getCurrentBlock() !== picQuestion
-        && getCurrentBlock() !== artistQuestion
+        getCurrentBlock() !== picQuestion &&
+        getCurrentBlock() !== artistQuestion
       ) {
         gameEnd = true;
         clearInterval(timer);
@@ -73,9 +70,9 @@ function startGame(start, end, card) {
 
     setTimeout(() => {
       if (
-        (getCurrentBlock() === picQuestion
-         || getCurrentBlock() === artistQuestion)
-         && !gameEnd
+        (getCurrentBlock() === picQuestion ||
+          getCurrentBlock() === artistQuestion) &&
+        !gameEnd
       ) {
         endGame(getRightAnswers());
         endGameSound();

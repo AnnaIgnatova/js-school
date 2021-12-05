@@ -63,12 +63,7 @@ function renderScore(start, end, index) {
   scoreCards.innerHTML = '';
   let counter = 0;
   for (let i = start; i <= end; i++) {
-    const {
-      author,
-      name,
-      year,
-      imageNum,
-    } = images[i];
+    const { author, name, year, imageNum } = images[i];
     renderScoreCard(author, name, year, imageNum, index, counter);
     counter++;
   }

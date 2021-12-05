@@ -56,8 +56,8 @@ volumeInput.addEventListener('input', (e) => {
 
 settings.addEventListener('click', (e) => {
   if (
-    e.target.classList.contains('settings-back')
-    || e.target.parentElement.classList.contains('settings-back')
+    e.target.classList.contains('settings-back') ||
+    e.target.parentElement.classList.contains('settings-back')
   ) {
     changeCurrentBlock(welcome);
     transitionHideBlocks(settings, welcome);
@@ -78,20 +78,23 @@ closeIcon.addEventListener('click', () => {
 
 function defaultSettings() {
   switchTime.checked = false;
-  volumeInput.style.background = 'linear-gradient(to right, #FFBCA2 0%, #FFBCA2 50%, #A4A4A4 50%, white 100%)';
+  volumeInput.style.background =
+    'linear-gradient(to right, #FFBCA2 0%, #FFBCA2 50%, #A4A4A4 50%, white 100%)';
   volumeInput.value = 50;
   timeBlock.querySelector('.time-to-answer-input').value = 20;
   updateLocalStorage();
 }
 
 muteSoundIcon.addEventListener('click', () => {
-  volumeInput.style.background = 'linear-gradient(to right, #FFBCA2 0%, #FFBCA2 0%, #A4A4A4 0%, white 100%)';
+  volumeInput.style.background =
+    'linear-gradient(to right, #FFBCA2 0%, #FFBCA2 0%, #A4A4A4 0%, white 100%)';
   volumeInput.value = 0;
   changeVolume(0);
 });
 
 maxSoundIcon.addEventListener('click', () => {
-  volumeInput.style.background = 'linear-gradient(to right, #FFBCA2 0%, #FFBCA2 100%, #A4A4A4 100%, white 100%)';
+  volumeInput.style.background =
+    'linear-gradient(to right, #FFBCA2 0%, #FFBCA2 100%, #A4A4A4 100%, white 100%)';
   volumeInput.value = 100;
   changeVolume(1);
 });

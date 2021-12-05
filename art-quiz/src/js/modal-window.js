@@ -22,9 +22,13 @@ function renderAnswerModal(num) {
   const { author } = images[num];
   const { year } = images[num];
 
-  modalAnswer.querySelector('.answer-img').style.backgroundImage = `url(./images/img/${num}.jpg)`;
+  modalAnswer.querySelector(
+    '.answer-img'
+  ).style.backgroundImage = `url(./images/img/${num}.jpg)`;
   modalAnswer.querySelector('.pic-name-answer').textContent = name;
-  modalAnswer.querySelector('.artist-answer').textContent = `${author}, ${year}`;
+  modalAnswer.querySelector(
+    '.artist-answer'
+  ).textContent = `${author}, ${year}`;
 }
 
 quitModal.addEventListener('click', (event) => {
@@ -32,10 +36,10 @@ quitModal.addEventListener('click', (event) => {
   const currentCategory = getCurrentCategory();
 
   if (
-    (target.tagName === 'BUTTON' && target.textContent === 'Cancel')
-    || target.classList.contains('close-modal')
-    || target.parentNode.classList.contains('close-modal')
-    || target.classList.contains('modal-wrapper-quit')
+    (target.tagName === 'BUTTON' && target.textContent === 'Cancel') ||
+    target.classList.contains('close-modal') ||
+    target.parentNode.classList.contains('close-modal') ||
+    target.classList.contains('modal-wrapper-quit')
   ) {
     addAnimationHide(quitModal);
     if (currentCategory === 'pic-category') changeCurrentBlock(picQuestion);
@@ -59,9 +63,4 @@ function chooseHeaderBlock(value) {
   headerBlock = value;
 }
 
-export {
-  modalAnswer,
-  renderAnswerModal,
-  quitModal,
-  chooseHeaderBlock,
-};
+export { modalAnswer, renderAnswerModal, quitModal, chooseHeaderBlock };
