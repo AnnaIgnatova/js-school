@@ -6,6 +6,7 @@ import {
   changeRightAnswers,
   gameInfo,
   changeCurrentBlock,
+  getCurrentBlock,
 } from './localStorage.js';
 import {
   picQuestion,

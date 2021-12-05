@@ -1,5 +1,14 @@
 import { welcome } from './main-blocks.js';
-import images from '../images/images-en.js';
+
+const images = [];
+
+const url = 'images/images-en.json';
+
+fetch(url)
+  .then((res) => res.json())
+  .then((data) => {
+    images.push(...data);
+  });
 
 const gameInfo = {
   'artist-category': [[], [], [], [], [], [], [], [], [], [], [], []],
@@ -53,8 +62,8 @@ function getAnswers() {
 }
 
 export {
-  gameInfo,
   images,
+  gameInfo,
   changeCategory,
   changeCurrentBlock,
   changeCategoryIndex,
