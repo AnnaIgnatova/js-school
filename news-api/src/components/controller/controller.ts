@@ -17,9 +17,11 @@ class AppController extends AppLoader {
   getNews(e: Event, callback: CallbackType<IData>): void {
     let target = e.target as HTMLElement;
     const newsContainer = e.currentTarget as HTMLElement;
+    const sphere = document.querySelector('.stage');
 
     while (target !== newsContainer) {
       if (target.classList.contains('source__item')) {
+        (sphere as HTMLElement).style.display = 'none';
         const sourceId = target.getAttribute('data-source-id') as string;
         if (newsContainer!.getAttribute('data-source') !== sourceId) {
           newsContainer!.setAttribute('data-source', sourceId);
