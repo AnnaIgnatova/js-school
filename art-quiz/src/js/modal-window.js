@@ -12,6 +12,9 @@ import {
   welcome,
 } from './main-blocks.js';
 
+const PICTURE_CATEGORY = 'pic-category';
+const WELCOME_BLOCK = 'welcome';
+
 const modalAnswer = document.querySelector('.modal-wrapper-answer');
 const quitModal = document.querySelector('.modal-wrapper-quit');
 
@@ -42,16 +45,16 @@ quitModal.addEventListener('click', (event) => {
     target.classList.contains('modal-wrapper-quit')
   ) {
     addAnimationHide(quitModal);
-    if (currentCategory === 'pic-category') changeCurrentBlock(picQuestion);
+    if (currentCategory === PICTURE_CATEGORY) changeCurrentBlock(picQuestion);
     else changeCurrentBlock(artistQuestion);
   }
   if (target.tagName === 'BUTTON' && target.textContent === 'Yes') {
     addAnimationHide(quitModal);
     changeCurrentBlock(categories);
-    if (headerBlock === 'welcome') changeCurrentBlock(welcome);
+    if (headerBlock === WELCOME_BLOCK) changeCurrentBlock(welcome);
     else changeCurrentBlock(categories);
 
-    if (currentCategory === 'pic-category') {
+    if (currentCategory === PICTURE_CATEGORY) {
       transitionHideBlocks(picQuestion, getCurrentBlock());
     } else {
       transitionHideBlocks(artistQuestion, getCurrentBlock());

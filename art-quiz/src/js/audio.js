@@ -1,5 +1,7 @@
 import { welcome } from './main-blocks.js';
 
+const DEFAULT_VOLUME = 0.5;
+
 const audioWin = document.createElement('audio');
 const audioLose = document.createElement('audio');
 const audioEnd = document.createElement('audio');
@@ -40,6 +42,6 @@ function changeVolume(value) {
   });
 }
 
-changeVolume(0.5);
+changeVolume(DEFAULT_VOLUME);
 
 export { endGameSound, winGameSound, loseGameSound, changeVolume };

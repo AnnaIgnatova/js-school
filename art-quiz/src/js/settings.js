@@ -3,6 +3,18 @@ import { transitionHideBlocks } from './base-functions.js';
 import { getCurrentBlock, changeCurrentBlock } from './localStorage.js';
 import { changeVolume } from './audio.js';
 
+const DEFAULT_SECONDS_VALUE = 20;
+const DEFAUT_GAME_TIME = false;
+const MUTED_VOLUME_VALUE = 0;
+const MAX_VOLUME_VALUE = 100;
+const MUTED_VOLUME_LINE =
+  'linear-gradient(to right, #FFBCA2 0%, #FFBCA2 0%, #A4A4A4 0%, white 100%)';
+const MAX_VOLUME_LINE =
+  'linear-gradient(to right, #FFBCA2 0%, #FFBCA2 100%, #A4A4A4 100%, white 100%)';
+const DEFAULT_VOLUME_LINE =
+  'linear-gradient(to right, #FFBCA2 0%, #FFBCA2 50%, #A4A4A4 50%, white 100%)';
+const DEFAULT_VOLUME_VALUE = 50;
+
 const volumeInput = document.querySelector('.volume-input');
 const settingsIcon = document.querySelectorAll('.welcome-settings');
 const closeIcon = document.querySelector('.close-icon');
@@ -19,10 +31,10 @@ if (JSON.parse(localStorage.getItem('settings-info'))) {
   settingsInfo = JSON.parse(localStorage.getItem('settings-info'));
 } else {
   settingsInfo = [
-    50,
-    'linear-gradient(to right, #FFBCA2 0%, #FFBCA2 50%, #A4A4A4 50%, white 100%)',
-    false,
-    20,
+    DEFAULT_VOLUME_VALUE,
+    DEFAULT_VOLUME_LINE,
+    DEFAUT_GAME_TIME,
+    DEFAULT_SECONDS_VALUE,
   ];
   localStorage.setItem('settings-info', JSON.stringify(settingsInfo));
 }
@@ -77,25 +89,23 @@ closeIcon.addEventListener('click', () => {
 });
 
 function defaultSettings() {
-  switchTime.checked = false;
-  volumeInput.style.background =
-    'linear-gradient(to right, #FFBCA2 0%, #FFBCA2 50%, #A4A4A4 50%, white 100%)';
-  volumeInput.value = 50;
-  timeBlock.querySelector('.time-to-answer-input').value = 20;
+  switchTime.checked = DEFAUT_GAME_TIME;
+  volumeInput.style.background = DEFAULT_VOLUME_LINE;
+  volumeInput.value = DEFAULT_VOLUME_VALUE;
+  timeBlock.querySelector('.time-to-answer-input').value =
+    DEFAULT_SECONDS_VALUE;
   updateLocalStorage();
 }
 
 muteSoundIcon.addEventListener('click', () => {
-  volumeInput.style.background =
-    'linear-gradient(to right, #FFBCA2 0%, #FFBCA2 0%, #A4A4A4 0%, white 100%)';
-  volumeInput.value = 0;
+  volumeInput.style.background = MUTED_VOLUME_LINE;
+  volumeInput.value = MUTED_VOLUME_VALUE;
   changeVolume(0);
 });
 
 maxSoundIcon.addEventListener('click', () => {
-  volumeInput.style.background =
-    'linear-gradient(to right, #FFBCA2 0%, #FFBCA2 100%, #A4A4A4 100%, white 100%)';
-  volumeInput.value = 100;
+  volumeInput.style.background = MAX_VOLUME_LINE;
+  volumeInput.value = MAX_VOLUME_VALUE;
   changeVolume(1);
 });
 

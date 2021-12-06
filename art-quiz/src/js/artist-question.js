@@ -16,6 +16,10 @@ import {
 import { renderAnswerModal, modalAnswer } from './modal-window.js';
 import { winGameSound, loseGameSound } from './audio.js';
 
+const HIDDEN_CLASS = 'hidden';
+const BTN_CLASS = 'question-btn';
+const BUTTON = 'button';
+
 const artistQuestionBtns = document.querySelector('.artist-question-btns');
 const artistQuestionPic = document.querySelector('.artist-question-pic');
 const rightIcon = document.querySelector('.right');
@@ -52,8 +56,8 @@ function renderArtistQuestion(index, end, cardIndex) {
 
   artistQuestionBtns.innerHTML = '';
   const btnsArr = artArr.map((art) => {
-    const btn = document.createElement('button');
-    btn.className = 'question-btn';
+    const btn = document.createElement(BUTTON);
+    btn.className = BTN_CLASS;
     btn.dataset.index = art.artistNum;
     btn.dataset.author = images[art.artistNum].author;
     btn.dataset.name = images[art.artistNum].name;
@@ -72,16 +76,16 @@ function renderArtistQuestion(index, end, cardIndex) {
 
       if (+btn.dataset.index === +questionNumber) {
         winGameSound();
-        rightIcon.classList.remove('hidden');
-        wrongIcon.classList.add('hidden');
+        rightIcon.classList.remove(HIDDEN_CLASS);
+        wrongIcon.classList.add(HIDDEN_CLASS);
 
         rightAnswers++;
         changeRightAnswers(rightAnswers);
         gameInfo[currentCategory][cardIndex - 1].push(true);
       } else {
         loseGameSound();
-        rightIcon.classList.add('hidden');
-        wrongIcon.classList.remove('hidden');
+        rightIcon.classList.add(HIDDEN_CLASS);
+        wrongIcon.classList.remove(HIDDEN_CLASS);
         gameInfo[currentCategory][cardIndex - 1].push(false);
       }
 

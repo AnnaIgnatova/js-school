@@ -39,6 +39,13 @@ const PIC_CATEGORY = [
   'Nude',
 ];
 
+const CARD_CLASS = 'category-card';
+const GRAY_FILTER = 'grayscale(100%)';
+const NO_FILTER = 'grayscale(0%)';
+const HIDDEN_CLASS = 'hidden';
+const CARD_INFO_CLASS = 'card-play-info';
+const PICTURE_CATEGORY = 'pic-category';
+
 const cardsBlock = document.querySelector('.categories-cards');
 const nextQuizBtn = document.querySelector('.modal-next-quiz');
 const modalHomeLink = document.querySelector('.modal-home-link');
@@ -49,7 +56,7 @@ const renderCard = (category, index) => {
   const currentCategory = getCurrentCategory();
   const card = document.createElement('div');
 
-  card.className = 'category-card';
+  card.className = CARD_CLASS;
 
   let rightAnswers = 0;
 
@@ -79,18 +86,18 @@ const renderCard = (category, index) => {
   setImage(`./images/${currentCategory}/${index}.jpg`, cardImage);
 
   if (!rightAnswers) {
-    cardImage.style.filter = 'grayscale(100%)';
-    cardScore.classList.add('hidden');
+    cardImage.style.filter = GRAY_FILTER;
+    cardScore.classList.add(HIDDEN_CLASS);
   } else {
-    cardImage.style.filter = 'grayscale(0%)';
-    cardScore.classList.remove('hidden');
+    cardImage.style.filter = NO_FILTER;
+    cardScore.classList.remove(HIDDEN_CLASS);
   }
 
   cardImage.addEventListener('click', (e) => {
     const curCategory = getCurrentCategory();
 
-    if (!e.target.classList.contains('card-play-info')) {
-      if (curCategory === 'pic-category') changeCurrentBlock(picQuestion);
+    if (!e.target.classList.contains(CARD_INFO_CLASS)) {
+      if (curCategory === PICTURE_CATEGORY) changeCurrentBlock(picQuestion);
       else changeCurrentBlock(artistQuestion);
       if (gameInfo[curCategory][index - 1].length !== 0) {
         gameInfo[curCategory][index - 1] = [];
@@ -115,7 +122,7 @@ const renderCard = (category, index) => {
 
 function resetCategories() {
   const currentCategory = getCurrentCategory();
-  if (currentCategory === 'pic-category') {
+  if (currentCategory === PICTURE_CATEGORY) {
     changeCategoryIndex(120);
   } else {
     changeCategoryIndex(0);

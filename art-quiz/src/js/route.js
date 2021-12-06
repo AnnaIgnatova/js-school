@@ -9,6 +9,9 @@ import {
 import { quitModal, chooseHeaderBlock } from './modal-window.js';
 import { addAnimationShow, transitionHideBlocks } from './base-functions.js';
 
+const WELCOME_BLOCK = 'welcome';
+const CATEGORIES_BLOCK = 'category';
+
 const headerNav = document.querySelectorAll('.score-header');
 const homeLink = document.querySelectorAll('.home-link');
 
@@ -21,7 +24,7 @@ function headerRoute(e) {
   ) {
     if (currentBlock === picQuestion || currentBlock === artistQuestion) {
       addAnimationShow(quitModal);
-      chooseHeaderBlock('welcome');
+      chooseHeaderBlock(WELCOME_BLOCK);
     } else {
       transitionHideBlocks(currentBlock, welcome);
       changeCurrentBlock(welcome);
@@ -34,7 +37,7 @@ function headerRoute(e) {
     renderCategories();
     if (currentBlock === picQuestion || currentBlock === artistQuestion) {
       addAnimationShow(quitModal);
-      chooseHeaderBlock('category');
+      chooseHeaderBlock(CATEGORIES_BLOCK);
     } else {
       transitionHideBlocks(currentBlock, categories);
       changeCurrentBlock(categories);

@@ -1,5 +1,13 @@
 import { welcome } from './main-blocks.js';
 
+const HIDE_BLOCK_ANIMATION = 'hide 0.3s';
+const SHOW_BLOCK_ANIMATION = 'show 0.3s';
+const SHOW_WELCOME_ANIMATION = 'show 0.5s';
+const SHOW_CARD_ANIMATION = 'showCard 0.5s';
+const SHOW_MODAL_ANIMATION = 'showModal 0.3s';
+const HIDE_MODAL_ANIMATION = 'hideModal 0.3s';
+const HIDDEN_CLASS = 'hidden';
+
 function shuffle(array) {
   const arr = [...array];
   let currentIndex = array.length;
@@ -21,12 +29,12 @@ function shuffle(array) {
 function transitionHideBlocks(blockHide, blockShow) {
   const notHiddenBlock = blockHide;
   const hiddenBlock = blockShow;
-  notHiddenBlock.style.animation = 'hide 0.3s';
+  notHiddenBlock.style.animation = HIDE_BLOCK_ANIMATION;
   setTimeout(() => {
-    hiddenBlock.style.animation = 'show 0.3s';
+    hiddenBlock.style.animation = SHOW_BLOCK_ANIMATION;
     notHiddenBlock.style.animation = '';
-    blockShow.classList.remove('hidden');
-    blockHide.classList.add('hidden');
+    blockShow.classList.remove(HIDDEN_CLASS);
+    blockHide.classList.add(HIDDEN_CLASS);
     setTimeout(() => {
       hiddenBlock.style.animation = '';
     }, 200);
@@ -35,7 +43,7 @@ function transitionHideBlocks(blockHide, blockShow) {
 
 function showCard(block) {
   const card = block;
-  card.style.animation = 'showCard 0.5s';
+  card.style.animation = SHOW_CARD_ANIMATION;
 
   setTimeout(() => {
     card.style.opacity = 1;
@@ -45,7 +53,7 @@ function showCard(block) {
 
 function showWelcome(block) {
   const card = block;
-  card.style.animation = 'show 0.5s';
+  card.style.animation = SHOW_WELCOME_ANIMATION;
 
   setTimeout(() => {
     card.style.opacity = 1;
@@ -55,8 +63,8 @@ function showWelcome(block) {
 
 function addAnimationShow(block) {
   const currentBlock = block;
-  currentBlock.classList.remove('hidden');
-  currentBlock.style.animation = 'showModal 0.3s';
+  currentBlock.classList.remove(HIDDEN_CLASS);
+  currentBlock.style.animation = SHOW_MODAL_ANIMATION;
 
   setTimeout(() => {
     currentBlock.style.animation = '';
@@ -65,9 +73,9 @@ function addAnimationShow(block) {
 
 function addAnimationHide(block) {
   const currentBlock = block;
-  currentBlock.style.animation = 'hideModal 0.3s';
+  currentBlock.style.animation = HIDE_MODAL_ANIMATION;
   setTimeout(() => {
-    currentBlock.classList.add('hidden');
+    currentBlock.classList.add(HIDDEN_CLASS);
     currentBlock.style.animation = '';
   }, 200);
 }

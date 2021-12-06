@@ -16,6 +16,8 @@ import {
 import { modalAnswer, renderAnswerModal } from './modal-window.js';
 import { winGameSound, loseGameSound } from './audio.js';
 
+const HIDDEN_CLASS = 'hidden';
+
 const rightIcon = document.querySelector('.right');
 const wrongIcon = document.querySelector('.wrong');
 const imagesBlock = document.querySelector('.pic-question-pics');
@@ -28,7 +30,7 @@ function renderPicQuestion(index, end, cardIndex) {
   let imageURL = `./images/full/${picIndex}full.jpg`;
   imgArr.push({ imageNum, imageURL });
 
-  for (let i = 0; i < 4; i++) {
+  for (let i = 1; i < 4; i++) {
     imageNum = Math.floor(Math.random() * (241 - 0) + 0);
     imageURL = `./images/full/${imageNum}full.jpg`;
     while (+imageNum === +index && imgArr.indexOf(imageURL) !== -1) {
@@ -61,15 +63,15 @@ function renderPicQuestion(index, end, cardIndex) {
 
       if (+element.dataset.index === +picIndex) {
         winGameSound();
-        rightIcon.classList.remove('hidden');
-        wrongIcon.classList.add('hidden');
+        rightIcon.classList.remove(HIDDEN_CLASS);
+        wrongIcon.classList.add(HIDDEN_CLASS);
         rightAnswers++;
         changeRightAnswers(rightAnswers);
         gameInfo[currentCategory][cardIndex - 1].push(true);
       } else {
         loseGameSound();
-        rightIcon.classList.add('hidden');
-        wrongIcon.classList.remove('hidden');
+        rightIcon.classList.add(HIDDEN_CLASS);
+        wrongIcon.classList.remove(HIDDEN_CLASS);
         gameInfo[currentCategory][cardIndex - 1].push(false);
       }
 

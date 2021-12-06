@@ -11,17 +11,21 @@ import {
   transitionHideBlocks,
 } from './base-functions.js';
 
+const ARTIST_CATEGORY = 'artist-category';
+const PICTURE_CATEGORY = 'pic-category';
+const WELCOME_IMAGE_URL = './images/welcome.jpg';
+
 const picturesBtn = document.querySelector('.pictures-btn');
 const artistsBtn = document.querySelector('.artists-btn');
 
-setImage('./images/welcome.jpg', welcome);
+setImage(WELCOME_IMAGE_URL, welcome);
 setTimeout(() => {
   showWelcome(welcome);
 }, 300);
 
 artistsBtn.addEventListener('click', () => {
   changeCategoryIndex(0);
-  changeCategory('artist-category');
+  changeCategory(ARTIST_CATEGORY);
   resetCategories();
   renderCategories();
   transitionHideBlocks(welcome, categories);
@@ -30,7 +34,7 @@ artistsBtn.addEventListener('click', () => {
 
 picturesBtn.addEventListener('click', () => {
   changeCategoryIndex(120);
-  changeCategory('pic-category');
+  changeCategory(PICTURE_CATEGORY);
   resetCategories();
   renderCategories();
   transitionHideBlocks(welcome, categories);
