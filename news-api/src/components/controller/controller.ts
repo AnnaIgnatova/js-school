@@ -1,0 +1,45 @@
+import { ISource } from './../view/sources/sources';
+import AppLoader from './appLoader';
+import { IData } from '../view/appView';
+
+type CallbackType<T> = (data?: T) => void;
+
+class AppController extends AppLoader {
+  getSources(callback: CallbackType<IData>): void {
+    super.getResp(
+      {
+        endpoint: 'sources',
+      },
+      callback,
+    );
+  }
+
+  getNews(e: Event, callback: CallbackType<IData>): void {
+    let target = e.target as HTMLElement;
+    const newsContainer = e.currentTarget as HTMLElement;
+    const sphere = document.querySelector('.stage');
+
+    while (target !== newsContainer) {
+      if (target.classList.contains('source__item')) {
+        (sphere as HTMLElement).style.display = 'none';
+        const sourceId = target.getAttribute('data-source-id') as string;
+        if (newsContainer!.getAttribute('data-source') !== sourceId) {
+          newsContainer!.setAttribute('data-source', sourceId);
+          super.getResp(
+            {
+              endpoint: 'everything',
+              options: {
+                sources: sourceId,
+              },
+            },
+            callback,
+          );
+        }
+        return;
+      }
+      target = target.parentNode as HTMLElement;
+    }
+  }
+}
+
+export default AppController;
