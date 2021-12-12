@@ -1,0 +1,16 @@
+.categories {
+  margin-bottom: 20px;
+}
+.all-categories {
+  margin-top: 20px;
+  display: flex;
+  align-items: center;
+  color: #fff;
+  font-weight: 200;
+}
+.all-categories-input {
+  width: 20px;
+  height: 20px;
+  margin-right: 10px;
+  outline: none;
+}

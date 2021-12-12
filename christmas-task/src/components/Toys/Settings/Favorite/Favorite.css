@@ -1,0 +1,12 @@
+.favorite {
+  display: flex;
+  align-items: center;
+  color: #fff;
+  font-weight: 200;
+  margin-bottom: 20px;
+}
+.favorite-checkbox {
+  margin-right: 10px;
+  width: 20px;
+  height: 20px;
+}
