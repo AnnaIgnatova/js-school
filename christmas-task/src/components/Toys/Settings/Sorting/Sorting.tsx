@@ -1,23 +1,17 @@
 import "./Sorting.css";
+import { sortingRules } from "./constants/sortingRules";
+import { createSortRule } from "./functions/createSortRule";
 
-function Sorting() {
-  return (
-    <div className="sorting">
-      <span className="sorting-title">Sorting</span>
-      <div className="sorting-select">
-        <div className="sorting-select-default">
-          By name from "A" to "Z"
-          <div className="arrow-select"></div>
-        </div>
-        <div className="select-choose">
-          <div className="select-item">By name from "A" to "Z"</div>
-          <div className="select-item">By name from "Z" to "A"</div>
-          <div className="select-item">By quantity ascending</div>
-          <div className="select-item">By quantity descending</div>
-        </div>
-      </div>
+const Sorting = () => (
+  <div className="sorting-select">
+    <div className="sorting-select-default">
+      {sortingRules[0]}
+      <div className="arrow-select"></div>
     </div>
-  );
-}
+    <div className="select-choose">
+      {sortingRules.map((rule) => createSortRule(rule))}
+    </div>
+  </div>
+);
 
 export default Sorting;

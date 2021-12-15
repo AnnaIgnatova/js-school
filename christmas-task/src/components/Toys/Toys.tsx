@@ -1,14 +1,20 @@
 import Header from "../Header/Header";
+import Cards from "./Cards/Cards";
 import Settings from "./Settings/Settings";
 import "./Toys.css";
 
-function Toys() {
+const Toys = () => {
   return (
-    <div className="toys">
+    <>
       <Header title="Toys" />
-      <Settings />
-    </div>
+      <div className="container">
+        <div className="toys">
+          <Settings />
+          <Cards />
+        </div>
+      </div>
+    </>
   );
-}
+};
 
 export default Toys;

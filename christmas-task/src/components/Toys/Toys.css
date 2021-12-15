@@ -1,0 +1,4 @@
+.toys {
+  display: flex;
+  justify-content: space-between;
+}

@@ -1,20 +1,11 @@
 import "./Colors.css";
+import { colors } from "./constants/const";
+import { createColorBlock } from "./functions/createColor";
 
-const colors = ["white", "yellow", "red", "blue", "green"];
-
-const createColorsBlock = () => {
-  return colors.map((color) => {
-    return <div className="color" style={{ backgroundColor: color }}></div>;
-  });
-};
-
-function Colors() {
-  return (
-    <div className="colors">
-      <span className="forms-title">Colors</span>
-      <div className="all-forms">{createColorsBlock()}</div>
-    </div>
-  );
-}
+const Colors = () => (
+  <div className="all-forms">
+    {colors.map((color) => createColorBlock(color))}
+  </div>
+);
 
 export default Colors;

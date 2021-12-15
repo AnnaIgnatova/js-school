@@ -1,0 +1,57 @@
+.card {
+  position: relative;
+  background: radial-gradient(
+    109.56% 109.56% at 0% -2.94%,
+    rgba(129, 129, 129, 0.185) 0%,
+    rgba(25, 47, 45, 0.8) 100%
+  );
+  backdrop-filter: blur(4px);
+  width: 222px;
+  height: 342px;
+  border-radius: 10px;
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 10px;
+  margin-top: 0;
+  cursor: pointer;
+  transition: 0.2s;
+}
+.card:hover {
+  backdrop-filter: blur(10px);
+}
+.card:hover .card-img {
+  transform: scale(1.1);
+}
+.card-title {
+  color: white;
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 20px;
+  text-align: center;
+}
+.card-img {
+  width: 100px;
+  height: 100px;
+  background-size: contain;
+  margin-bottom: 30px;
+  transition: .2s;
+}
+.card-info {
+  width: 100%;
+}
+.card-info > div {
+  color: #fff;
+  font-weight: 300;
+  margin-bottom: 5px;
+}
+.favorite-toy {
+  position: absolute;
+  background-image: url(./../../../../assets/favorite.png);
+  width: 40px;
+  height: 40px;
+  background-size: contain;
+  right: 15px;
+  bottom: 15px;
+}

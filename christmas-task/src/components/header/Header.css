@@ -1,6 +1,11 @@
 .header {
   width: 100%;
-  background-color: rgba(25, 47, 45, 0.9);
+  background: radial-gradient(
+    109.56% 109.56% at 0% -2.94%,
+    rgba(129, 129, 129, 0.185) 0%,
+    rgba(25, 47, 45, 0.8) 100%
+  );
+  backdrop-filter: blur(4px);
 }
 .header > .container {
   height: 80px;

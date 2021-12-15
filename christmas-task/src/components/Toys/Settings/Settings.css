@@ -1,11 +1,20 @@
 .settings {
-  background-color: rgba(25, 47, 45, 0.9);
-  height: 80vh;
-  padding-left: 100px;
   width: 40%;
-  padding: 20px 50px;
 }
-.sorting-title {
+.settings-content {
+  position: sticky;
+  top: 50px;
+  padding: 20px 50px;
+  background: radial-gradient(
+    109.56% 109.56% at 0% -2.94%,
+    rgba(129, 129, 129, 0.185) 0%,
+    rgba(25, 47, 45, 0.8) 100%
+  );
+  backdrop-filter: blur(4px);
+  height: 90vh;
+  border-radius: 10px;
+}
+.settings-block-title {
   font-size: 16px;
   color: #fff;
   text-transform: uppercase;
@@ -37,4 +46,8 @@
 
 .settings-btns > button:hover {
   background: transparent;
+}
+
+.settings-block {
+  margin-bottom: 20px;
 }

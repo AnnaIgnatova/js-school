@@ -1,25 +1,9 @@
 import "./Size.css";
+import { createToySize } from "./functions/createToySize";
+import { toySizes } from "./constants/toySizes";
 
-const sizes = ["Big", "Medium", "Small"];
-
-const createSizes = () => {
-  return sizes.map((size) => {
-    return (
-      <label className="size-item">
-        <input type="checkbox" name="" id="" className="size-checkbox" />
-        {size}
-      </label>
-    );
-  });
-};
-
-function Size() {
-  return (
-    <div className="size">
-      <div className="forms-title">Size</div>
-      <div className="sizes">{createSizes()}</div>
-    </div>
-  );
-}
+const Size = () => (
+  <div className="sizes">{toySizes.map((size) => createToySize(size))}</div>
+);
 
 export default Size;
