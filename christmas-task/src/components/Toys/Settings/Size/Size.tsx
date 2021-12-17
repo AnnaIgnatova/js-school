@@ -1,9 +1,28 @@
 import "./Size.css";
-import { createToySize } from "./functions/createToySize";
 import { toySizes } from "./constants/toySizes";
+import { StoreContextConsumer } from "../../../../StoreContext";
 
 const Size = () => (
-  <div className="sizes">{toySizes.map((size) => createToySize(size))}</div>
+  <StoreContextConsumer>
+    {(context) => (
+      <div className="sizes">
+        {toySizes.map((size) => (
+          <label className="size-item">
+            <input
+              type="checkbox"
+              name={`${size}`}
+              id=""
+              className="size-checkbox"
+              onChange={(e) => {
+                context.chooseSize(e.target.name);
+              }}
+            />
+            {size}
+          </label>
+        ))}
+      </div>
+    )}
+  </StoreContextConsumer>
 );
 
 export default Size;

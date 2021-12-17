@@ -1,1 +1,1 @@
-export const toySizes = ["Big", "Medium", "Small"];
+export const toySizes = ["small", "medium", "big"];

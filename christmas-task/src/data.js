@@ -1,12 +1,12 @@
 const data = [
   {
     num: "1",
-    name: "Large ball with a picture",
+    name: "big ball with a picture",
     count: "2",
     year: "1960",
     shape: "ball",
     color: "yellow",
-    size: "large",
+    size: "big",
     favorite: false,
   },
   {
@@ -16,7 +16,7 @@ const data = [
     year: "2000",
     shape: "ball",
     color: "green",
-    size: "large",
+    size: "big",
     favorite: false,
   },
   {
@@ -26,7 +26,7 @@ const data = [
     year: "1990",
     shape: "ball",
     color: "red",
-    size: "large",
+    size: "big",
     favorite: false,
   },
   {
@@ -36,7 +36,7 @@ const data = [
     year: "1980",
     shape: "figure",
     color: "red",
-    size: "large",
+    size: "big",
     favorite: false,
   },
   {
@@ -56,7 +56,7 @@ const data = [
     year: "2010",
     shape: "ball",
     color: "red",
-    size: "large",
+    size: "big",
     favorite: false,
   },
   {
@@ -76,7 +76,7 @@ const data = [
     year: "2010",
     shape: "ball",
     color: "red",
-    size: "large",
+    size: "big",
     favorite: false,
   },
   {
@@ -86,7 +86,7 @@ const data = [
     year: "1950",
     shape: "bell",
     color: "white",
-    size: "large",
+    size: "big",
     favorite: false,
   },
   {
@@ -96,7 +96,7 @@ const data = [
     year: "1960",
     shape: "ball",
     color: "white",
-    size: "large",
+    size: "big",
     favorite: false,
   },
   {
@@ -116,7 +116,7 @@ const data = [
     year: "1980",
     shape: "ball",
     color: "white",
-    size: "large",
+    size: "big",
     favorite: false,
   },
   {
@@ -126,7 +126,7 @@ const data = [
     year: "1970",
     shape: "ball",
     color: "blue",
-    size: "large",
+    size: "big",
     favorite: true,
   },
   {
@@ -136,7 +136,7 @@ const data = [
     year: "1970",
     shape: "ball",
     color: "blue",
-    size: "large",
+    size: "big",
     favorite: true,
   },
   {
@@ -176,7 +176,7 @@ const data = [
     year: "2010",
     shape: "ball",
     color: "yellow",
-    size: "large",
+    size: "big",
     favorite: false,
   },
   {
@@ -186,7 +186,7 @@ const data = [
     year: "1980",
     shape: "ball",
     color: "yellow",
-    size: "large",
+    size: "big",
     favorite: false,
   },
   {
@@ -206,7 +206,7 @@ const data = [
     year: "1970",
     shape: "ball",
     color: "red",
-    size: "large",
+    size: "big",
     favorite: true,
   },
   {
@@ -226,7 +226,7 @@ const data = [
     year: "1950",
     shape: "bell",
     color: "yellow",
-    size: "large",
+    size: "big",
     favorite: false,
   },
   {
@@ -236,7 +236,7 @@ const data = [
     year: "1940",
     shape: "snowflake",
     color: "white",
-    size: "large",
+    size: "big",
     favorite: false,
   },
   {
@@ -246,7 +246,7 @@ const data = [
     year: "2010",
     shape: "ball",
     color: "red",
-    size: "large",
+    size: "big",
     favorite: false,
   },
   {
@@ -256,7 +256,7 @@ const data = [
     year: "1960",
     shape: "ball",
     color: "yellow",
-    size: "large",
+    size: "big",
     favorite: false,
   },
   {
@@ -266,7 +266,7 @@ const data = [
     year: "2010",
     shape: "ball",
     color: "red",
-    size: "large",
+    size: "big",
     favorite: false,
   },
   {
@@ -276,7 +276,7 @@ const data = [
     year: "2010",
     shape: "ball",
     color: "red",
-    size: "large",
+    size: "big",
     favorite: false,
   },
   {
@@ -286,7 +286,7 @@ const data = [
     year: "1950",
     shape: "ball",
     color: "yellow",
-    size: "large",
+    size: "big",
     favorite: true,
   },
   {
@@ -296,7 +296,7 @@ const data = [
     year: "1950",
     shape: "ball",
     color: "yellow",
-    size: "large",
+    size: "big",
     favorite: true,
   },
   {
@@ -306,7 +306,7 @@ const data = [
     year: "2010",
     shape: "ball",
     color: "red",
-    size: "large",
+    size: "big",
     favorite: false,
   },
   {
@@ -316,7 +316,7 @@ const data = [
     year: "1970",
     shape: "ball",
     color: "blue",
-    size: "large",
+    size: "big",
     favorite: false,
   },
   {
@@ -336,7 +336,7 @@ const data = [
     year: "2010",
     shape: "ball",
     color: "green",
-    size: "large",
+    size: "big",
     favorite: false,
   },
   {
@@ -356,7 +356,7 @@ const data = [
     year: "2000",
     shape: "ball",
     color: "blue",
-    size: "large",
+    size: "big",
     favorite: false,
   },
   {
@@ -366,7 +366,7 @@ const data = [
     year: "2000",
     shape: "ball",
     color: "green",
-    size: "large",
+    size: "big",
     favorite: false,
   },
   {
@@ -376,7 +376,7 @@ const data = [
     year: "2000",
     shape: "ball",
     color: "blue",
-    size: "large",
+    size: "big",
     favorite: false,
   },
   {
@@ -386,7 +386,7 @@ const data = [
     year: "1990",
     shape: "snowflake",
     color: "red",
-    size: "large",
+    size: "big",
     favorite: false,
   },
   {
@@ -396,7 +396,7 @@ const data = [
     year: "2020",
     shape: "snowflake",
     color: "yellow",
-    size: "large",
+    size: "big",
     favorite: false,
   },
   {
@@ -406,7 +406,7 @@ const data = [
     year: "2020",
     shape: "snowflake",
     color: "white",
-    size: "large",
+    size: "big",
     favorite: false,
   },
   {
@@ -426,7 +426,7 @@ const data = [
     year: "1960",
     shape: "snowflake",
     color: "red",
-    size: "large",
+    size: "big",
     favorite: false,
   },
   {
@@ -446,7 +446,7 @@ const data = [
     year: "1980",
     shape: "snowflake",
     color: "white",
-    size: "large",
+    size: "big",
     favorite: false,
   },
   {
@@ -476,7 +476,7 @@ const data = [
     year: "1960",
     shape: "ball",
     color: "yellow",
-    size: "large",
+    size: "big",
     favorite: false,
   },
   {
@@ -486,7 +486,7 @@ const data = [
     year: "1980",
     shape: "snowflake",
     color: "yellow",
-    size: "large",
+    size: "big",
     favorite: false,
   },
   {
@@ -496,7 +496,7 @@ const data = [
     year: "2020",
     shape: "bell",
     color: "red",
-    size: "large",
+    size: "big",
     favorite: false,
   },
   {
@@ -516,7 +516,7 @@ const data = [
     year: "1990",
     shape: "ball",
     color: "red",
-    size: "large",
+    size: "big",
     favorite: true,
   },
   {
@@ -526,7 +526,7 @@ const data = [
     year: "2020",
     shape: "snowflake",
     color: "white",
-    size: "large",
+    size: "big",
     favorite: false,
   },
   {
@@ -536,7 +536,7 @@ const data = [
     year: "2010",
     shape: "ball",
     color: "green",
-    size: "large",
+    size: "big",
     favorite: false,
   },
   {
@@ -546,7 +546,7 @@ const data = [
     year: "1940",
     shape: "figure",
     color: "yellow",
-    size: "large",
+    size: "big",
     favorite: false,
   },
   {
