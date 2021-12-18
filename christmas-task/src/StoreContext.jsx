@@ -3,6 +3,12 @@ const { Provider, Consumer } = React.createContext();
 
 class StoreContextProvider extends Component {
   state = {
+    sortingRule: {
+      byNameAcs: true,
+      byNameDesc: false,
+      byYearAcs: false,
+      byYearDesc: false,
+    },
     allChecked: false,
     sizes: { small: false, medium: false, big: false },
     colors: {
@@ -19,6 +25,7 @@ class StoreContextProvider extends Component {
       snowflake: false,
       figure: false,
     },
+    savedToys: [],
   };
 
   toggleAllChecked = () => {
@@ -26,6 +33,17 @@ class StoreContextProvider extends Component {
       return {
         allChecked: !prevState.allChecked,
       };
+    });
+  };
+
+  chooseSortingRule = (value) => {
+    this.setState((prevState) => {
+      let sortingRule = Object.assign({}, prevState.sortingRule);
+      for (let key in sortingRule) {
+        sortingRule[key] = false;
+      }
+      sortingRule[value] = true;
+      return { sortingRule };
     });
   };
 
@@ -53,6 +71,14 @@ class StoreContextProvider extends Component {
     });
   };
 
+  addToSaved = (id) => {
+    this.setState((prevState) => {
+      let savedToys = [...prevState.savedToys];
+      savedToys.push(id);
+      return { savedToys };
+    });
+  };
+
   render() {
     return (
       <Provider
@@ -61,10 +87,14 @@ class StoreContextProvider extends Component {
           sizes: this.state.sizes,
           colors: this.state.colors,
           forms: this.state.forms,
+          sortingRule: this.state.sortingRule,
+          savedToys: this.state.savedToys,
           toggleAllChecked: this.toggleAllChecked,
           chooseSize: this.chooseSize,
           chooseColor: this.chooseColor,
           chooseForm: this.chooseForm,
+          chooseSortingRule: this.chooseSortingRule,
+          addToSaved: this.addToSaved,
         }}
       >
         {this.props.children}

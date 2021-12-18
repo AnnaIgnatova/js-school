@@ -15,7 +15,6 @@
   align-items: center;
   margin: 10px;
   margin-top: 0;
-  cursor: pointer;
   transition: 0.2s;
 }
 .card:hover {
@@ -55,4 +54,12 @@
   background-size: contain;
   right: 15px;
   bottom: 15px;
+  cursor: pointer;
+  transition: .2s;
+}
+.not-favorite-toy {
+  background-image: url(./../../../../assets/not-favorite.png);
+}
+.favorite-toy:hover {
+  transform: scale(1.1);
 }

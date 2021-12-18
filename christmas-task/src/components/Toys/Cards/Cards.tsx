@@ -25,12 +25,62 @@ interface Forms {
   figure: false;
 }
 
+interface SortingRule {
+  byNameAcs: true;
+  byNameDesc: false;
+  byYearAcs: false;
+  byYearDesc: false;
+}
+
+const sortingDataByRule = (rule: string) => {
+  const sortedArr = data.slice(0);
+  switch (rule) {
+    case "byNameAcs": {
+      return sortedArr.sort((a, b) => {
+        const x = a.name.toLowerCase();
+        const y = b.name.toLowerCase();
+        return x < y ? -1 : x > y ? 1 : 0;
+      });
+    }
+    case "byNameDesc": {
+      return sortedArr.sort((a, b) => {
+        const x = a.name.toLowerCase();
+        const y = b.name.toLowerCase();
+        return x > y ? -1 : x < y ? 1 : 0;
+      });
+    }
+    case "byYearAcs": {
+      return sortedArr.sort(function (a, b) {
+        return +a.year - +b.year;
+      });
+    }
+    case "byYearDesc": {
+      return sortedArr.sort(function (a, b) {
+        return +b.year - +a.year;
+      });
+    }
+    default:
+      return;
+  }
+};
+
 const renderCards = (
   checked: boolean,
   sizes: Sizes,
   colors: Colors,
-  forms: Forms
+  forms: Forms,
+  sortingRule: SortingRule
 ) => {
+  const convertSortRule = sortingRule.byYearAcs
+    ? "byYearAcs"
+    : sortingRule.byYearDesc
+    ? "byYearDesc"
+    : sortingRule.byNameAcs
+    ? "byNameAcs"
+    : sortingRule.byNameDesc
+    ? "byNameDesc"
+    : "";
+
   const convertedSizes = [
     sizes.small ? "small" : sizes.small,
     sizes.medium ? "medium" : sizes.medium,
@@ -52,9 +102,12 @@ const renderCards = (
     forms.figure ? "figure" : forms.figure,
   ];
 
-  if (checked) return data.map((info) => <Card info={info} />);
+  if (checked)
+    return sortingDataByRule(convertSortRule)?.map((info) => (
+      <Card info={info} />
+    ));
   else {
-    return data.map((info) => {
+    return sortingDataByRule(convertSortRule)?.map((info) => {
       if (
         convertedSizes.includes(info.size) ||
         convertedColors.includes(info.color) ||
@@ -73,7 +126,8 @@ const Cards = () => (
           context.allChecked,
           context.sizes,
           context.colors,
-          context.forms
+          context.forms,
+          context.sortingRule
         )}
       </div>
     )}

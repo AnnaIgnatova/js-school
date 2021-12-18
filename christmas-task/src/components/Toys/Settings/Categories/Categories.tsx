@@ -15,6 +15,7 @@ const Categories = () => (
             className="all-categories-input"
             onChange={() => {
               context.toggleAllChecked();
+              // TODO: toggle all colors and sizes
             }}
           />
           All

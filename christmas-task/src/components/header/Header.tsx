@@ -1,14 +1,20 @@
+import { StoreContextConsumer } from "../../StoreContext";
 import "./Header.css";
 
-const Header: React.FunctionComponent<{ title: string }> = ({ title }) => (
-  <div className="header">
-    <div className="container">
-      <div className="header-icon sound-icon"></div>
-      <div className="header-icon snow-icon"></div>
-      <input type="search" className="header-search" placeholder="Search" />
-      <div className="header-title">{title}</div>
-    </div>
-  </div>
+const Header: React.FC<{ title: string }> = ({ title }) => (
+  <StoreContextConsumer>
+    {(context) => (
+      <div className="header">
+        <div className="container">
+          <div className="header-icon sound-icon"></div>
+          <div className="header-icon snow-icon"></div>
+          <input type="search" className="header-search" placeholder="Search" />
+          <div className="header-title">{title}</div>
+          <div className="favorite-count">{context.savedToys.length}</div>
+        </div>
+      </div>
+    )}
+  </StoreContextConsumer>
 );
 
 export default Header;

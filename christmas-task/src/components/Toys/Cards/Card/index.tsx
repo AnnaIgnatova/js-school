@@ -1,3 +1,4 @@
+import { StoreContextConsumer } from "../../../../StoreContext";
 import "./style.css";
 
 interface CardInfo {
@@ -14,33 +15,49 @@ interface CardInfo {
 }
 
 const Card = (props: CardInfo) => (
-  <div className="card">
-    <div className="card-title">{props.info.name}</div>
-    <div
-      className="card-img"
-      style={{
-        backgroundImage: `url(/toys/${props.info.num}.png)`,
-      }}
-    ></div>
-    <div className="card-info">
-      <div>
-        <b>Count:</b> {props.info.count}
+  <StoreContextConsumer>
+    {(context) => (
+      <div className="card">
+        <div className="card-title">{props.info.name}</div>
+        <div
+          className="card-img"
+          style={{
+            backgroundImage: `url(/toys/${props.info.num}.png)`,
+          }}
+        ></div>
+        <div className="card-info">
+          <div>
+            <b>Count:</b> {props.info.count}
+          </div>
+          <div>
+            <b>Year of purchase:</b> {props.info.year}
+          </div>
+          <div>
+            <b>Shape:</b> {props.info.shape}
+          </div>
+          <div>
+            <b>Color:</b> {props.info.color}
+          </div>
+          <div>
+            <b>Size:</b> {props.info.size}
+          </div>
+          <div>
+            <b>Favorite:</b> {props.info.favorite ? "yes" : "no"}
+          </div>
+        </div>
+        <div
+          id={props.info.num}
+          className={`favorite-toy ${
+            context.savedToys.includes(props.info.num) ? "" : "not-favorite-toy"
+          }`}
+          onClick={(e) => {
+            (e.target as HTMLElement).classList.toggle("not-favorite-toy");
+            context.addToSaved((e.target as HTMLElement)?.id);
+          }}
+        ></div>
       </div>
-      <div>
-        <b>Year of purchase:</b> {props.info.year}
-      </div>
-      <div>
-        <b>Shape:</b> {props.info.shape}
-      </div>
-      <div>
-        <b>Color:</b> {props.info.color}
-      </div>
-      <div>
-        <b>Size:</b> {props.info.size}
-      </div>
-    </div>
-    {props.info.favorite ? <div className="favorite-toy"></div> : ""}
-  </div>
+    )}
+  </StoreContextConsumer>
 );
 
 export default Card;
