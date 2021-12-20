@@ -7,3 +7,7 @@
   margin: auto;
   position: relative;
 }
+.stop-scrolling {
+  height: 100%;
+  overflow: hidden;
+}

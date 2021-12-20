@@ -11,7 +11,7 @@ const Favorite = () => (
           id=""
           className="favorite-checkbox"
           onChange={() => {
-            context.toggleAllFavorite();
+            context.toggleFavorite();
           }}
         />
         Only favorite

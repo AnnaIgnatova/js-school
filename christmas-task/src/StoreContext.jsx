@@ -9,8 +9,7 @@ class StoreContextProvider extends Component {
       byYearAcs: false,
       byYearDesc: false,
     },
-    allChecked: false,
-    allFavorite: false,
+    favorite: false,
     sizes: { small: false, medium: false, big: false },
     colors: {
       white: false,
@@ -30,6 +29,31 @@ class StoreContextProvider extends Component {
     slotsModal: false,
   };
 
+  getColors = () => {
+    return this.state.colors;
+  };
+
+  resetFilter = (value) => {
+    this.setState((prevState) => {
+      let filters = Object.assign({}, prevState.filters);
+      for (let key in filters) {
+        filters[key] = false;
+      }
+      return { filters };
+    });
+  };
+
+  chooseFilter = (value) => {
+    this.setState((prevState) => {
+      let filters = Object.assign({}, prevState.filters);
+      for (let key in filters) {
+        filters[key] = false;
+      }
+      filters[value] = true;
+      return { filters };
+    });
+  };
+
   toggleSlotsModal = () => {
     this.setState((prevState) => {
       return {
@@ -38,18 +62,10 @@ class StoreContextProvider extends Component {
     });
   };
 
-  toggleAllChecked = () => {
+  toggleFavorite = () => {
     this.setState((prevState) => {
       return {
-        allChecked: !prevState.allChecked,
-      };
-    });
-  };
-
-  toggleAllFavorite = () => {
-    this.setState((prevState) => {
-      return {
-        allFavorite: !prevState.allFavorite,
+        favorite: !prevState.favorite,
       };
     });
   };
@@ -79,6 +95,8 @@ class StoreContextProvider extends Component {
       colors[value] = !colors[value];
       return { colors };
     });
+
+    return this.state.colors;
   };
 
   chooseForm = (value) => {
@@ -109,15 +127,13 @@ class StoreContextProvider extends Component {
     return (
       <Provider
         value={{
-          allChecked: this.state.allChecked,
           sizes: this.state.sizes,
           colors: this.state.colors,
           forms: this.state.forms,
           sortingRule: this.state.sortingRule,
           savedToys: this.state.savedToys,
           slotsModal: this.state.slotsModal,
-          allFavorite: this.state.allFavorite,
-          toggleAllChecked: this.toggleAllChecked,
+          favorite: this.state.favorite,
           chooseSize: this.chooseSize,
           chooseColor: this.chooseColor,
           chooseForm: this.chooseForm,
@@ -125,7 +141,9 @@ class StoreContextProvider extends Component {
           addToSaved: this.addToSaved,
           removeFromSaved: this.removeFromSaved,
           toggleSlotsModal: this.toggleSlotsModal,
-          toggleAllFavorite: this.toggleAllFavorite,
+          toggleFavorite: this.toggleFavorite,
+          resetFilters: this.resetFilters,
+          getColors: this.getColors,
         }}
       >
         {this.props.children}

@@ -64,8 +64,24 @@ const sortingDataByRule = (rule: string) => {
   }
 };
 
+const allSizes = ["small", "medium", "big"];
+const allForms = ["ball", "bell", "pine", "snowflake", "figure"];
+const allColors = ["white", "yellow", "red", "blue", "green"];
+
+function createFilterArr(
+  filterObj: Sizes | Forms | Colors,
+  constArr: string[]
+) {
+  let arr: string[] = [];
+  if (!Object.values(filterObj).filter((val) => val).length) arr = constArr;
+  else
+    Object.values(filterObj).forEach((value, index) => {
+      if (value) arr.push(constArr[index]);
+    });
+  return arr;
+}
+
 const renderCards = (
-  checked: boolean,
   sizes: Sizes,
   colors: Colors,
   forms: Forms,
@@ -82,61 +98,38 @@ const renderCards = (
     ? "byNameDesc"
     : "";
 
-  const convertedSizes = [
-    sizes.small ? "small" : sizes.small,
-    sizes.medium ? "medium" : sizes.medium,
-    sizes.big ? "big" : sizes.big,
-  ];
-  const convertedColors = [
-    colors.white ? "white" : colors.white,
-    colors.yellow ? "yellow" : colors.yellow,
-    colors.red ? "red" : colors.red,
-    colors.blue ? "blue" : colors.blue,
-    colors.green ? "green" : colors.green,
-  ];
+  const sizesArr = createFilterArr(sizes, allSizes);
+  const formsArr = createFilterArr(forms, allForms);
+  const colorsArr = createFilterArr(colors, allColors);
 
-  const convertedForms = [
-    forms.ball ? "ball" : forms.ball,
-    forms.bell ? "bell" : forms.bell,
-    forms.pine ? "pine" : forms.pine,
-    forms.snowflake ? "snowflake" : forms.snowflake,
-    forms.figure ? "figure" : forms.figure,
-  ];
+  const favoriteArr = favorite ? [true] : [true, false];
 
-  if (checked)
-    return sortingDataByRule(convertSortRule)?.map((info) => (
-      <Card info={info} />
-    ));
-  if (favorite) {
-    return sortingDataByRule(convertSortRule)?.map((info) =>
-      info.favorite ? <Card info={info} /> : ""
-    );
-  } else {
-    return sortingDataByRule(convertSortRule)?.map((info) => {
-      if (
-        convertedSizes.includes(info.size) ||
-        convertedColors.includes(info.color) ||
-        convertedForms.includes(info.shape)
-      )
-        return <Card info={info} />;
-    });
-  }
+  return sortingDataByRule(convertSortRule)?.map((info) => {
+    if (
+      sizesArr.includes(info.size) &&
+      formsArr.includes(info.shape) &&
+      colorsArr.includes(info.color) &&
+      favoriteArr.includes(info.favorite)
+    )
+      return <Card info={info} />;
+  });
 };
 
 const Cards = () => (
   <StoreContextConsumer>
-    {(context) => (
-      <div className="cards">
-        {renderCards(
-          context.allChecked,
-          context.sizes,
-          context.colors,
-          context.forms,
-          context.sortingRule,
-          context.allFavorite
-        )}
-      </div>
-    )}
+    {(context) => {
+      return (
+        <div className="cards">
+          {renderCards(
+            context.sizes,
+            context.colors,
+            context.forms,
+            context.sortingRule,
+            context.favorite
+          )}
+        </div>
+      );
+    }}
   </StoreContextConsumer>
 );
 
