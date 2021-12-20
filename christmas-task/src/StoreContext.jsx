@@ -10,6 +10,7 @@ class StoreContextProvider extends Component {
       byYearDesc: false,
     },
     allChecked: false,
+    allFavorite: false,
     sizes: { small: false, medium: false, big: false },
     colors: {
       white: false,
@@ -26,12 +27,29 @@ class StoreContextProvider extends Component {
       figure: false,
     },
     savedToys: [],
+    slotsModal: false,
+  };
+
+  toggleSlotsModal = () => {
+    this.setState((prevState) => {
+      return {
+        slotsModal: !prevState.slotsModal,
+      };
+    });
   };
 
   toggleAllChecked = () => {
     this.setState((prevState) => {
       return {
         allChecked: !prevState.allChecked,
+      };
+    });
+  };
+
+  toggleAllFavorite = () => {
+    this.setState((prevState) => {
+      return {
+        allFavorite: !prevState.allFavorite,
       };
     });
   };
@@ -79,6 +97,14 @@ class StoreContextProvider extends Component {
     });
   };
 
+  removeFromSaved = (id) => {
+    this.setState((prevState) => {
+      let savedToys = [...prevState.savedToys];
+      savedToys.splice(savedToys.indexOf(id), 1);
+      return { savedToys };
+    });
+  };
+
   render() {
     return (
       <Provider
@@ -89,12 +115,17 @@ class StoreContextProvider extends Component {
           forms: this.state.forms,
           sortingRule: this.state.sortingRule,
           savedToys: this.state.savedToys,
+          slotsModal: this.state.slotsModal,
+          allFavorite: this.state.allFavorite,
           toggleAllChecked: this.toggleAllChecked,
           chooseSize: this.chooseSize,
           chooseColor: this.chooseColor,
           chooseForm: this.chooseForm,
           chooseSortingRule: this.chooseSortingRule,
           addToSaved: this.addToSaved,
+          removeFromSaved: this.removeFromSaved,
+          toggleSlotsModal: this.toggleSlotsModal,
+          toggleAllFavorite: this.toggleAllFavorite,
         }}
       >
         {this.props.children}

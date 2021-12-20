@@ -69,7 +69,8 @@ const renderCards = (
   sizes: Sizes,
   colors: Colors,
   forms: Forms,
-  sortingRule: SortingRule
+  sortingRule: SortingRule,
+  favorite: boolean
 ) => {
   const convertSortRule = sortingRule.byYearAcs
     ? "byYearAcs"
@@ -106,7 +107,11 @@ const renderCards = (
     return sortingDataByRule(convertSortRule)?.map((info) => (
       <Card info={info} />
     ));
-  else {
+  if (favorite) {
+    return sortingDataByRule(convertSortRule)?.map((info) =>
+      info.favorite ? <Card info={info} /> : ""
+    );
+  } else {
     return sortingDataByRule(convertSortRule)?.map((info) => {
       if (
         convertedSizes.includes(info.size) ||
@@ -127,7 +132,8 @@ const Cards = () => (
           context.sizes,
           context.colors,
           context.forms,
-          context.sortingRule
+          context.sortingRule,
+          context.allFavorite
         )}
       </div>
     )}

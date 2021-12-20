@@ -51,8 +51,17 @@ const Card = (props: CardInfo) => (
             context.savedToys.includes(props.info.num) ? "" : "not-favorite-toy"
           }`}
           onClick={(e) => {
-            (e.target as HTMLElement).classList.toggle("not-favorite-toy");
-            context.addToSaved((e.target as HTMLElement)?.id);
+            console.log(context.savedToys);
+
+            if (
+              !(e.target as HTMLElement).classList.contains("not-favorite-toy")
+            ) {
+              context.removeFromSaved((e.target as HTMLElement)?.id);
+            } else {
+              if (context.savedToys.length + 1 > 20) {
+                context.toggleSlotsModal();
+              } else context.addToSaved((e.target as HTMLElement)?.id);
+            }
           }}
         ></div>
       </div>

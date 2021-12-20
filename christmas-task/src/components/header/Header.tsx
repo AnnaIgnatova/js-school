@@ -8,7 +8,13 @@ const Header: React.FC<{ title: string }> = ({ title }) => (
         <div className="container">
           <div className="header-icon sound-icon"></div>
           <div className="header-icon snow-icon"></div>
-          <input type="search" className="header-search" placeholder="Search" />
+          <input
+            type="search"
+            className="header-search"
+            placeholder="Search"
+            autoComplete="off"
+            autoFocus
+          />
           <div className="header-title">{title}</div>
           <div className="favorite-count">{context.savedToys.length}</div>
         </div>
