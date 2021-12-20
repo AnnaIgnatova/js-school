@@ -1,0 +1,26 @@
+{
+  "files": {
+    "main.css": "/static/css/main.c04bb3f0.chunk.css",
+    "main.js": "/static/js/main.fb3aaa61.chunk.js",
+    "main.js.map": "/static/js/main.fb3aaa61.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.d9c8c723.js",
+    "runtime-main.js.map": "/static/js/runtime-main.d9c8c723.js.map",
+    "static/js/2.f38f24ee.chunk.js": "/static/js/2.f38f24ee.chunk.js",
+    "static/js/2.f38f24ee.chunk.js.map": "/static/js/2.f38f24ee.chunk.js.map",
+    "static/js/3.a485f215.chunk.js": "/static/js/3.a485f215.chunk.js",
+    "static/js/3.a485f215.chunk.js.map": "/static/js/3.a485f215.chunk.js.map",
+    "index.html": "/index.html",
+    "static/css/main.c04bb3f0.chunk.css.map": "/static/css/main.c04bb3f0.chunk.css.map",
+    "static/js/2.f38f24ee.chunk.js.LICENSE.txt": "/static/js/2.f38f24ee.chunk.js.LICENSE.txt",
+    "static/media/Sorting.css": "/static/media/arrow-down.f0eaf98d.svg",
+    "static/media/Header.css": "/static/media/snow.d9f680ad.svg",
+    "static/media/Forms.css": "/static/media/snowflake.a3e0f399.svg",
+    "static/media/App.css": "/static/media/bg.22ad0824.jpg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.d9c8c723.js",
+    "static/js/2.f38f24ee.chunk.js",
+    "static/css/main.c04bb3f0.chunk.css",
+    "static/js/main.fb3aaa61.chunk.js"
+  ]
+}
