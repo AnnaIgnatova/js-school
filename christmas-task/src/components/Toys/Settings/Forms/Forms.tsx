@@ -18,7 +18,11 @@ const Forms = () => (
                 ?.classList.toggle("select-form");
             }}
           >
-            <div className={`form-img form-img-${name}`}></div>
+            <div
+              className={`form-img form-img-${name} ${
+                context.forms[name] ? "select-form" : ""
+              }`}
+            ></div>
             <div className="form-title">{name}</div>
           </div>
         ))}

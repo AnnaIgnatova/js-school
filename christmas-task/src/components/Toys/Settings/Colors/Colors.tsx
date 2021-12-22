@@ -19,7 +19,9 @@ const Colors = () => (
               context.chooseColor(e.currentTarget.id);
             }}
           >
-            <div className="line hidden"></div>
+            <div
+              className={`line ${context.colors[color] ? "" : "hidden"}`}
+            ></div>
           </div>
         ))}
       </div>

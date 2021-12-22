@@ -29,35 +29,44 @@ class StoreContextProvider extends Component {
     slotsModal: false,
     years: [1940, 2020],
     count: [1, 12],
+    searchText: "",
+  };
+
+  searchToy = (value) => {
+    this.setState((prevState) => {
+      return {
+        searchText: value,
+      };
+    });
   };
 
   resetFilters = () => {
     this.setState((prevState) => {
       let years = [...prevState.years];
-      // let count = [...prevState.count];
-      // let sizes = Object.assign({}, prevState.sizes);
-      // let colors = Object.assign({}, prevState.colors);
-      // let forms = Object.assign({}, prevState.forms);
-      // for (let key in sizes) {
-      //   sizes[key] = false;
-      // }
-      // for (let key in colors) {
-      //   colors[key] = false;
-      // }
-      // for (let key in forms) {
-      //   forms[key] = false;
-      // }
-      // count[0] = 1;
-      // count[1] = 12;
+      let count = [...prevState.count];
+      let sizes = Object.assign({}, prevState.sizes);
+      let colors = Object.assign({}, prevState.colors);
+      let forms = Object.assign({}, prevState.forms);
+      for (let key in sizes) {
+        sizes[key] = false;
+      }
+      for (let key in colors) {
+        colors[key] = false;
+      }
+      for (let key in forms) {
+        forms[key] = false;
+      }
+      count[0] = 1;
+      count[1] = 12;
       years[0] = 1940;
       years[1] = 2020;
       return {
         years,
-        // count,
-        // favorite: false,
-        // sizes,
-        // colors,
-        // forms,
+        count,
+        favorite: false,
+        sizes,
+        colors,
+        forms,
       };
     });
   };
@@ -166,6 +175,7 @@ class StoreContextProvider extends Component {
           favorite: this.state.favorite,
           years: this.state.years,
           count: this.state.count,
+          searchText: this.state.searchText,
           chooseSize: this.chooseSize,
           chooseColor: this.chooseColor,
           chooseForm: this.chooseForm,
@@ -178,6 +188,7 @@ class StoreContextProvider extends Component {
           chooseYear: this.chooseYear,
           chooseCount: this.chooseCount,
           resetFilters: this.resetFilters,
+          searchToy: this.searchToy,
         }}
       >
         {this.props.children}

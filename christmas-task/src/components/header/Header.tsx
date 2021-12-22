@@ -14,6 +14,9 @@ const Header: React.FC<{ title: string }> = ({ title }) => (
             placeholder="Search"
             autoComplete="off"
             autoFocus
+            onChange={(e) => {
+              context.searchToy(e.target.value);
+            }}
           />
           <div className="header-title">{title}</div>
           <div className="favorite-count">{context.savedToys.length}</div>

@@ -88,7 +88,8 @@ const renderCards = (
   sortingRule: SortingRule,
   favorite: boolean,
   years: number[],
-  count: number[]
+  count: number[],
+  searchText: string
 ) => {
   const convertSortRule = sortingRule.byYearAcs
     ? "byYearAcs"
@@ -106,19 +107,25 @@ const renderCards = (
 
   const favoriteArr = favorite ? [true] : [true, false];
 
-  return sortingDataByRule(convertSortRule)?.map((info) => {
-    if (
-      sizesArr.includes(info.size) &&
-      formsArr.includes(info.shape) &&
-      colorsArr.includes(info.color) &&
-      favoriteArr.includes(info.favorite) &&
-      Number(info.year) >= years[0] &&
-      Number(info.year) <= years[1] &&
-      Number(info.count) >= count[0] &&
-      Number(info.count) <= count[1]
-    )
-      return <Card info={info} />;
-  });
+  if (searchText) {
+    return sortingDataByRule(convertSortRule)?.map((info) => {
+      if (info.name.toLowerCase().includes(searchText.toLowerCase()))
+        return <Card info={info} />;
+    });
+  } else
+    return sortingDataByRule(convertSortRule)?.map((info) => {
+      if (
+        sizesArr.includes(info.size) &&
+        formsArr.includes(info.shape) &&
+        colorsArr.includes(info.color) &&
+        favoriteArr.includes(info.favorite) &&
+        Number(info.year) >= years[0] &&
+        Number(info.year) <= years[1] &&
+        Number(info.count) >= count[0] &&
+        Number(info.count) <= count[1]
+      )
+        return <Card info={info} />;
+    });
 };
 
 const noToyModal = () => <div className="no-toy">no one toy &#129402;</div>;
@@ -133,9 +140,10 @@ const Cards = () => (
         context.sortingRule,
         context.favorite,
         context.years,
-        context.count
+        context.count,
+        context.searchText
       );
-      console.log(cards?.filter((card) => card).length);
+
       return (
         <div className="cards">
           {cards?.filter((card) => card).length === 0 ? noToyModal() : cards}

@@ -16,6 +16,7 @@ const Size = () => (
               onChange={(e) => {
                 context.chooseSize(e.target.name);
               }}
+              checked={context.sizes[size]}
             />
             {size}
           </label>
