@@ -1,6 +1,7 @@
 import Sorting from "./Sorting/Sorting";
 import "./Settings.css";
 import Categories from "./Categories/Categories";
+import { StoreContextConsumer } from "../../../StoreContext";
 
 const settingsBlocks = [
   { name: "sorting", component: <Sorting /> },
@@ -15,18 +16,28 @@ const createSettingsBlock = (name: string, component: JSX.Element) => (
 );
 
 const Settings = () => (
-  <div className="settings">
-    <div className="settings-content">
-      {settingsBlocks.map(({ name, component }) =>
-        createSettingsBlock(name, component)
-      )}
+  <StoreContextConsumer>
+    {(context) => (
+      <div className="settings">
+        <div className="settings-content">
+          {settingsBlocks.map(({ name, component }) =>
+            createSettingsBlock(name, component)
+          )}
 
-      <div className="settings-btns">
-        <button>Save</button>
-        <button>Reset</button>
+          <div className="settings-btns">
+            <button>Save</button>
+            <button
+              onClick={() => {
+                context.resetFilters();
+              }}
+            >
+              Reset
+            </button>
+          </div>
+        </div>
       </div>
-    </div>
-  </div>
+    )}
+  </StoreContextConsumer>
 );
 
 export default Settings;

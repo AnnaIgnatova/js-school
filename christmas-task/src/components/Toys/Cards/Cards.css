@@ -3,4 +3,25 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: space-evenly;
+  align-items: center;
+}
+.no-toy {
+  color: #fff;
+  font-size: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  backdrop-filter: blur(4px);
+  padding: 30px 40px;
+  border-radius: 10px;
+  background: radial-gradient(
+    109.56% 109.56% at 0% -2.94%,
+    rgba(129, 129, 129, 0.185) 0%,
+    rgba(25, 47, 45, 0.8) 100%
+  );
+}
+@media (max-width: 900px) {
+  .no-toy {
+    font-size: 24px;
+  }
 }

@@ -86,7 +86,9 @@ const renderCards = (
   colors: Colors,
   forms: Forms,
   sortingRule: SortingRule,
-  favorite: boolean
+  favorite: boolean,
+  years: number[],
+  count: number[]
 ) => {
   const convertSortRule = sortingRule.byYearAcs
     ? "byYearAcs"
@@ -109,24 +111,34 @@ const renderCards = (
       sizesArr.includes(info.size) &&
       formsArr.includes(info.shape) &&
       colorsArr.includes(info.color) &&
-      favoriteArr.includes(info.favorite)
+      favoriteArr.includes(info.favorite) &&
+      Number(info.year) >= years[0] &&
+      Number(info.year) <= years[1] &&
+      Number(info.count) >= count[0] &&
+      Number(info.count) <= count[1]
     )
       return <Card info={info} />;
   });
 };
 
+const noToyModal = () => <div className="no-toy">no one toy &#129402;</div>;
+
 const Cards = () => (
   <StoreContextConsumer>
     {(context) => {
+      const cards = renderCards(
+        context.sizes,
+        context.colors,
+        context.forms,
+        context.sortingRule,
+        context.favorite,
+        context.years,
+        context.count
+      );
+      console.log(cards?.filter((card) => card).length);
       return (
         <div className="cards">
-          {renderCards(
-            context.sizes,
-            context.colors,
-            context.forms,
-            context.sortingRule,
-            context.favorite
-          )}
+          {cards?.filter((card) => card).length === 0 ? noToyModal() : cards}
         </div>
       );
     }}

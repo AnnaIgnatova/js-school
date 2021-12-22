@@ -27,30 +27,60 @@ class StoreContextProvider extends Component {
     },
     savedToys: [],
     slotsModal: false,
+    years: [1940, 2020],
+    count: [1, 12],
+  };
+
+  resetFilters = () => {
+    this.setState((prevState) => {
+      let years = [...prevState.years];
+      // let count = [...prevState.count];
+      // let sizes = Object.assign({}, prevState.sizes);
+      // let colors = Object.assign({}, prevState.colors);
+      // let forms = Object.assign({}, prevState.forms);
+      // for (let key in sizes) {
+      //   sizes[key] = false;
+      // }
+      // for (let key in colors) {
+      //   colors[key] = false;
+      // }
+      // for (let key in forms) {
+      //   forms[key] = false;
+      // }
+      // count[0] = 1;
+      // count[1] = 12;
+      years[0] = 1940;
+      years[1] = 2020;
+      return {
+        years,
+        // count,
+        // favorite: false,
+        // sizes,
+        // colors,
+        // forms,
+      };
+    });
   };
 
   getColors = () => {
     return this.state.colors;
   };
 
-  resetFilter = (value) => {
+  chooseYear = (min, max) => {
     this.setState((prevState) => {
-      let filters = Object.assign({}, prevState.filters);
-      for (let key in filters) {
-        filters[key] = false;
-      }
-      return { filters };
+      let years = [...prevState.years];
+      years[0] = min;
+      years[1] = max;
+      return { years };
     });
   };
 
-  chooseFilter = (value) => {
+  chooseCount = (min, max) => {
     this.setState((prevState) => {
-      let filters = Object.assign({}, prevState.filters);
-      for (let key in filters) {
-        filters[key] = false;
-      }
-      filters[value] = true;
-      return { filters };
+      let count = [...prevState.count];
+      count[0] = min;
+      count[1] = max;
+      return { count };
     });
   };
 
@@ -134,6 +164,8 @@ class StoreContextProvider extends Component {
           savedToys: this.state.savedToys,
           slotsModal: this.state.slotsModal,
           favorite: this.state.favorite,
+          years: this.state.years,
+          count: this.state.count,
           chooseSize: this.chooseSize,
           chooseColor: this.chooseColor,
           chooseForm: this.chooseForm,
@@ -142,8 +174,10 @@ class StoreContextProvider extends Component {
           removeFromSaved: this.removeFromSaved,
           toggleSlotsModal: this.toggleSlotsModal,
           toggleFavorite: this.toggleFavorite,
-          resetFilters: this.resetFilters,
           getColors: this.getColors,
+          chooseYear: this.chooseYear,
+          chooseCount: this.chooseCount,
+          resetFilters: this.resetFilters,
         }}
       >
         {this.props.children}

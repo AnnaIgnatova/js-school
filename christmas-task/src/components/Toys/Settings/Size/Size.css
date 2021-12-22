@@ -17,3 +17,11 @@
   font-weight: 16px;
   margin-right: 25px;
 }
+@media (max-width: 850px) {
+  .sizes {
+    flex-direction: column;
+  }
+  .size-item {
+    margin-bottom: 10px;
+  }
+}

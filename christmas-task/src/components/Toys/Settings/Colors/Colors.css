@@ -31,4 +31,10 @@
 .hidden {
   display: none;
 }
+@media (max-width: 850px) {
+  .color {
+    margin-right: 5%;
+  }
+}
+
 

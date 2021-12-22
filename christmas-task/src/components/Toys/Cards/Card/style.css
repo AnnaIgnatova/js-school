@@ -63,3 +63,21 @@
 .favorite-toy:hover {
   transform: scale(1.1);
 }
+@media (max-width: 1250px) {
+  .card {
+    width: 200px;
+    height: 300px;
+    border-radius: 4px;
+    padding: 10px
+  }
+  .card-img {
+    width: 60px;
+    height: 60px;
+    background-repeat: no-repeat;
+    background-size: contain;
+  }
+  .favorite-toy {
+    width: 30px;
+    height: 30px;
+  }
+}

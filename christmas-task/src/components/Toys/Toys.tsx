@@ -1,3 +1,4 @@
+import Footer from "../Footer";
 import Header from "../Header/Header";
 import Cards from "./Cards/Cards";
 import Settings from "./Settings/Settings";
@@ -13,6 +14,7 @@ const Toys = () => {
           <Cards />
         </div>
       </div>
+      <Footer />
     </>
   );
 };

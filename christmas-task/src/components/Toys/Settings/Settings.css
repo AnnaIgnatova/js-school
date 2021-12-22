@@ -11,8 +11,9 @@
     rgba(25, 47, 45, 0.8) 100%
   );
   backdrop-filter: blur(4px);
-  height: 90vh;
+  height: 80vh;
   border-radius: 10px;
+  margin-bottom: 2%;
 }
 .settings-block-title {
   font-size: 16px;
@@ -52,4 +53,20 @@
 
 .settings-block {
   margin-bottom: 20px;
+}
+@media (max-width: 1500px) {
+  .settings-btns > button {
+    padding: 15px 60px;
+  }
+}
+@media (max-width: 1250px) {
+  .settings-content {
+    padding: 20px 30px;
+  }
+  .settings-btns {
+    flex-direction: column;
+  }
+  .settings-btns > button {
+    margin: 5px;
+  }
 }
