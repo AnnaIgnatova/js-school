@@ -13,6 +13,7 @@ const Favorite = () => (
           onChange={() => {
             context.toggleFavorite();
           }}
+          checked={context.favorite}
         />
         Only favorite
       </label>

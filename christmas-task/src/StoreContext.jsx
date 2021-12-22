@@ -56,8 +56,7 @@ class StoreContextProvider extends Component {
       for (let key in forms) {
         forms[key] = false;
       }
-      count[0] = 1;
-      count[1] = 12;
+      count = [1, 12];
       years[0] = 1940;
       years[1] = 2020;
       return {
