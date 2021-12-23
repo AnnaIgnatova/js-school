@@ -63,6 +63,7 @@
 .favorite-toy:hover {
   transform: scale(1.1);
 }
+
 @media (max-width: 1250px) {
   .card {
     width: 200px;

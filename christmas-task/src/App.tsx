@@ -1,6 +1,8 @@
 import "./App.css";
 import Toys from "./components/Toys/Toys";
+import Welcome from "./components/Welcome";
 import { StoreContextConsumer } from "./StoreContext";
+import { Route, Routes } from "react-router";
 
 interface ModalInfo {
   show: boolean;
@@ -29,7 +31,10 @@ const App = () => (
     {(context) => (
       <div className="App">
         <Modal show={context.slotsModal} />
-        <Toys />
+        <Routes>
+          <Route path="/toys" element={<Toys />}></Route>
+          <Route path="/" element={<Welcome />}></Route>
+        </Routes>
       </div>
     )}
   </StoreContextConsumer>

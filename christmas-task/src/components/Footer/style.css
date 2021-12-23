@@ -5,7 +5,7 @@
     rgba(25, 47, 45, 0.8) 100%
   );
   backdrop-filter: blur(4px);
-  height: 7.8vh;
+  height: 80px;
   width: 100%;
 }
 .footer > .container {

@@ -1,36 +1,41 @@
 import React, { Component } from "react";
 const { Provider, Consumer } = React.createContext();
 
+let state = {
+  sortingRule: {
+    byNameAcs: true,
+    byNameDesc: false,
+    byYearAcs: false,
+    byYearDesc: false,
+  },
+  favorite: false,
+  sizes: { small: false, medium: false, big: false },
+  colors: {
+    white: false,
+    yellow: false,
+    red: false,
+    blue: false,
+    green: false,
+  },
+  forms: {
+    ball: false,
+    bell: false,
+    pine: false,
+    snowflake: false,
+    figure: false,
+  },
+  savedToys: [],
+  slotsModal: false,
+  years: [1940, 2020],
+  count: [1, 12],
+  searchText: "",
+};
+
 class StoreContextProvider extends Component {
-  state = {
-    sortingRule: {
-      byNameAcs: true,
-      byNameDesc: false,
-      byYearAcs: false,
-      byYearDesc: false,
-    },
-    favorite: false,
-    sizes: { small: false, medium: false, big: false },
-    colors: {
-      white: false,
-      yellow: false,
-      red: false,
-      blue: false,
-      green: false,
-    },
-    forms: {
-      ball: false,
-      bell: false,
-      pine: false,
-      snowflake: false,
-      figure: false,
-    },
-    savedToys: [],
-    slotsModal: false,
-    years: [1940, 2020],
-    count: [1, 12],
-    searchText: "",
-  };
+  constructor() {
+    super();
+    this.state = state;
+  }
 
   searchToy = (value) => {
     this.setState((prevState) => {
@@ -133,7 +138,6 @@ class StoreContextProvider extends Component {
       colors[value] = !colors[value];
       return { colors };
     });
-
     return this.state.colors;
   };
 

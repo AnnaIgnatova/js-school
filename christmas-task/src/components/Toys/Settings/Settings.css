@@ -11,9 +11,9 @@
     rgba(25, 47, 45, 0.8) 100%
   );
   backdrop-filter: blur(4px);
-  height: 80vh;
+  height: 800px;
   border-radius: 10px;
-  margin-bottom: 2%;
+  margin-bottom: 4%;
 }
 .settings-block-title {
   font-size: 16px;
@@ -69,4 +69,10 @@
   .settings-btns > button {
     margin: 5px;
   }
+}
+@media (max-width: 850px) {
+  .settings-content {
+    height: 900px;
+  }
+ 
 }

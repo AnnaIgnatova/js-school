@@ -30,6 +30,9 @@ const Sorting = () => (
                 context.chooseSortingRule((target as HTMLElement).id);
                 document.querySelector(".default-text")!.textContent =
                   sortingRules[index];
+                document
+                  .querySelector(".select-choose")
+                  ?.classList.add("hidden");
               }}
             >
               {rule}
