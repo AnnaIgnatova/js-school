@@ -1,6 +1,7 @@
 import { StoreContextConsumer } from "../../../../StoreContext";
 import "./style.css";
-import { colors } from "./constants/const";
+import { colors } from "./constants/colors";
+import { selectColor } from "./functions/selectColor";
 
 const Colors = () => (
   <StoreContextConsumer>
@@ -12,10 +13,7 @@ const Colors = () => (
             id={color}
             style={{ backgroundColor: color }}
             onClick={(e) => {
-              (e.currentTarget as HTMLElement)
-                ?.querySelector(".line")
-                ?.classList.toggle("hidden");
-              context.chooseColor(e.currentTarget.id);
+              selectColor(e, context.chooseColor);
             }}
           >
             <div

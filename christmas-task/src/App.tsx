@@ -3,28 +3,7 @@ import Toys from "./components/Toys/index";
 import Welcome from "./components/Welcome/index";
 import { StoreContextConsumer } from "./StoreContext";
 import { Route, Routes } from "react-router";
-
-interface ModalInfo {
-  show: boolean;
-}
-
-const Modal = (props: ModalInfo) => (
-  <StoreContextConsumer>
-    {(context) => {
-      const clientY = document.documentElement.scrollTop;
-      return (
-        <div className={`modal-wrapper ${props.show ? "" : "hidden"}`}>
-          <div className="modal">
-            No more free slots &#129402;
-            <div className="ok-btn" onClick={context.toggleSlotsModal}>
-              OK
-            </div>
-          </div>
-        </div>
-      );
-    }}
-  </StoreContextConsumer>
-);
+import Modal from "./components/Modal";
 
 const App = () => (
   <StoreContextConsumer>
