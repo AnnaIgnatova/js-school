@@ -1,6 +1,6 @@
 import React from "react";
 import { Range } from "rc-slider";
-import "./Slider.css";
+import "./style.css";
 import { StoreContextConsumer } from "../../../../StoreContext";
 
 interface IValues {

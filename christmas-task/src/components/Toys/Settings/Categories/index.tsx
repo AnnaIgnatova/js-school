@@ -1,5 +1,4 @@
-import { StoreContextConsumer } from "../../../../StoreContext";
-import "./Categories.css";
+import "./style.css";
 import { categoriesBlocks } from "./constants/categories";
 import { createCategoriesBlock } from "./functions/createCategory";
 

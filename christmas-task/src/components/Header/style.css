@@ -27,11 +27,29 @@
 .snow-icon {
   background-image: url(../../assets/svg/snow.svg);
 }
-.header-title {
+.nav-link {
   text-transform: uppercase;
   font-size: 20px;
   font-weight: 400;
   color: #fff;
+  text-decoration: none;
+  transition: 0.2s;
+}
+.nav-link:hover {
+  border-bottom: 1px solid white;
+  opacity: 0.7;
+}
+.header-nav > ul {
+  list-style-type: none;
+  display: flex;
+  align-items: center;
+  padding: 0;
+  width: 400px;
+  transition: 0.2s;
+}
+.header-nav > ul > li {
+  margin-right: 7%;
+  transition: 0.2s;
 }
 .header-search {
   font-family: 'Josefin Sans', sans-serif;

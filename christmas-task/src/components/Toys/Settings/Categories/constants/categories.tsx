@@ -1,9 +1,9 @@
-import Forms from "../../Forms/Forms";
-import ExampleCount from "../../ExampleCount/ExampleCount";
-import Years from "../../Years/Years";
-import Colors from "../../Colors/Colors";
-import Size from "../../Size/Size";
-import Favorite from "../../Favorite/Favorite";
+import Forms from "../../Forms/index";
+import ExampleCount from "../../ExampleCount/index";
+import Years from "../../Years/index";
+import Colors from "../../Colors/index";
+import Size from "../../Size/index";
+import Favorite from "../../Favorite/index";
 
 export const categoriesBlocks = [
   { title: "Forms", component: <Forms /> },

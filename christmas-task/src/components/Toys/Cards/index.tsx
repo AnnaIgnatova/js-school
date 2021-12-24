@@ -1,5 +1,5 @@
-import Card from "./Card";
-import "./Cards.css";
+import Card from "./Card/index";
+import "./style.css";
 import data from "../../../data";
 import { StoreContextConsumer } from "../../../StoreContext";
 

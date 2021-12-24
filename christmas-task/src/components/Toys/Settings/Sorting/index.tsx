@@ -1,6 +1,5 @@
-import "./Sorting.css";
+import "./style.css";
 import { sortingRules } from "./constants/sortingRules";
-import { createSortRule } from "./functions/createSortRule";
 import { StoreContextConsumer } from "../../../../StoreContext";
 
 const sortingIdArr = ["byNameAcs", "byNameDesc", "byYearAcs", "byYearDesc"];

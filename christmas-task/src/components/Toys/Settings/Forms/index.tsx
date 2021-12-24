@@ -1,6 +1,5 @@
-import "./Forms.css";
+import "./style.css";
 import { forms } from "./constants/const";
-import { createToyForm } from "./functions/createForm";
 import { StoreContextConsumer } from "../../../../StoreContext";
 
 const Forms = () => (

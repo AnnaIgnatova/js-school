@@ -1,5 +1,5 @@
 import { StoreContextConsumer } from "../../../../StoreContext";
-import "./Favorite.css";
+import "./style.css";
 
 const Favorite = () => (
   <StoreContextConsumer>

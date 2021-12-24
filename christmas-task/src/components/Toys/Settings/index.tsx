@@ -1,6 +1,6 @@
-import Sorting from "./Sorting/Sorting";
-import "./Settings.css";
-import Categories from "./Categories/Categories";
+import Sorting from "./Sorting/index";
+import "./style.css";
+import Categories from "./Categories/index";
 import { StoreContextConsumer } from "../../../StoreContext";
 
 const settingsBlocks = [

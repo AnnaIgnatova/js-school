@@ -1,13 +1,13 @@
 import Footer from "../Footer";
-import Header from "../Header/Header";
-import Cards from "./Cards/Cards";
-import Settings from "./Settings/Settings";
-import "./Toys.css";
+import Header from "../Header/index";
+import Cards from "./Cards/index";
+import Settings from "./Settings/index";
+import "./style.css";
 
 const Toys = () => {
   return (
     <>
-      <Header title="Toys" />
+      <Header />
       <div className="container">
         <div className="toys">
           <Settings />

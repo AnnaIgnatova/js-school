@@ -1,7 +1,6 @@
 import { StoreContextConsumer } from "../../../../StoreContext";
-import "./Colors.css";
+import "./style.css";
 import { colors } from "./constants/const";
-import { createColorBlock } from "./functions/createColor";
 
 const Colors = () => (
   <StoreContextConsumer>

@@ -1,4 +1,4 @@
-import "./ExampleCount.css";
+import "./style.css";
 import React from "react";
 import { Range } from "rc-slider";
 import { StoreContextConsumer } from "../../../../StoreContext";

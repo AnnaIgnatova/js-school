@@ -1,4 +1,4 @@
-import "./Size.css";
+import "./style.css";
 import { toySizes } from "./constants/toySizes";
 import { StoreContextConsumer } from "../../../../StoreContext";
 

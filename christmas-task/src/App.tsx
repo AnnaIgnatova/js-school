@@ -1,6 +1,6 @@
 import "./App.css";
-import Toys from "./components/Toys/Toys";
-import Welcome from "./components/Welcome";
+import Toys from "./components/Toys/index";
+import Welcome from "./components/Welcome/index";
 import { StoreContextConsumer } from "./StoreContext";
 import { Route, Routes } from "react-router";
 

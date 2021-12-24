@@ -1,7 +1,8 @@
+import { Link } from "react-router-dom";
 import { StoreContextConsumer } from "../../StoreContext";
-import "./Header.css";
+import "./style.css";
 
-const Header: React.FC<{ title: string }> = ({ title }) => (
+const Header = () => (
   <StoreContextConsumer>
     {(context) => (
       <div className="header">
@@ -18,7 +19,25 @@ const Header: React.FC<{ title: string }> = ({ title }) => (
               context.searchToy(e.target.value);
             }}
           />
-          <div className="header-title">{title}</div>
+          <div className="header-nav">
+            <ul>
+              <li>
+                <Link to="/" className="nav-link">
+                  Home
+                </Link>
+              </li>
+              <li>
+                <Link to="/toys" className="nav-link">
+                  Toys
+                </Link>
+              </li>
+              <li>
+                <Link to="/tree" className="nav-link">
+                  X-mas Tree
+                </Link>
+              </li>
+            </ul>
+          </div>
           <div className="favorite-count">{context.savedToys.length}</div>
         </div>
       </div>
