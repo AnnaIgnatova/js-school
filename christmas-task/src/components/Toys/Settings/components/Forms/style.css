@@ -1,0 +1,72 @@
+.forms {
+  margin-bottom: 20px;
+}
+.forms-title {
+  color: #fff;
+  font-size: 18px;
+  margin-bottom: 15px;
+  display: block;
+  font-weight: 300;
+}
+.all-forms {
+  width: 100%;
+  display: flex;
+}
+.form-wrapper {
+  margin-right: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+}
+.form-img {
+  height: 42px;
+  mask-size: cover;
+  transition: 0.2s;
+  margin-bottom: 15px;
+}
+.form-img-ball {
+  width: 28px;
+  background-color: rgb(250, 250, 250);
+  mask: url(./../../../../../assets/forms/ball.svg) no-repeat 100% 100%;
+}
+.form-wrapper:hover > .form-img {
+  background-color: #24c5db;
+}
+.form-img-bell {
+  width: 32px;
+  background-color: rgb(250, 250, 250);
+  mask: url(./../../../../../assets/forms/bell.svg) no-repeat 100% 100%;
+}
+.form-img-pine {
+  width: 38px;
+  background-color: rgb(250, 250, 250);
+  mask: url(./../../../../../assets/forms/pine.svg) no-repeat 100% 100%;
+}
+.form-img-snowflake {
+  width: 38px;
+  background-color: rgb(250, 250, 250);
+  mask: url(./../../../../../assets/forms/snowflake.svg) no-repeat 100% 100%;
+}
+.form-img-figure {
+  width: 42px;
+  background-color: rgb(250, 250, 250);
+  mask: url(./../../../../../assets/forms/bird_toy.svg) no-repeat 100% 100%;
+}
+.form-title {
+  color: #fff;
+  font-weight: 200;
+}
+.select-form {
+  background-color: #24c5db;
+}
+
+@media (max-width: 1250px) {
+  .form-img {
+    height: 30px;
+    width: 25px;
+  }
+  .form-wrapper {
+    margin-right: 5%;
+  }
+}

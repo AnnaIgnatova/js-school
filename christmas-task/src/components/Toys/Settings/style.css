@@ -1,4 +1,4 @@
-.settings {
+.settings-block {
   width: 40%;
 }
 .settings-content {
@@ -74,5 +74,4 @@
   .settings-content {
     height: 900px;
   }
- 
 }

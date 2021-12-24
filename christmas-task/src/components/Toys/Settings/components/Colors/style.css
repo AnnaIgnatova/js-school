@@ -1,0 +1,36 @@
+.color {
+  width: 25px;
+  height: 25px;
+  border-radius: 5px;
+  margin-right: 25px;
+  cursor: pointer;
+}
+.line {
+  position: relative;
+  width: 3px;
+  height: 100%;
+  background-color: #e74c3c;
+  display: flex;
+  margin: auto;
+}
+.line::after {
+  content: '';
+  background-image: url('./../../../../../assets/bow.png');
+  width: 20px;
+  height: 20px;
+  background-size: contain;
+  position: absolute;
+  top: -14px;
+  left: -8px;
+}
+
+.hidden {
+  display: none;
+}
+@media (max-width: 850px) {
+  .color {
+    margin-right: 5%;
+  }
+}
+
+
