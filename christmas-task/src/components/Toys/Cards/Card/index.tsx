@@ -51,8 +51,6 @@ const Card = (props: CardInfo) => (
             context.savedToys.includes(props.info.num) ? "" : "not-favorite-toy"
           }`}
           onClick={(e) => {
-            console.log(context.savedToys);
-
             if (
               !(e.target as HTMLElement).classList.contains("not-favorite-toy")
             ) {

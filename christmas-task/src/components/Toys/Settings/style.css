@@ -45,7 +45,7 @@
 }
 
 .settings-btns > button:hover {
-  background: transparent;
+  background-color: rgba(157, 243, 255, 0.4);
 }
 
 .settings-block {
