@@ -23,6 +23,7 @@ module.exports = {
   ignorePatterns: ["babel.config.js"],
   rules: {
     "linebreak-style": "off",
+    "no-var": "off",
     "prettier/prettier": [
       "error",
       {

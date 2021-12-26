@@ -7,10 +7,22 @@
   align-items: center;
   border-radius: 10px;
   height: 80vh;
+  position: relative;
 }
 .x-mas-tree {
+  position: absolute;
   height: 90%;
   width: 50%;
   background-size: contain;
   background-repeat: no-repeat;
+}
+.snowfall {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  z-index: 100;
+  pointer-events: none;
+}
+.hidden {
+  display: none;
 }

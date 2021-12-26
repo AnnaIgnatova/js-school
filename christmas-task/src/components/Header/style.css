@@ -22,10 +22,16 @@
   cursor: pointer;
 }
 .sound-icon {
-  background-image: url(../../assets/svg/audio.svg);
+  width: 40px;
+  height: 40px;
+  mask-size: contain;
+  background-color: rgb(250, 250, 250);
+  mask: url(../../assets/svg/audio.svg) no-repeat 100% 100%;
 }
 .snow-icon {
-  background-image: url(../../assets/svg/snow.svg);
+  background-color: #fff;
+  mask-size: cover;
+  mask: url(../../assets/svg/snow.svg) no-repeat 100% 100%;
 }
 .nav-link {
   text-transform: uppercase;
@@ -97,4 +103,19 @@
   padding-top: 5px;
   color: #fff;
   font-weight: 600;
+}
+.snowflake {
+  background-size: contain;
+  background-image: url(./../../assets/svg/snow.svg);
+  position: absolute;
+  top: 0px;
+  animation: fall linear forwards;
+}
+.select-icon {
+  background-color: #24c5db;
+}
+@keyframes fall {
+  to {
+    transform: translateY(75vh);
+  }
 }

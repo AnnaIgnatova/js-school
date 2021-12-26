@@ -31,6 +31,10 @@ let state = {
   searchText: "",
   tree: "tree-1",
   bg: "bg-1",
+  bgSizes: [0, 0, 0],
+  snowing: false,
+  gareland: "",
+  switchGareland: false,
 };
 
 class StoreContextProvider extends Component {
@@ -38,6 +42,14 @@ class StoreContextProvider extends Component {
     super();
     this.state = state;
   }
+
+  chooseSnowing = () => {
+    this.setState((prevState) => {
+      return {
+        snowing: !prevState.snowing,
+      };
+    });
+  };
 
   chooseTree = (treeClass) => {
     this.setState((prevState) => {
@@ -47,10 +59,36 @@ class StoreContextProvider extends Component {
     });
   };
 
+  chooseGareland = (garelandClass) => {
+    this.setState((prevState) => {
+      return {
+        gareland: garelandClass,
+      };
+    });
+  };
+
+  setGareland = () => {
+    this.setState((prevState) => {
+      return {
+        switchGareland: !prevState.switchGareland,
+      };
+    });
+  };
+
   chooseBG = (bgClass) => {
     this.setState((prevState) => {
       return {
         bg: bgClass,
+      };
+    });
+  };
+
+  setBGsize = (rigth, left, height) => {
+    this.setState((prevState) => {
+      let sizes = [...prevState.bgSizes];
+      sizes = [+rigth, +left, +height];
+      return {
+        sizes,
       };
     });
   };
@@ -199,6 +237,10 @@ class StoreContextProvider extends Component {
           searchText: this.state.searchText,
           tree: this.state.tree,
           bg: this.state.bg,
+          bgSizes: this.state.bgSizes,
+          snowing: this.state.snowing,
+          gareland: this.state.gareland,
+          switchGareland: this.state.switchGareland,
           chooseSize: this.chooseSize,
           chooseColor: this.chooseColor,
           chooseForm: this.chooseForm,
@@ -214,6 +256,10 @@ class StoreContextProvider extends Component {
           searchToy: this.searchToy,
           chooseTree: this.chooseTree,
           chooseBG: this.chooseBG,
+          setBGsize: this.setBGsize,
+          chooseSnowing: this.chooseSnowing,
+          chooseGareland: this.chooseGareland,
+          setGareland: this.setGareland,
         }}
       >
         {this.props.children}
