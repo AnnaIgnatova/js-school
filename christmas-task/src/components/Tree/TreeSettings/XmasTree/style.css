@@ -1,17 +1,16 @@
 .tree-bg {
   width: 53%;
-  background-image: url(./../../../../assets/bg/9.jpg);
   background-size: cover;
   margin-bottom: 20px;
   display: flex;
   justify-content: center;
   align-items: center;
   border-radius: 10px;
+  height: 80vh;
 }
 .x-mas-tree {
   height: 90%;
   width: 50%;
-  background-image: url(./../../../../assets/tree/2.png);
   background-size: contain;
   background-repeat: no-repeat;
 }

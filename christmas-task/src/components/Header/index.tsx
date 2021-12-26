@@ -2,23 +2,32 @@ import { Link } from "react-router-dom";
 import { StoreContextConsumer } from "../../StoreContext";
 import "./style.css";
 
-const Header = () => (
+interface IHeder {
+  route: string;
+}
+
+const Header = (props: IHeder) => (
   <StoreContextConsumer>
     {(context) => (
       <div className="header">
         <div className="container">
           <div className="header-icon sound-icon"></div>
           <div className="header-icon snow-icon"></div>
-          <input
-            type="search"
-            className="header-search"
-            placeholder="Search"
-            autoComplete="off"
-            autoFocus
-            onChange={(e) => {
-              context.searchToy(e.target.value);
-            }}
-          />
+          {props.route === "toys" ? (
+            <input
+              type="search"
+              className="header-search"
+              placeholder="Search"
+              autoComplete="off"
+              autoFocus
+              onChange={(e) => {
+                context.searchToy(e.target.value);
+              }}
+            />
+          ) : (
+            ""
+          )}
+
           <div className="header-nav">
             <ul>
               <li>
@@ -38,7 +47,11 @@ const Header = () => (
               </li>
             </ul>
           </div>
-          <div className="favorite-count">{context.savedToys.length}</div>
+          {props.route === "toys" ? (
+            <div className="favorite-count">{context.savedToys.length}</div>
+          ) : (
+            ""
+          )}
         </div>
       </div>
     )}

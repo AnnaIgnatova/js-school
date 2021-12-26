@@ -1,20 +1,25 @@
+import { StoreContextConsumer } from "../../../../StoreContext";
 import "./style.css";
 
 const Trees = () => (
-  <div className="trees-container">
-    <div className="tree-item-container">
-      <div className="tree-item tree-1"></div>
-    </div>
-    <div className="tree-item-container">
-      <div className="tree-item tree-2"></div>
-    </div>
-    <div className="tree-item-container">
-      <div className="tree-item tree-3"></div>
-    </div>
-    <div className="tree-item-container">
-      <div className="tree-item tree-4"></div>
-    </div>
-  </div>
+  <StoreContextConsumer>
+    {(context) => (
+      <div className="trees-container">
+        {["tree-1", "tree-2", "tree-3", "tree-4"].map((tree) => (
+          <div
+            className="tree-item-container"
+            id={tree}
+            onClick={(e) => {
+              const target = e.currentTarget as HTMLElement;
+              context.chooseTree(target.id);
+            }}
+          >
+            <div className={`tree-item ${tree}`}></div>
+          </div>
+        ))}
+      </div>
+    )}
+  </StoreContextConsumer>
 );
 
 export default Trees;

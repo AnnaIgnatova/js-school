@@ -1,9 +1,19 @@
+import { StoreContextConsumer } from "../../../../StoreContext";
 import "./style.css";
 
 const XmasTree = () => (
-  <div className="tree-bg">
-    <div className="x-mas-tree"></div>
-  </div>
+  <StoreContextConsumer>
+    {(context) => (
+      <div
+        className={`tree-bg ${context.bg}`}
+        onClick={() => {
+          console.log(context);
+        }}
+      >
+        <div className={`x-mas-tree ${context.tree}`}></div>
+      </div>
+    )}
+  </StoreContextConsumer>
 );
 
 export default XmasTree;

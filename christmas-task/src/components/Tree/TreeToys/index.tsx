@@ -23,21 +23,18 @@ const TreeToys = () => (
                 );
               })
             : data.map((toy) => {
-                if (context.savedToys.length === 0) {
-                  data.slice(0, 20).map((value) => {
-                    return (
-                      <div className="tree-toy">
-                        <div
-                          className="toy-item"
-                          style={{
-                            backgroundImage: `url(/toys/${value.num}.png)`,
-                          }}
-                        ></div>
-                        <div className="toys-count">{value.count}</div>
-                      </div>
-                    );
-                  });
-                }
+                if (context.savedToys.includes(toy.num))
+                  return (
+                    <div className="tree-toy">
+                      <div
+                        className="toy-item"
+                        style={{
+                          backgroundImage: `url(/toys/${toy.num}.png)`,
+                        }}
+                      ></div>
+                      <div className="toys-count">{toy.count}</div>
+                    </div>
+                  );
               })}
         </div>
       </div>

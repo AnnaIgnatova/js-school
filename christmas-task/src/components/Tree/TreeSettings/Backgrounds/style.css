@@ -11,8 +11,12 @@
   width: 68px;
   height: 68px;
   background-size: cover;
+  cursor: pointer;
+  transition: .2s;
 }
-
+.bg-item:hover {
+  box-shadow: 0px 2px 15px 1px rgba(255, 255, 255, 0.5);
+}
 .bg-1 {
   background-image: url(./../../../../assets/bg/1.jpg);
 }

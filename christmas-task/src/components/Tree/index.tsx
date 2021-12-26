@@ -7,7 +7,7 @@ import TreeToys from "./TreeToys";
 
 const Tree = () => (
   <>
-    <Header />
+    <Header route={"tree"} />
     <div className="container tree-container">
       <TreeSettings />
       <XmasTree />

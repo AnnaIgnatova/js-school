@@ -1,16 +1,25 @@
+import { StoreContextConsumer } from "../../../../StoreContext";
 import "./style.css";
 
 const Backgrounds = () => (
-  <div className="bgs-container">
-    <div className="bg-item bg-1"></div>
-    <div className="bg-item bg-2"></div>
-    <div className="bg-item bg-3"></div>
-    <div className="bg-item bg-4"></div>
-    <div className="bg-item bg-5"></div>
-    <div className="bg-item bg-6"></div>
-    <div className="bg-item bg-7"></div>
-    <div className="bg-item bg-8"></div>
-  </div>
+  <StoreContextConsumer>
+    {(context) => (
+      <div className="bgs-container">
+        {["bg-1", "bg-2", "bg-3", "bg-4", "bg-5", "bg-6", "bg-7", "bg-8"].map(
+          (bg) => (
+            <div
+              className={`bg-item ${bg}`}
+              id={bg}
+              onClick={(e) => {
+                const target = e.currentTarget as HTMLElement;
+                context.chooseBG(target.id);
+              }}
+            ></div>
+          )
+        )}
+      </div>
+    )}
+  </StoreContextConsumer>
 );
 
 export default Backgrounds;

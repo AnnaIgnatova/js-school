@@ -29,6 +29,8 @@ let state = {
   years: [1940, 2020],
   count: [1, 12],
   searchText: "",
+  tree: "tree-1",
+  bg: "bg-1",
 };
 
 class StoreContextProvider extends Component {
@@ -36,6 +38,22 @@ class StoreContextProvider extends Component {
     super();
     this.state = state;
   }
+
+  chooseTree = (treeClass) => {
+    this.setState((prevState) => {
+      return {
+        tree: treeClass,
+      };
+    });
+  };
+
+  chooseBG = (bgClass) => {
+    this.setState((prevState) => {
+      return {
+        bg: bgClass,
+      };
+    });
+  };
 
   searchToy = (value) => {
     this.setState((prevState) => {
@@ -179,6 +197,8 @@ class StoreContextProvider extends Component {
           years: this.state.years,
           count: this.state.count,
           searchText: this.state.searchText,
+          tree: this.state.tree,
+          bg: this.state.bg,
           chooseSize: this.chooseSize,
           chooseColor: this.chooseColor,
           chooseForm: this.chooseForm,
@@ -192,6 +212,8 @@ class StoreContextProvider extends Component {
           chooseCount: this.chooseCount,
           resetFilters: this.resetFilters,
           searchToy: this.searchToy,
+          chooseTree: this.chooseTree,
+          chooseBG: this.chooseBG,
         }}
       >
         {this.props.children}
