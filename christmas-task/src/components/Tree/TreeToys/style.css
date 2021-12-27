@@ -7,7 +7,6 @@
   flex-wrap: wrap;
 }
 .tree-toy {
-  position: relative;
   width: 70px;
   height: 70px;
   background: radial-gradient(

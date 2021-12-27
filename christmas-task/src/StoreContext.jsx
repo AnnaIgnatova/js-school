@@ -29,12 +29,13 @@ let state = {
   years: [1940, 2020],
   count: [1, 12],
   searchText: "",
-  tree: "tree-1",
+  tree: "1",
   bg: "bg-1",
   bgSizes: [0, 0, 0],
   snowing: false,
   gareland: "",
   switchGareland: false,
+  toysOnTree: [],
 };
 
 class StoreContextProvider extends Component {
@@ -42,6 +43,16 @@ class StoreContextProvider extends Component {
     super();
     this.state = state;
   }
+
+  addToyOnTree = (id) => {
+    this.setState((prevState) => {
+      let toysOnTree = [...prevState.toysOnTree];
+      toysOnTree = [...toysOnTree, id];
+      return {
+        toysOnTree,
+      };
+    });
+  };
 
   chooseSnowing = () => {
     this.setState((prevState) => {
@@ -67,10 +78,10 @@ class StoreContextProvider extends Component {
     });
   };
 
-  setGareland = () => {
+  setGareland = (bool) => {
     this.setState((prevState) => {
       return {
-        switchGareland: !prevState.switchGareland,
+        switchGareland: bool,
       };
     });
   };
@@ -241,6 +252,7 @@ class StoreContextProvider extends Component {
           snowing: this.state.snowing,
           gareland: this.state.gareland,
           switchGareland: this.state.switchGareland,
+          toysOnTree: this.state.toysOnTree,
           chooseSize: this.chooseSize,
           chooseColor: this.chooseColor,
           chooseForm: this.chooseForm,
@@ -260,6 +272,7 @@ class StoreContextProvider extends Component {
           chooseSnowing: this.chooseSnowing,
           chooseGareland: this.chooseGareland,
           setGareland: this.setGareland,
+          addToyOnTree: this.addToyOnTree,
         }}
       >
         {this.props.children}

@@ -2,7 +2,7 @@ import Footer from "../Footer";
 import Header from "../Header";
 import "./style.css";
 import TreeSettings from "./TreeSettings";
-import XmasTree from "./TreeSettings/XmasTree";
+import XmasTree from "./TreeSettings/XmasTree/index";
 import TreeToys from "./TreeToys";
 
 const Tree = () => (

@@ -31,19 +31,22 @@ function createSnowFlake() {
 }
 
 function startSnow(state: boolean) {
-  var interval: NodeJS.Timer | boolean = false;
+  const bg = document.querySelector(".tree-bg") as HTMLElement;
+
   if (!state) {
-    const bg = document.querySelector(".tree-bg") as HTMLElement;
     const snowfall = document.createElement("div");
     snowfall.className = "snowfall";
     bg.prepend(snowfall);
-    if (!interval) interval = setInterval(createSnowFlake, 50);
-  } else {
-    const bg = document.querySelector(".tree-bg");
-    bg?.removeChild(bg.children[0]);
-    if (interval) clearInterval(interval);
-    interval = false;
   }
+
+  const interval = setInterval(() => {
+    if (!state) {
+      createSnowFlake();
+    } else {
+      clearInterval(interval);
+      bg?.removeChild(bg.children[0]);
+    }
+  }, 50);
 }
 
 const Header = (props: IHeder) => {

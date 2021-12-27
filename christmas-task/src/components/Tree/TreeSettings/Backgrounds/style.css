@@ -1,5 +1,4 @@
 .bgs-container {
-  height: 150px;
   width: 100%;
   display: flex;
   justify-content: space-evenly;
@@ -13,6 +12,7 @@
   background-size: cover;
   cursor: pointer;
   transition: .2s;
+  margin-bottom: 10px;
 }
 .bg-item:hover {
   box-shadow: 0px 2px 15px 1px rgba(255, 255, 255, 0.5);
