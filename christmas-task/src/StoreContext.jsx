@@ -1,5 +1,8 @@
 import React, { Component } from "react";
+import data from "./data";
 const { Provider, Consumer } = React.createContext();
+
+const defaultCount = data.map((toy) => +toy.count);
 
 let state = {
   sortingRule: {
@@ -36,6 +39,7 @@ let state = {
   gareland: "",
   switchGareland: false,
   toysOnTree: [],
+  toysCount: defaultCount,
 };
 
 class StoreContextProvider extends Component {
@@ -43,6 +47,29 @@ class StoreContextProvider extends Component {
     super();
     this.state = state;
   }
+
+  changeRoute = () => {
+    this.setState((prevState) => {
+      let toysCount = [...prevState.toysCount];
+      toysCount = [...defaultCount];
+      return {
+        toysCount,
+      };
+    });
+  };
+
+  changeToysCount = (id, onTree = false) => {
+    this.setState((prevState) => {
+      let toysCount = [...prevState.toysCount];
+      if (!onTree && toysCount[id] < data[id].count) toysCount[id] += 1;
+      else if (onTree) {
+        toysCount[id] -= 1;
+      }
+      return {
+        toysCount,
+      };
+    });
+  };
 
   addToyOnTree = (id) => {
     this.setState((prevState) => {
@@ -253,6 +280,7 @@ class StoreContextProvider extends Component {
           gareland: this.state.gareland,
           switchGareland: this.state.switchGareland,
           toysOnTree: this.state.toysOnTree,
+          toysCount: this.state.toysCount,
           chooseSize: this.chooseSize,
           chooseColor: this.chooseColor,
           chooseForm: this.chooseForm,
@@ -273,6 +301,8 @@ class StoreContextProvider extends Component {
           chooseGareland: this.chooseGareland,
           setGareland: this.setGareland,
           addToyOnTree: this.addToyOnTree,
+          changeToysCount: this.changeToysCount,
+          changeRoute: this.changeRoute,
         }}
       >
         {this.props.children}

@@ -7,7 +7,7 @@ import "./style.css";
 const Toys = () => {
   return (
     <>
-      <Header route={"toys"} />
+      <Header />
       <div className="container">
         <div className="toys">
           <Settings />

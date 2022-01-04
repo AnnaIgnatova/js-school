@@ -1,13 +1,12 @@
 import { StoreContextConsumer } from "../../../../../StoreContext";
 import "./style.css";
-import { colors } from "./constants/colors";
 import { selectColor } from "./functions/selectColor";
 
 const Colors = () => (
   <StoreContextConsumer>
     {(context) => (
       <div className="all-forms">
-        {colors.map((color) => (
+        {["white", "yellow", "red", "blue", "green"].map((color) => (
           <div
             className="color"
             id={color}

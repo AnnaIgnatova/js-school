@@ -1,5 +1,4 @@
 import "./style.css";
-import { forms } from "./constants/forms";
 import { StoreContextConsumer } from "../../../../../StoreContext";
 import { selectForm } from "./functions/createForm";
 
@@ -7,7 +6,7 @@ const Forms = () => (
   <StoreContextConsumer>
     {(context) => (
       <div className="all-forms">
-        {forms.map((name) => (
+        {["ball", "bell", "pine", "snowflake", "figure"].map((name) => (
           <div
             className="form-wrapper"
             id={name}

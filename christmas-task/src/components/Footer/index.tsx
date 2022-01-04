@@ -7,8 +7,7 @@ const Footer = () => (
       <div className="author-info">
         App developer:
         <a href="https://github.com/AnnaIgnatova" className="author-name">
-          {" "}
-          Anna Ignatova{" "}
+          Anna Ignatova
         </a>
         <span className="dev-year">2021</span>
       </div>

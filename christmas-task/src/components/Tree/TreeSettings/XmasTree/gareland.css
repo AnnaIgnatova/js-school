@@ -22,7 +22,6 @@
   border-radius: 50%;
   margin: 15px;
   display: inline-block;
-
   animation-name: flash-1;
   animation-duration: 1.5s;
 }
@@ -74,7 +73,7 @@
   }
   50% {
     background: rgba(255, 161, 158, 0.8);
-    box-shadow: 0px 4px 24px 3px white;
+    box-shadow: 0px 4px 24px 3px rgb(255, 161, 158);
   }
 }
 @keyframes flash-2 {
@@ -85,7 +84,7 @@
   }
   50% {
     background: rgba(127, 206, 238, 0.8);
-    box-shadow: 0px 4px 24px 3px white;
+    box-shadow: 0px 4px 24px 3px rgb(127, 206, 238);
   }
 }
 @keyframes flash-3 {

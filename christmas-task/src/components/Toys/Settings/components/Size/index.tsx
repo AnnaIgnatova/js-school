@@ -1,12 +1,11 @@
 import "./style.css";
-import { toySizes } from "./constants/toySizes";
 import { StoreContextConsumer } from "../../../../../StoreContext";
 
 const Size = () => (
   <StoreContextConsumer>
     {(context) => (
       <div className="sizes-block">
-        {toySizes.map((size) => (
+        {["small", "medium", "big"].map((size) => (
           <label className="size-item">
             <input
               type="checkbox"

@@ -3,11 +3,11 @@ import Header from "../Header";
 import "./style.css";
 import TreeSettings from "./TreeSettings";
 import XmasTree from "./TreeSettings/XmasTree/index";
-import TreeToys from "./TreeToys";
+import TreeToys from "./TreeToys/index";
 
 const Tree = () => (
   <>
-    <Header route={"tree"} />
+    <Header />
     <div className="container tree-container">
       <TreeSettings />
       <XmasTree />

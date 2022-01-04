@@ -1,5 +1,6 @@
 import { StoreContextConsumer } from "../../../../StoreContext";
 import "./style.css";
+import { changeBg } from "./functions/changeBg";
 
 const Backgrounds = () => (
   <StoreContextConsumer>
@@ -11,8 +12,7 @@ const Backgrounds = () => (
               className={`bg-item ${bg}`}
               id={bg}
               onClick={(e) => {
-                const target = e.currentTarget as HTMLElement;
-                context.chooseBG(target.id);
+                changeBg(e, context.chooseBG);
               }}
             ></div>
           )

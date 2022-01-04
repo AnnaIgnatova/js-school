@@ -8,6 +8,7 @@
   border-radius: 10px;
   height: 80vh;
   position: relative;
+  z-index: 0;
 }
 .x-mas-tree {
   position: relative;

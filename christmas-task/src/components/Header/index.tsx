@@ -1,55 +1,12 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { StoreContextConsumer } from "../../StoreContext";
+import toggleSnowing from "./functions/toggleSnowing";
+import toggleAudio from "./functions/toggleAudio";
 import "./style.css";
+import { routes } from "./constants/routes";
 
-interface IHeder {
-  route: string;
-}
-
-function createSnowFlake() {
-  const bg = (document.querySelector(".snowfall") as HTMLElement) || "";
-  if (bg) {
-    const rigth = bg.getBoundingClientRect().right - 20;
-    const left = bg.getBoundingClientRect().left;
-
-    const snowFlake = document.createElement("div");
-    snowFlake.classList.add("snowflake");
-    snowFlake.style.left = Math.random() * (rigth - left) + "px";
-    snowFlake.style.animationDuration = Math.random() * 3 + 2 + "s"; // between 2 - 5 seconds
-    snowFlake.style.opacity = `${Math.random()}`;
-    const size = Math.random() * (30 - 10) + 10;
-    snowFlake.style.width = `${size}px`;
-    snowFlake.style.height = `${size}px`;
-
-    bg.appendChild(snowFlake);
-
-    setTimeout(() => {
-      snowFlake.remove();
-    }, 3000);
-  }
-}
-
-function startSnow(state: boolean) {
-  const bg = document.querySelector(".tree-bg") as HTMLElement;
-
-  if (!state) {
-    const snowfall = document.createElement("div");
-    snowfall.className = "snowfall";
-    bg.prepend(snowfall);
-  }
-
-  const interval = setInterval(() => {
-    if (!state) {
-      createSnowFlake();
-    } else {
-      clearInterval(interval);
-      bg?.removeChild(bg.children[0]);
-    }
-  }, 50);
-}
-
-const Header = (props: IHeder) => {
+const Header = () => {
   const [snowing, setSnowing] = useState(false);
   const [play, setPlay] = useState(false);
   return (
@@ -63,72 +20,40 @@ const Header = (props: IHeder) => {
             <div
               className="header-icon sound-icon"
               onClick={(e) => {
-                const audio = document.querySelector(
-                  ".audio"
-                ) as HTMLAudioElement;
-                e.currentTarget.classList.toggle("select-icon");
-                if (!play) {
-                  audio.play();
-                  setPlay(true);
-                } else {
-                  audio.pause();
-                  audio.currentTime = 0;
-                  setPlay(false);
-                }
+                toggleAudio(e, setPlay, play);
               }}
             ></div>
             <div
               className="header-icon snow-icon"
               onClick={(e) => {
-                e.currentTarget.classList.toggle("select-icon");
-                startSnow(snowing);
-
-                if (!snowing) {
-                  setSnowing(true);
-                } else {
-                  setSnowing(false);
-                }
+                toggleSnowing(e, setSnowing, snowing);
               }}
             ></div>
-            {props.route === "toys" ? (
-              <input
-                type="search"
-                className="header-search"
-                placeholder="Search"
-                autoComplete="off"
-                autoFocus
-                onChange={(e) => {
-                  context.searchToy(e.target.value);
-                }}
-              />
-            ) : (
-              ""
-            )}
+
+            <input
+              type="search"
+              className="header-search"
+              placeholder="Search"
+              autoComplete="off"
+              autoFocus
+              onChange={(e) => {
+                context.searchToy(e.target.value);
+              }}
+            />
 
             <div className="header-nav">
               <ul>
-                <li>
-                  <Link to="/" className="nav-link">
-                    Home
-                  </Link>
-                </li>
-                <li>
-                  <Link to="/toys" className="nav-link">
-                    Toys
-                  </Link>
-                </li>
-                <li>
-                  <Link to="/tree" className="nav-link">
-                    X-mas Tree
-                  </Link>
-                </li>
+                {routes.map(({ to, title }) => (
+                  <li>
+                    <Link to={to} className="nav-link">
+                      {title}
+                    </Link>
+                  </li>
+                ))}
               </ul>
             </div>
-            {props.route === "toys" ? (
-              <div className="favorite-count">{context.savedToys.length}</div>
-            ) : (
-              ""
-            )}
+
+            <div className="favorite-count">{context.savedToys.length}</div>
           </div>
         </div>
       )}

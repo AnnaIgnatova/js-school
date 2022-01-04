@@ -1,5 +1,6 @@
 import { StoreContextConsumer } from "../../../../StoreContext";
 import "./style.css";
+import { changeGareland } from "./functions/changeGareland";
 
 const Garland = () => (
   <StoreContextConsumer>
@@ -11,14 +12,12 @@ const Garland = () => (
               className={`garland garland-${index + 1}`}
               id={flash}
               onClick={(e) => {
-                if ((e.currentTarget as HTMLElement).id === "none")
-                  context.setGareland(false);
-                if (
-                  (e.currentTarget as HTMLElement).id !== "none" &&
-                  !context.switchGareland
-                )
-                  context.setGareland(true);
-                context.chooseGareland(e.currentTarget.id);
+                changeGareland(
+                  e,
+                  context.setGareland,
+                  context.chooseGareland,
+                  context.switchGareland
+                );
               }}
             >
               <div className="active-gareland hidden"></div>

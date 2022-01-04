@@ -1,13 +1,5 @@
 import "./style.css";
-import Trees from "./Trees";
-import Backgrounds from "./Backgrounds";
-import Garland from "./Garland";
-
-const settingsBlocks = [
-  { title: "choose tree", component: <Trees /> },
-  { title: "choose background", component: <Backgrounds /> },
-  { title: "choose garland", component: <Garland /> },
-];
+import { settingsBlocks } from "./constants/settingsBlocks";
 
 const TreeSettings = () => (
   <div className="tree-settings">

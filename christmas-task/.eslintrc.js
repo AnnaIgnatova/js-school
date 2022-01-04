@@ -31,5 +31,6 @@ module.exports = {
       },
     ],
     "@typescript-eslint/default-param-last": ["error"],
+    "import/extensions": "never" | "always" | "ignorePackages",
   },
 };

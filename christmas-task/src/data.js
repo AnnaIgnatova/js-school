@@ -441,7 +441,7 @@ const data = [
   },
   {
     num: "45",
-    name: "New Year's snowflake",
+    name: `New Year"s snowflake`,
     count: "1",
     year: "1980",
     shape: "snowflake",
@@ -600,5 +600,4 @@ const data = [
     favorite: true,
   },
 ];
-
 export default data;

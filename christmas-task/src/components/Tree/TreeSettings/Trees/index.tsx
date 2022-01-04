@@ -1,5 +1,6 @@
 import { StoreContextConsumer } from "../../../../StoreContext";
 import "./style.css";
+import { changeTree } from "./functions/changeTree";
 
 const Trees = () => (
   <StoreContextConsumer>
@@ -10,9 +11,7 @@ const Trees = () => (
             className="tree-item-container"
             data-tree={tree}
             onClick={(e) => {
-              const target = e.currentTarget as HTMLElement;
-              console.log(target.dataset.tree);
-              context.chooseTree(target.dataset.tree);
+              changeTree(e, context.context.chooseTree);
             }}
           >
             <div className={`tree-item tree-${tree}`}></div>
