@@ -11,7 +11,7 @@ const Trees = () => (
             className="tree-item-container"
             data-tree={tree}
             onClick={(e) => {
-              changeTree(e, context.context.chooseTree);
+              changeTree(e, context.chooseTree);
             }}
           >
             <div className={`tree-item tree-${tree}`}></div>

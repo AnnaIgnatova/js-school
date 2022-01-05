@@ -7,11 +7,11 @@ const toggleAudio = (
   (e.currentTarget as HTMLElement).classList.toggle("select-icon");
   if (!play) {
     audio.play();
-    setPlay(!play);
+    setPlay(true);
   } else {
     audio.pause();
     audio.currentTime = 0;
-    setPlay(play);
+    setPlay(false);
   }
 };
 
