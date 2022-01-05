@@ -1,11 +1,7 @@
 import { Position } from "../interfaces/Position";
 import { DraggableEvent } from "react-draggable";
-
-const getСlassNameByCoord = (e: DraggableEvent) =>
-  document.elementFromPoint(
-    (e as MouseEvent).clientX,
-    (e as MouseEvent).clientY
-  )?.className;
+import { getСlassNameByCoord } from "./getElemByCoord";
+import { replaceToyFromTree, replaceToyOnTree } from "./replaceToy";
 
 export const stopDragging = (
   e: DraggableEvent,
@@ -16,17 +12,10 @@ export const stopDragging = (
   setPos: (position: Position) => void
 ) => {
   (e.target as HTMLElement).classList.add("hide");
+
   const elemClassName = getСlassNameByCoord(e);
 
-  if (elemClassName === "tree-area") {
-    if (target !== "tree") {
-      changeToysCount(num - 1, true);
-    }
-    setTarget("tree");
-  } else {
-    setPos({ x: 0, y: 0 });
-    (e.target as HTMLElement).classList.remove("hide");
-    changeToysCount(num - 1, false);
-    setTarget("toys");
-  }
+  if (elemClassName === "tree-area")
+    replaceToyOnTree(target, changeToysCount, setTarget, num);
+  else replaceToyFromTree(setPos, e, changeToysCount, setTarget, num, target);
 };

@@ -48,24 +48,15 @@ class StoreContextProvider extends Component {
     this.state = state;
   }
 
-  changeRoute = () => {
-    this.setState((prevState) => {
-      let toysCount = [...prevState.toysCount];
-      toysCount = [...defaultCount];
-      return {
-        toysCount,
-      };
-    });
-  };
-
   changeToysCount = (id, onTree = false) => {
     this.setState((prevState) => {
-      let toysCount = [...prevState.toysCount];
+      const toysCount = [...prevState.toysCount];
       if (!onTree && toysCount[id] < data[id].count) toysCount[id] += 1;
       else if (onTree) {
         toysCount[id] -= 1;
       }
       return {
+        ...prevState,
         toysCount,
       };
     });
@@ -73,10 +64,10 @@ class StoreContextProvider extends Component {
 
   addToyOnTree = (id) => {
     this.setState((prevState) => {
-      let toysOnTree = [...prevState.toysOnTree];
-      toysOnTree = [...toysOnTree, id];
+      const { toysOnTree } = prevState;
       return {
-        toysOnTree,
+        ...prevState,
+        toysOnTree: [...toysOnTree, id],
       };
     });
   };
@@ -84,6 +75,7 @@ class StoreContextProvider extends Component {
   chooseSnowing = () => {
     this.setState((prevState) => {
       return {
+        ...prevState,
         snowing: !prevState.snowing,
       };
     });
@@ -92,6 +84,7 @@ class StoreContextProvider extends Component {
   chooseTree = (treeClass) => {
     this.setState((prevState) => {
       return {
+        ...prevState,
         tree: treeClass,
       };
     });
@@ -100,6 +93,7 @@ class StoreContextProvider extends Component {
   chooseGareland = (garelandClass) => {
     this.setState((prevState) => {
       return {
+        ...prevState,
         gareland: garelandClass,
       };
     });
@@ -108,6 +102,7 @@ class StoreContextProvider extends Component {
   setGareland = (bool) => {
     this.setState((prevState) => {
       return {
+        ...prevState,
         switchGareland: bool,
       };
     });
@@ -116,17 +111,8 @@ class StoreContextProvider extends Component {
   chooseBG = (bgClass) => {
     this.setState((prevState) => {
       return {
+        ...prevState,
         bg: bgClass,
-      };
-    });
-  };
-
-  setBGsize = (rigth, left, height) => {
-    this.setState((prevState) => {
-      let sizes = [...prevState.bgSizes];
-      sizes = [+rigth, +left, +height];
-      return {
-        sizes,
       };
     });
   };
@@ -134,6 +120,7 @@ class StoreContextProvider extends Component {
   searchToy = (value) => {
     this.setState((prevState) => {
       return {
+        ...prevState,
         searchText: value,
       };
     });
@@ -143,9 +130,9 @@ class StoreContextProvider extends Component {
     this.setState((prevState) => {
       let years = [...prevState.years];
       let count = [...prevState.count];
-      let sizes = Object.assign({}, prevState.sizes);
-      let colors = Object.assign({}, prevState.colors);
-      let forms = Object.assign({}, prevState.forms);
+      const sizes = Object.assign({}, prevState.sizes);
+      const colors = Object.assign({}, prevState.colors);
+      const forms = Object.assign({}, prevState.forms);
       for (let key in sizes) {
         sizes[key] = false;
       }
@@ -156,9 +143,9 @@ class StoreContextProvider extends Component {
         forms[key] = false;
       }
       count = [1, 12];
-      years[0] = 1940;
-      years[1] = 2020;
+      years = [1940, 2020];
       return {
+        ...prevState,
         years,
         count,
         favorite: false,
@@ -169,31 +156,28 @@ class StoreContextProvider extends Component {
     });
   };
 
-  getColors = () => {
-    return this.state.colors;
-  };
-
   chooseYear = (min, max) => {
     this.setState((prevState) => {
-      let years = [...prevState.years];
-      years[0] = min;
-      years[1] = max;
-      return { years };
+      return {
+        ...prevState,
+        years: [min, max],
+      };
     });
   };
 
   chooseCount = (min, max) => {
     this.setState((prevState) => {
-      let count = [...prevState.count];
-      count[0] = min;
-      count[1] = max;
-      return { count };
+      return {
+        ...prevState,
+        count: [min, max],
+      };
     });
   };
 
   toggleSlotsModal = () => {
     this.setState((prevState) => {
       return {
+        ...prevState,
         slotsModal: !prevState.slotsModal,
       };
     });
@@ -202,6 +186,7 @@ class StoreContextProvider extends Component {
   toggleFavorite = () => {
     this.setState((prevState) => {
       return {
+        ...prevState,
         favorite: !prevState.favorite,
       };
     });
@@ -209,7 +194,7 @@ class StoreContextProvider extends Component {
 
   chooseSortingRule = (value) => {
     this.setState((prevState) => {
-      let sortingRule = Object.assign({}, prevState.sortingRule);
+      const sortingRule = Object.assign({}, prevState.sortingRule);
       for (let key in sortingRule) {
         sortingRule[key] = false;
       }
@@ -220,7 +205,7 @@ class StoreContextProvider extends Component {
 
   chooseSize = (value) => {
     this.setState((prevState) => {
-      let sizes = Object.assign({}, prevState.sizes);
+      const sizes = Object.assign({}, prevState.sizes);
       sizes[value] = !sizes[value];
       return { sizes };
     });
@@ -228,7 +213,7 @@ class StoreContextProvider extends Component {
 
   chooseColor = (value) => {
     this.setState((prevState) => {
-      let colors = Object.assign({}, prevState.colors);
+      const colors = Object.assign({}, prevState.colors);
       colors[value] = !colors[value];
       return { colors };
     });
@@ -237,7 +222,7 @@ class StoreContextProvider extends Component {
 
   chooseForm = (value) => {
     this.setState((prevState) => {
-      let forms = Object.assign({}, prevState.forms);
+      const forms = Object.assign({}, prevState.forms);
       forms[value] = !forms[value];
       return { forms };
     });
@@ -245,9 +230,11 @@ class StoreContextProvider extends Component {
 
   addToSaved = (id) => {
     this.setState((prevState) => {
-      let savedToys = [...prevState.savedToys];
-      savedToys.push(id);
-      return { savedToys };
+      const { savedToys } = prevState;
+      return {
+        ...prevState,
+        savedToys: [...savedToys, id],
+      };
     });
   };
 
@@ -289,20 +276,17 @@ class StoreContextProvider extends Component {
           removeFromSaved: this.removeFromSaved,
           toggleSlotsModal: this.toggleSlotsModal,
           toggleFavorite: this.toggleFavorite,
-          getColors: this.getColors,
           chooseYear: this.chooseYear,
           chooseCount: this.chooseCount,
           resetFilters: this.resetFilters,
           searchToy: this.searchToy,
           chooseTree: this.chooseTree,
           chooseBG: this.chooseBG,
-          setBGsize: this.setBGsize,
           chooseSnowing: this.chooseSnowing,
           chooseGareland: this.chooseGareland,
           setGareland: this.setGareland,
           addToyOnTree: this.addToyOnTree,
           changeToysCount: this.changeToysCount,
-          changeRoute: this.changeRoute,
         }}
       >
         {this.props.children}
