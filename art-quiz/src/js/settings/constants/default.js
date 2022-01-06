@@ -1,0 +1,22 @@
+const DEFAULT_SECONDS_VALUE = 20;
+const DEFAUT_GAME_TIME = false;
+const MUTED_VOLUME_VALUE = 0;
+const MAX_VOLUME_VALUE = 100;
+const MUTED_VOLUME_LINE =
+  'linear-gradient(to right, #FFBCA2 0%, #FFBCA2 0%, #A4A4A4 0%, white 100%)';
+const MAX_VOLUME_LINE =
+  'linear-gradient(to right, #FFBCA2 0%, #FFBCA2 100%, #A4A4A4 100%, white 100%)';
+const DEFAULT_VOLUME_LINE =
+  'linear-gradient(to right, #FFBCA2 0%, #FFBCA2 50%, #A4A4A4 50%, white 100%)';
+const DEFAULT_VOLUME_VALUE = 50;
+
+export {
+  DEFAULT_SECONDS_VALUE,
+  DEFAUT_GAME_TIME,
+  MUTED_VOLUME_VALUE,
+  MAX_VOLUME_VALUE,
+  MUTED_VOLUME_LINE,
+  MAX_VOLUME_LINE,
+  DEFAULT_VOLUME_LINE,
+  DEFAULT_VOLUME_VALUE,
+};
