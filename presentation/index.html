@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
+
+    <title>reveal.js</title>
+
+    <link rel="stylesheet" href="dist/reset.css" />
+    <link rel="stylesheet" href="dist/reveal.css" />
+    <link rel="stylesheet" href="dist/theme/black.css" />
+
+    <!-- Theme used for syntax highlighted code -->
+    <link rel="stylesheet" href="plugin/highlight/monokai.css" />
+  </head>
+  <body>
+    <div class="reveal">
+      <div class="slides">
+        <section>
+          <a href="https://www.electronjs.org/">
+            <img
+              src="https://camo.githubusercontent.com/2ef2a441f9eaa1aca489796981cfa851d9388e08209b08e57526a06b4e604a57/68747470733a2f2f656c656374726f6e6a732e6f72672f696d616765732f656c656374726f6e2d6c6f676f2e737667"
+              class="demo-logo"
+            />
+          </a>
+          <p>
+            <small
+              >Presentation by
+              <a href="https://github.com/AnnaIgnatova">Anna Ignatova</a></small
+            >
+          </p>
+        </section>
+        <section>
+          <section>
+            <h2>What is Electron?</h2>
+          </section>
+          <section>
+            <img
+              src="https://i.ibb.co/gJJnG1Y/imgonline-com-ua-Resize-NH2-ACIw-MIc-Nok0.png"
+              alt="html css javascript"
+            />
+            <p>
+              <span style="color: rgb(55, 161, 231)">Electron.js</span> is the
+              most popular
+              <span style="color: rgb(55, 161, 231)">framework</span> for
+              desktop app development, that allows the user to
+              <span style="color: rgb(55, 161, 231)">create applications</span>
+              with HTML5, CSS, and JavaScript
+            </p>
+          </section>
+          <section style="left: 10%">
+            <!-- <p>It is basically a blend of two incredibly popular technologies: <span style="color: rgb(55, 161, 231);">Node.JS</span>  and <span style="color: rgb(55, 161, 231);">Chromium</span></p> -->
+            <div class="images" style="display: flex; width: 400px">
+              <img
+                style="margin-right: 50px"
+                src="https://polyakovdmitriy.ru/wp-content/uploads/2019/05/nodejs.png.pagespeed.ce_.9zN9M5IW0F.png"
+                alt="nodejs"
+              />
+              <img
+                src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fe/Chromium_Material_Icon.svg/1200px-Chromium_Material_Icon.svg.png"
+                alt="Chromium"
+              />
+            </div>
+          </section>
+          <section>
+            <h3>A little bit of history of Electron.js</h3>
+            <img
+              src="https://i.ibb.co/Y3QYRb0/history.png"
+              alt="history diagram"
+            />
+          </section>
+          <section>
+            <h3 style="margin-bottom: 80px">Key features of Electron.js</h3>
+            <p>
+              Electron JS uses web technologies like simple
+              <span style="color: rgb(55, 161, 231)"
+                >HTML, CSS, and JavaScript</span
+              >. It does not require native skills unless you want to do
+              something advanced. It can be designed for a single browser. Its
+              file system belongs to
+              <span style="color: rgb(55, 161, 231)">Node.js APIs</span> and
+              works on
+              <span style="color: rgb(55, 161, 231)"
+                >Linux, Mac OS X, Windows.</span
+              >
+            </p>
+          </section>
+        </section>
+        <section>
+          <section>
+            <h2>what are the advantages of electron?</h2>
+          </section>
+          <section>
+            <h3 style="margin-bottom: 50px">Cross-platform support</h3>
+            <img
+              src="https://i.ibb.co/tCdXC98/browser-logos.png"
+              alt="browsers"
+            />
+          </section>
+          <section>
+            <h3>Low barrier to entry</h3>
+          </section>
+          <section>
+            <h3>Increased development speed</h3>
+          </section>
+          <section>
+            <h3>Automatic updates and convenient installers</h3>
+          </section>
+          <section>
+            <h3>Large community of developers and users</h3>
+          </section>
+        </section>
+        <section>
+          <h3 style="margin-bottom: 60px">Most Popular Electron Apps</h3>
+          <ul style="color: rgb(148, 181, 243)">
+            <li>VS Code</li>
+            <li>Slack</li>
+            <li>Skype</li>
+            <li>Discord</li>
+            <li>Atom</li>
+          </ul>
+        </section>
+        <section>
+          <section>
+            <h2>How to create apps with Electron</h2>
+          </section>
+          <section data-auto-animate>
+            <h3 data-id="code-title">create the package.json file</h3>
+            <pre
+              data-id="code-animation"
+            ><code class="hljs" data-trim data-line-numbers="|2|4|6-8"><script type="text/template">
+          {
+            "name": "electron-project",
+            "version": "2.0.0",
+            "main": "index.js",
+            "license": "ISC",
+            "scripts": {
+              "start": "electron ."
+            },
+          }
+        </script></code></pre>
+          </section>
+          <section>
+            <h3 data-id="code-title">install electron.js</h3>
+            <pre><code class="hljs">
+          npm install electron --save-dev
+        </code></pre>
+          </section>
+          <section data-auto-animate>
+            <h3 data-id="code-title">create the index.js file</h3>
+            <pre
+              data-id="code-animation"
+            ><code class="hljs" data-trim data-line-numbers="|7|9-15"><script type="text/template">
+          'use strict'
+          const { app, BrowserWindow } = require('electron')
+          const path = require('path')
+          const url = require('url')
+          app.on('ready', () => {
+              // Create the browser window.
+              const win = new BrowserWindow({ width: 1000, height: 800 })
+          
+              // and load the index.html of the app.
+              win.loadURL(
+                  url.format({
+                    pathname: path.join(__dirname, 'index.html'),
+                    protocol: 'file:',
+                    slashes: true
+                    })
+                    )
+              })
+        </script></code></pre>
+          </section>
+          <section data-auto-animate>
+            <h3 data-id="code-title">create the index.html file</h3>
+            <pre
+              data-id="code-animation"
+            ><code class="hljs" data-trim data-line-numbers="|8|">
+            &lt;!DOCTYPE html&gt;
+            &lt;html&gt;
+            &lt;head&gt;
+              &lt;meta charset="UTF-8"&gt;
+              &lt;title&gt;Electron App&lt;/title&gt;
+            &lt;/head&gt;
+            &lt;body&gt;
+              &lt;h1&gt;Hello World!&lt;/h1&gt;
+            &lt;/body&gt;
+            &lt;/html&gt;
+        </code></pre>
+          </section>
+          <section>
+            <h3 data-id="code-title">build electron app</h3>
+            <pre><code class="hljs">
+          npm start
+        </code></pre>
+          </section>
+          <section>
+						<h3 data-id="code-title">code example</h3>
+            <img src="https://i.ibb.co/L6VqbGM/image.png" alt="code result" />
+          </section>
+        </section>
+        <section>
+          <p>
+            With an improved runtime and great integration with JavaScript and
+            Node.js, Electron JS makes both designing desktop apps and
+            maintaining them on cross platforms easier and better.
+          </p>
+        </section>
+      </div>
+    </div>
+
+    <script src="dist/reveal.js"></script>
+    <script src="plugin/notes/notes.js"></script>
+    <script src="plugin/markdown/markdown.js"></script>
+    <script src="plugin/highlight/highlight.js"></script>
+    <script>
+      // More info about initialization & config:
+      // - https://revealjs.com/initialization/
+      // - https://revealjs.com/config/
+      Reveal.initialize({
+        hash: true,
+
+        // Learn about plugins: https://revealjs.com/plugins/
+        plugins: [RevealMarkdown, RevealHighlight, RevealNotes],
+      });
+    </script>
+  </body>
+</html>
