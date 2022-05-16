@@ -1,2 +1,3 @@
-# annaignatova-JSFE2021Q3
-Private repository for @annaignatova
+# Работы с курса JavaScript/Frontend 
+
+все работы находятся в отдельных ветках, для того, чтобы посмотреть работу, переключитесь на нужную ветку
